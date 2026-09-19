@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'making-of-kanji-test');
+if (!article) throw new Error('記事データが見つかりません。');
+const socialImage = article.image.replace(/\.svg$/, '.png');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={socialImage} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">TOOL NOTE / 02</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>{article.draft && <span class="journal-card__draft">下書き</span>}</div>
+            <p class="journal-article__lead">塾のアルバイトで漢字の総テストを作るのが面倒だったので、自分用の道具を作りました。</p>
+          </header>
+
+          <figure class="journal-article__thumbnail">
+            <img src={article.image} alt={article.imageAlt} width="1312" height="900" />
+            <figcaption>漢字小テスト作成ツールの画面イメージ</figcaption>
+          </figure>
+
+          <div class="journal-article__body">
+            <section>
+              <h2>漢字テストを作る手間</h2>
+              <p>学習塾でアルバイトをしていると、定期テスト前に漢字の総テストがほしくなることがあります。でも、塾のカリキュラムには用意されていない。となると自分で作るわけですが、問題を並べて、読みと書きを決めて、印刷できる形にするのがなかなか煩わしい。パワポで作るのも、文字の書体をいじるのが意外と煩わしい。じゃぁ、作るか。</p>
+            </section>
+
+            <section>
+              <h2>コードはほぼAI、見た目は自分</h2>
+              <p>実際にコードを書いたのは、ほぼLLMです。自分は「こう動いてほしい」を伝えて、出てきたものを触って、ページのデザインやレイアウトを調整する係。きれいに一発で完成、とはいきませんでした。</p>
+              <p>仕組み自体はそこまで複雑ではないつもりだったのに、バージョンで数えると10回くらい作り直しています。とくに手間がかかったのが、外からJSONファイルを読み込んで問題に反映するところ。それから、同じ問題を「読み」にも「書き」にも切り替えられるようにするところでした。なんなんだろうねこいつ。</p>
+            </section>
+
+            <section>
+              <h2>具体的な使い方</h2>
+              <p>まず、ツール本体のHTMLを生成AIに見せます。次に、出したい漢字や熟語を15個渡して、短い文章を作ってもらう。その文章を、このツールで読み込めるJSONにしてもらい、ファイルを読み込ませます。あとは読み問題か書き問題かを選び、プレビューを見て印刷する、という流れです。</p>
+              <p>毎回ゼロから用紙を組むより、ずっと楽になりました。まぁ自分のためだけに最適化してるからそりゃそうなんだけど。</p>
+            </section>
+
+            <section>
+              <h2>これから</h2>
+              <p>今は自分が使う15問のテストを前提に作っています。次に手を入れるなら、10問や20問でも気持ちよく作れるようにしたい。問題数が変わると文章のレイアウトが変わったりして配置の定義がめんどくさそうですが。</p>
+              <p>とりあえず日常のひと手間が削れたので成功、ということで。</p>
+            </section>
+          </div>
+
+          <footer class="journal-article__footer">
+            <p>使ってみたい人へ。ブラウザから開けます。コードも公開しています。</p>
+            <div class="journal-article__resource-links">
+              <a href="https://syu-syuto.github.io/kanji-test/" target="_blank" rel="noopener noreferrer">ツールを使う <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/Syu-Syuto/kanji-test" target="_blank" rel="noopener noreferrer">GitHubで見る <span aria-hidden="true">↗</span></a>
+            </div>
+          </footer>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

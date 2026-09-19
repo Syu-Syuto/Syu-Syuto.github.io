@@ -1,0 +1,21 @@
+---
+const { kind } = Astro.props;
+---
+{kind === 'github' && (
+  <svg class="about-explore__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+    <path d="M12 .3a12 12 0 0 0-3.79 23.38c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.53-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.1c1.02 0 2.05.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.38.82 1.11.82 2.23v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .3Z" />
+  </svg>
+)}
+{kind === 'instagram' && (
+  <svg class="about-explore__icon" viewBox="0 0 24 24" fill="none" stroke="url(#instagram-color)" stroke-width="2.2" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="instagram-color" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#f5a233"/><stop offset=".5" stop-color="#d13f8b"/><stop offset="1" stop-color="#6845c1"/></linearGradient></defs>
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5.8" />
+    <circle cx="12" cy="12" r="4.35" />
+    <circle cx="17.65" cy="6.45" r="1.25" fill="#b344a0" stroke="none" />
+  </svg>
+)}
+{kind === 'x' && (
+  <svg class="about-explore__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+    <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.59-6.64 7.59H.47l8.6-9.83L0 1.15h7.59l5.25 6.94Zm-1.29 19.5h2.04L6.49 3.24H4.3Z" />
+  </svg>
+)}

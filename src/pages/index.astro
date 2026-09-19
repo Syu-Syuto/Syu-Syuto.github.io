@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { articles } from '../data/articles';
+import { getHomeUpdates } from '../data/updates';
+
+const cards = [
+  { title: '記事', text: '大学生活のことや、気になったことをまとめた記事です。', label: '記事を読む', href: '/articles/', photo: 'notebook', icon: 'article' },
+  { title: '作ったもの', text: '自分で作ったツールやプログラムを公開しています。', label: '作ったものを見る', href: '/works/', photo: 'laptop', icon: 'tool' },
+  { title: 'ギャラリー', text: '写真や制作物など、いろいろな記録を置いています。', label: 'ギャラリーを見る', href: '/photos/', photo: 'tower', icon: 'camera' },
+  { title: '私について', text: 'このサイトの管理人について、簡単に紹介しています。', label: '詳しく見る', href: '/about/', photo: 'sketchbook', icon: 'person' },
+];
+
+const notices = getHomeUpdates(articles, 3);
+---
+<BaseLayout description="しゅうの物置。つくったり、調べたり、まとめたり。">
+  <div class="reference-home">
+    <section class="desk-hero" aria-labelledby="hero-title">
+      <div class="desk-hero__inner">
+        <div class="hero-photo hero-photo--campus">
+          <div class="hero-photo__image photo-tile photo-tile--campus" role="img" aria-label="木々に囲まれた大学の校舎"></div>
+          <span>Campus days.</span>
+        </div>
+        <div class="hero-photo hero-photo--book">
+          <div class="hero-photo__image photo-tile photo-tile--book" role="img" aria-label="開いた本とコーヒーカップ"></div>
+          <span>Good tools,<br />Good days.</span>
+        </div>
+        <span class="desk-hero__masking desk-hero__masking--left" aria-hidden="true"></span>
+        <span class="desk-hero__masking desk-hero__masking--right" aria-hidden="true"></span>
+        <div class="desk-hero__paper">
+          <div class="desk-hero__copy">
+            <h1 id="hero-title">しゅうの物置</h1>
+            <p class="desk-hero__lead">つくったり、調べたり、まとめたり。</p>
+            <p class="desk-hero__intro">大学生活で役立つこと、<br />自分の興味のあること、<br />作ったものなどを、気ままに置いていく場所です。</p>
+            <a class="blue-button" href="/about/">私について <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="desk-hero__aside">「ないなら、作ろう。」</p>
+          <img class="desk-hero__drawing" src="/images/hero-cat-mage-pen.webp" alt="右を指差す、長い耳と装飾された衣装の猫の魔法使いのペン画" />
+        </div>
+        <div class="desk-hero__note" aria-hidden="true">Make<br />Explore<br />Share<br />Enjoy! <span>☺</span></div>
+        <div class="desk-hero__topnote" aria-hidden="true">“ 好きなことで<br />日常をちょっと便利に ”</div>
+      </div>
+    </section>
+
+    <div class="paper-surface">
+      <section class="feature-doors" aria-label="サイトの案内">
+        {cards.map((card) => <a class="door-card" href={card.href}>
+          <div class="door-card__heading">
+            {card.icon === 'article' && <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 5 31 8 28 34 6 31zM14 13h12M13 19h12M12 25h10M4 9v23"/></svg>}
+            {card.icon === 'tool' && <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M31 4a10 10 0 0 0-11 12L6 30a4 4 0 0 0 6 6l14-14A10 10 0 0 0 36 9l-7 7-6-6z"/></svg>}
+            {card.icon === 'camera' && <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 12h8l3-5h10l3 5h8v22H4z"/><circle cx="20" cy="23" r="7"/><path d="M29 16h3"/></svg>}
+            {card.icon === 'person' && <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="11" r="7"/><path d="M8 35c0-9 5-14 12-14s12 5 12 14z"/></svg>}
+            <h2>{card.title}</h2>
+          </div>
+          <p>{card.text}</p>
+          <div class:list={['door-card__image', 'photo-tile', `photo-tile--${card.photo}`]} role="img" aria-label={card.photo === 'tower' ? '夜の街並みとライトアップされた東京タワー' : `${card.title}を表す写真`}></div>
+          <span class="door-card__link">{card.label}<span aria-hidden="true">→</span></span>
+        </a>)}
+      </section>
+
+      <section class="desk-bottom" aria-label="お知らせとメモ">
+        <div class="notice-paper">
+          <span class="notice-paper__tape" aria-hidden="true"></span>
+          <h2><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 15v12l20 7V8zM28 14l7-4M29 26l6 4M12 28l3 7h5l-2-6"/></svg>お知らせ</h2>
+          <ul>{notices.map((notice) => <li class:list={['notice-paper__item', `notice-paper__item--${notice.kind}`]}>
+            <span class="notice-paper__label">{notice.label}</span>
+            <a href={notice.href}>{notice.message}<span aria-hidden="true">↗</span></a>
+          </li>)}</ul>
+        </div>
+        <a class="blue-note" href="/wishlist/">“ やってみたい、を<br />少しずつ形に。”<span>やりたいことリストへ →</span></a>
+        <div class="bottom-polaroid" aria-hidden="true"><div class="photo-tile photo-tile--campus"></div></div>
+      </section>
+    </div>
+
+    <SiteFooter />
+  </div>
+</BaseLayout>

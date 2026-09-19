@@ -1,0 +1,41 @@
+name: GitHub Pagesへ公開
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+      PUBLIC_GOATCOUNTER_CODE: ${{ vars.GOATCOUNTER_CODE }}
+    steps:
+      - name: ソースを取得
+        uses: actions/checkout@v7
+      - name: Astroサイトを作成
+        uses: withastro/action@v6
+        with:
+          node-version: 24
+          package-manager: pnpm@11
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: GitHub Pagesへ公開
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SocialIcon from '../components/SocialIcon.astro';
+import { profile } from '../data/profile';
+import '../styles/about.css';
+---
+<BaseLayout title="私について | しゅうの物置" description="しゅうの物置の管理人について。">
+  <div class="about-page">
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="about-hero__inner">
+        <div class="about-hero__polaroid" aria-hidden="true"><div class="photo-tile photo-tile--book"></div><span>Good days.</span></div>
+        <span class="about-hero__tape" aria-hidden="true"></span>
+        <div class="about-hero__paper">
+          <div class="about-hero__text">
+            <span class="about-hero__eyebrow">01 / ABOUT</span>
+            <h1 id="about-title">私について</h1>
+            <p>{profile.intro}</p>
+            <span class="about-hero__note-label">{profile.note}</span>
+          </div>
+          <img src="/images/person-cat.webp" alt="後ろ姿の人物と猫のペン画" />
+        </div>
+        <div class="about-hero__note" aria-hidden="true">a little<br />about me <span>✳</span></div>
+      </div>
+    </section>
+
+    <div class="about-content">
+      <div class="about-content__inner">
+        <section class="about-likes" aria-labelledby="likes-title">
+          <div class="about-section-title"><span>02</span><h2 id="likes-title">好きなもの・好きなこと</h2></div>
+          <div class="about-likes__grid">
+            {profile.likes.map((item, index) => <article class="about-like-card">
+              <div class:list={['about-like-card__image','photo-tile',`photo-tile--${item.photo}`]} role="img" aria-label={item.imageAlt}></div>
+              <span class="about-like-card__num">0{index + 1}</span>
+              <h3>{item.title}</h3>
+              <p>{item.caption}</p>
+              <p class="about-like-card__detail">{item.detail}</p>
+            </article>)}
+          </div>
+        </section>
+
+        <section class="about-explore" aria-labelledby="explore-title">
+          <div class="about-section-title"><span>03</span><h2 id="explore-title">作ったものを覗いてみる</h2></div>
+          <div class="about-explore__links">
+            <a class="about-explore__paper" href="/works/"><span>WORKS</span><strong>作ったもの</strong><span class="about-explore__arrow" aria-hidden="true">→</span></a>
+            <a class="about-explore__paper" href="/photos/"><span>GALLERY</span><strong>フォトギャラリー</strong><span class="about-explore__arrow" aria-hidden="true">→</span></a>
+          </div>
+          <div class="about-explore__social">
+            <p>もっと私について知りたければ、こちらにも。</p>
+            <div class="about-explore__stickers">
+              {profile.socials.map((item) => <a class="about-explore__sticker" href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`${item.name}のプロフィールを新しいタブで開く`}>
+                <SocialIcon kind={item.icon} />
+                <span><strong>{item.name}</strong><small>{item.description}</small></span>
+                <span class="about-explore__external" aria-hidden="true">↗</span>
+              </a>)}
+            </div>
+            <p class="about-explore__contact">連絡はXまたはInstagramのDMから。</p>
+          </div>
+        </section>
+
+        <div class="about-back"><a href="/">← トップページへ戻る</a></div>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

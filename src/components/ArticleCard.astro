@@ -1,0 +1,21 @@
+---
+import type { Article } from '../data/articles';
+import Tag from './Tag.astro';
+import Tape from './Tape.astro';
+interface Props { article: Article; index: number; featured?: boolean; }
+const { article, index, featured = false } = Astro.props;
+const formattedDate = article.publishedAt.replaceAll('-', '.');
+---
+<article class:list={['article-card', `article-card--${index % 3}`, { 'article-card--featured': featured }]}>
+  <Tape tone={(['yellow', 'blue', 'pink', 'green'] as const)[index % 4]} />
+  <a class="article-card__link" href={`/articles/${article.slug}/`} aria-label={article.title}>
+    <div class="article-card__image"><img src={article.image} alt={article.imageAlt} loading="lazy" /></div>
+    <div class="article-card__body">
+      <div class="article-card__meta"><time datetime={article.publishedAt}>{formattedDate}</time></div>
+      <h3>{article.title}</h3>
+      <div class="article-card__tags" aria-label="タグ">
+        {article.tags.map((tag, tagIndex) => <Tag label={tag} index={index + tagIndex} />)}
+      </div>
+    </div>
+  </a>
+</article>

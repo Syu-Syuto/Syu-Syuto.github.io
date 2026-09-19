@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'making-of-shu-monooki');
+if (!article) throw new Error('記事データが見つかりません。');
+const socialImage = article.image.replace(/\.svg$/, '.png');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={socialImage} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">MAKING NOTE / 01</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>{article.draft && <span class="journal-card__draft">下書き</span>}</div>
+            <p class="journal-article__lead">「しゅうの物置」を作っています。まだ作っている途中だけど、どうして作り始めたのか、ここまで何をしたのかを忘れないうちに書いておきます。</p>
+          </header>
+
+          <figure class="journal-article__thumbnail">
+            <img src={article.image} alt={article.imageAlt} width="1312" height="900" />
+            <figcaption>このサイトのトップ画面</figcaption>
+          </figure>
+
+          <div class="journal-article__body">
+            <section>
+              <h2>置き場がほしかった</h2>
+              <p>きっかけは、とある先輩の個人サイトでした。大学時代にやったことや作ったものが、ひとつの場所にまとまっている。なんか良いよね。</p>
+              <p>自分も4月から大学に通い始めて、半年くらい。気づけばいくつかツールを作っていました。ただ、URLが全部ばらばら。使うときも、人に見せるときも、ちょっと探しにくい。だったら、まとめて置ける場所を作ろう。そんな感じで、このサイトを作り始めました。</p>
+            </section>
+
+            <section>
+              <h2>まずは、見た目の話</h2>
+              <p>一目見て自分の好きなことがわかるような場所にしたかった。方眼紙に写真を貼って、テープで留めて、机の上にいろいろ置いてある。そんな感じのサイトに。工具をずらっと並べた「工作っぽさ」より、ページそのものを切り貼りして作成したような温かさをコンセプトにしました。</p>
+              <p>よくTwitterとかで、「Astraにこの一文だけでLPができた！」と言っている人を見かけますが実際に作成してみると、あのような人はページにほぼこだわりなく作成していたんだと強く実感しました。実際の作業としてはまず構想を対話して深めていくだけでも数時間、そのごの実装でもこまかなミスが多くかなりの時間がかかりました。まぁここに関してはLLMがまだまだだというよりもデザインのこだわりの問題な気もしますが。</p>
+            </section>
+
+            <section>
+              <h2>中身はAstroで</h2>
+              <p>ページの土台にはAstroを使っています。ヘッダーみたいに何度も出てくる部分は共通にして、文章や見た目は別のファイルへ。コードは生成AIにもかなり手伝ってもらっています。まぁ言うこと全然聞かないんですが。</p>
+              <p>トップページのあとには「私について」、それから「作ったもの」のページを追加しました。作ったもののほうには、このサイトの作り方や漢字の小テスト作成ツールも置いています。</p>
+            </section>
+
+            <section>
+              <h2>細かいところで、また止まる</h2>
+              <p>PCではよかったのに、画面幅を変えたら検索ボタンが押せない。写真が妙に引き延ばされる。そういうのがちょこちょこ出てきます。スマホでも開いてみて、見つけたところから直しました。手元にiPhoneがないのが一番めんどくさかったです。</p>
+            </section>
+
+            <section>
+              <h2>まだ途中です</h2>
+              <p>今公開しているものは仮置きのものがおおいです。これからギャラリーなどの工事も進めていきます。昔の個人サイトみたいに隠しボタンとかも作りたいな。</p>
+            </section>
+          </div>
+
+          <footer class="journal-article__footer">
+            <a href="/works/">作ったものも見てみる <span aria-hidden="true">→</span></a>
+          </footer>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

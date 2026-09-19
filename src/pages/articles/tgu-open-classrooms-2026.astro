@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'tgu-open-classrooms-2026');
+if (!article) throw new Error('記事データが見つかりません。');
+const socialImage = article.image.replace(/\.svg$/, '.png');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={socialImage} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">CAMPUS TOOL / 03</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div></div>
+            <p class="journal-article__lead">曜日と時限を選ぶと、空き教室の候補が見られるページを作りました。2026年度向けの、非公式ツールです。</p>
+          </header>
+
+          <figure class="journal-article__thumbnail">
+            <img src={article.image} alt={article.imageAlt} width="1312" height="900" />
+            <figcaption>実際の検索画面をもとにしたイメージ</figcaption>
+          </figure>
+
+          <div class="journal-article__body">
+            <section>
+              <h2>どこが空いていそう？</h2>
+              <p>授業の合間に場所を探したいとき、「この時間、どの教室が候補なんだろう」と思うことがあります。そこで、東京学芸大学の2026年度シラバス・時間割データをもとに、空き教室を探せるページを作りました。</p>
+              <p>大学の公式システムではなく、個人で作ったものです。名前に大学名が入っているけれど、そこは最初にはっきり書いておきます。</p>
+            </section>
+
+            <section>
+              <h2>使い方はシンプル</h2>
+              <p>開講期、曜日、時限を選ぶと、候補の教室が棟ごとに並びます。「現在から探す」ボタンも付けました。教室をタップすると、その日の時限ごとの状態や、選んだ時間から何限まで続けて空いていそうかも見られます。</p>
+              <p>一覧でざっと探して、気になる教室だけ詳しく見る。そんな使い方を想定しています。</p>
+            </section>
+
+            <section>
+              <h2>「空き」は、確約ではない</h2>
+              <p><strong>このツールは非公式で、表示する情報の正確性や実際の空室・利用可否を保証するものではありません。</strong>時間割に授業が載っていなくても、別の用途で使われているかもしれません。休講・補講・教室変更にも対応していません。</p>
+              <p>あくまで「候補を探すためのメモ」くらいに使ってください。実際に利用する前には、大学の案内や現地の状況を確認してもらえると安心です。</p>
+            </section>
+
+            <section>
+              <h2>使ってみる</h2>
+              <p>ブラウザからそのまま開けます。どんな作りか気になる人向けに、コードもGitHubに置いています。</p>
+            </section>
+          </div>
+
+          <footer class="journal-article__footer">
+            <p>東京学芸大学の公式サービスではありません。表示内容を鵜呑みにせず、利用前に確認してください。</p>
+            <div class="journal-article__resource-links">
+              <a href="https://syu-syuto.github.io/tgu-open-classrooms-2026/" target="_blank" rel="noopener noreferrer">ツールを使う <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/Syu-Syuto/tgu-open-classrooms-2026" target="_blank" rel="noopener noreferrer">GitHubで見る <span aria-hidden="true">↗</span></a>
+              <a href="/works/#tgu-open-classrooms-2026">作ったものを見る <span aria-hidden="true">→</span></a>
+            </div>
+          </footer>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

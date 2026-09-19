@@ -1,0 +1,6 @@
+---
+interface Props { label: string; index?: number; }
+const { label, index = 0 } = Astro.props;
+const tones = ['yellow', 'pink', 'blue', 'green'];
+---
+<span class:list={['paper-tag', `paper-tag--${tones[index % tones.length]}`]}>{label}</span>

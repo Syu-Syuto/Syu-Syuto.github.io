@@ -1,0 +1,5 @@
+---
+interface Props { tone?: 'yellow' | 'pink' | 'blue' | 'green'; class?: string; }
+const { tone = 'yellow', class: className = '' } = Astro.props;
+---
+<span class:list={['tape', `tape--${tone}`, className]} aria-hidden="true"></span>

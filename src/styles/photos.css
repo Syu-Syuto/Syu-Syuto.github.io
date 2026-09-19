@@ -1,0 +1,66 @@
+.gallery-page{color:var(--ink)}
+.gallery-hero{height:320px;background:#b77842 url('/images/desk-background.webp') center 48%/cover no-repeat}
+.gallery-hero__inner{max-width:1312px;height:100%;margin:auto;position:relative}
+.gallery-hero__paper{position:absolute;inset:25px 13% 25px 15%;padding:43px 9%;background-color:#fffefa;background-image:linear-gradient(#b5c4d33b 1px,transparent 1px),linear-gradient(90deg,#b5c4d33b 1px,transparent 1px);background-size:16px 16px;box-shadow:0 12px 23px #37201155;transform:rotate(.5deg)}
+.gallery-hero__paper::before{content:"";position:absolute;inset:8px;border:1px solid #d9e1e6aa;pointer-events:none}
+.gallery-hero__eyebrow{font:700 .75rem Georgia,serif;letter-spacing:.17em;color:#5e7286}
+.gallery-hero h1{font-family:"UD Digi Kyokasho NP-R","YuKyokasho","Yu Mincho",serif;font-size:clamp(2.4rem,4.5vw,3.9rem);line-height:1.2;letter-spacing:.12em;margin:15px 0 15px}
+.gallery-hero p{font-size:1rem;font-weight:600;letter-spacing:.06em;margin:0}
+.gallery-hero__camera{position:absolute;right:7%;bottom:12%;width:142px;max-width:23%;stroke:#273f57;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transform:rotate(8deg)}
+.gallery-hero__tape{position:absolute;top:12px;left:22%;width:91px;height:25px;background:#ead9aacb;clip-path:polygon(2% 6%,99% 0,97% 100%,0 91%);transform:rotate(-9deg)}
+.gallery-hero__scribble{position:absolute;right:6%;bottom:23px;transform:rotate(-9deg);font:1.1rem "Segoe Print","Comic Sans MS",cursive;color:#fff8e9;text-shadow:1px 2px 4px #4a2f21}
+.gallery-surface{position:relative;background:#f5f2ec;background-image:repeating-linear-gradient(25deg,#a9a09808 0 1px,transparent 1px 7px);padding:47px 24px 77px}
+.gallery-surface::before{content:"";position:absolute;top:-9px;left:0;right:0;height:12px;background:#f5f2ec;clip-path:polygon(0 45%,4% 63%,8% 39%,13% 62%,19% 42%,24% 57%,31% 40%,37% 65%,45% 43%,52% 63%,59% 41%,65% 59%,72% 38%,80% 61%,87% 39%,94% 58%,100% 41%,100% 100%,0 100%)}
+.gallery-surface__inner{max-width:1120px;margin:auto}
+.gallery-toolbar{display:flex;align-items:center;justify-content:space-between;gap:25px;margin:0 5px 34px}
+.gallery-toolbar__heading{display:flex;align-items:flex-start;gap:14px}
+.gallery-toolbar__heading>span{color:#ad755a;font:700 1.17rem Georgia,serif;padding-top:5px}
+.gallery-toolbar h2{font-size:1.5rem;letter-spacing:.08em;margin:0}
+.gallery-toolbar p{font-size:.84rem;color:#627185;margin:0}
+.gallery-toggle{display:flex;align-items:center;gap:10px;min-height:53px;padding:9px 14px;border:0;background:#e8e1b6;color:var(--ink);font:800 .88rem/1.3 "Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;letter-spacing:.03em;box-shadow:2px 4px 6px #47331e28;transform:rotate(2deg);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.gallery-toggle:hover{transform:rotate(0) translateY(-2px);box-shadow:2px 6px 8px #47331e35}
+.gallery-toggle:focus-visible{outline:3px solid #315c84;outline-offset:5px}
+.gallery-toggle svg{width:31px;height:31px;flex:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gallery-toggle__switch{width:23px;height:23px;flex:none;border:2px solid #486783;background:#fffefa;position:relative;transform:rotate(-3deg)}
+.gallery-toggle__switch::after{content:"";position:absolute;left:4px;top:3px;width:11px;height:8px;border-left:3px solid #2e648f;border-bottom:3px solid #2e648f;transform:rotate(-45deg);opacity:0}
+.gallery-page[data-camera-visible="true"] .gallery-toggle__switch::after{opacity:1}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:29px;align-items:start}
+.gallery-card{min-width:0;position:relative;background:#fffefa;padding:13px 13px 23px;box-shadow:1px 6px 15px #47331e30;transform:rotate(-.45deg)}
+.gallery-card:nth-child(2){transform:rotate(.65deg);margin-top:25px}
+.gallery-card:nth-child(3){transform:rotate(-.3deg);margin-top:10px}
+.gallery-card__tape{position:absolute;z-index:1;top:-14px;left:calc(50% - 42px);width:84px;height:27px;background:#d1d9cfcc;clip-path:polygon(2% 7%,99% 0,97% 100%,0 91%);transform:rotate(-5deg)}
+.gallery-card:nth-child(2) .gallery-card__tape{background:#e8d5aaee;transform:rotate(7deg)}
+.gallery-card:nth-child(3) .gallery-card__tape{background:#bbd4dfdd;transform:rotate(-7deg)}
+.gallery-card figure{margin:0}
+.gallery-card__photo-button{display:block;position:relative;width:100%;padding:0;border:0;background:#ddd8cf;cursor:zoom-in}
+.gallery-card__photo-button:focus-visible{outline:3px solid #315c84;outline-offset:5px}
+.gallery-card img{display:block;width:100%;height:auto;background:#ddd8cf}
+.gallery-card__zoom{position:absolute;right:10px;bottom:10px;padding:5px 10px;background:#fffaf0e8;color:#234b69;font-size:.72rem;font-weight:800;letter-spacing:.06em;box-shadow:1px 2px 6px #1a243444;transform:rotate(-4deg);transition:transform .2s}
+.gallery-card__zoom span{font-size:1.05em;margin-left:4px}
+.gallery-card__photo-button:hover .gallery-card__zoom,.gallery-card__photo-button:focus-visible .gallery-card__zoom{transform:rotate(0) translateY(-2px)}
+.gallery-card figcaption{padding:17px 8px 0}
+.gallery-card__number{display:block;color:#8c7867;font:700 .72rem Georgia,serif;letter-spacing:.15em}
+.gallery-card h3{font-family:"UD Digi Kyokasho NP-R","YuKyokasho","Yu Mincho",serif;font-size:1.45rem;letter-spacing:.08em;line-height:1.45;margin:7px 0 0}
+.gallery-card__comment{font-size:.9rem;line-height:1.7;letter-spacing:.03em;margin:8px 0 0}
+.gallery-card__camera{display:none;margin:18px 8px 0;padding:13px 0 0;border-top:1px dashed #b7c7ca;grid-template-columns:1fr;gap:8px}
+.gallery-page[data-camera-visible="true"] .gallery-card__camera{display:grid}
+.gallery-card__camera div{display:grid;grid-template-columns:116px minmax(0,1fr);gap:7px;font-size:.76rem;line-height:1.5;overflow-wrap:anywhere}
+.gallery-card__camera dt{color:#62758a;font-size:.7rem;font-weight:800;white-space:nowrap}
+.gallery-card__camera dd{margin:0}
+.gallery-surface__note{text-align:center;color:#657385;font-size:.86rem;margin:45px 0 0}
+.gallery-lightbox{position:fixed;inset:0;width:min(96vw,1500px);max-width:none;max-height:calc(100dvh - 24px);margin:auto;padding:18px 22px 20px;border:0;background:#fffefa;color:var(--ink);box-shadow:0 20px 55px #0b182e88;overflow:auto}
+.gallery-lightbox[data-orientation="portrait"]{width:min(90vw,540px)}
+.gallery-lightbox::backdrop{background:#142033dc}
+.gallery-lightbox::before{content:"";position:absolute;top:5px;left:32px;width:83px;height:24px;background:#e9dcbbbf;clip-path:polygon(2% 5%,99% 0,97% 100%,0 91%);transform:rotate(-8deg);pointer-events:none}
+.gallery-lightbox__close{display:flex;align-items:center;gap:12px;margin:0 0 12px auto;padding:5px 11px;border:1px solid #a8becb;background:#e9f1f3;color:var(--ink);font:800 .84rem "Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;cursor:pointer}
+.gallery-lightbox__close span{font-size:1.5rem;line-height:1}
+.gallery-lightbox__close:hover{background:#d4e4eb}
+.gallery-lightbox__close:focus-visible{outline:3px solid #315c84;outline-offset:4px}
+.gallery-lightbox figure{margin:0}
+.gallery-lightbox img{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100dvh - 200px);margin:auto;object-fit:contain}
+.gallery-lightbox figcaption{text-align:center;padding:12px 8px 0}
+.gallery-lightbox h2{font-family:"UD Digi Kyokasho NP-R","YuKyokasho","Yu Mincho",serif;font-size:1.35rem;line-height:1.4;margin:0}
+.gallery-lightbox p{font-size:.86rem;margin:5px 0 0}
+@media(max-width:960px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px}.gallery-card:nth-child(3){margin-top:0}.gallery-hero__paper{inset:28px 9% 25px 9%}}
+@media(max-width:660px){.gallery-hero{height:290px}.gallery-hero__paper{inset:29px 5% 25px;padding:47px 7%}.gallery-hero h1{font-size:clamp(1.65rem,7vw,2rem);letter-spacing:.02em;white-space:nowrap}.gallery-hero p{font-size:.83rem;max-width:175px;line-height:1.6}.gallery-hero__camera{right:5%;bottom:9%;width:85px;max-width:27%}.gallery-hero__tape{left:17%;top:16px;width:68px;height:19px}.gallery-hero__scribble{display:none}.gallery-surface{padding:30px 17px 55px}.gallery-toolbar{align-items:flex-start;flex-direction:column;gap:16px;margin:0 0 35px}.gallery-toolbar h2{font-size:1.35rem}.gallery-toggle{align-self:flex-end;font-size:.82rem;min-height:47px}.gallery-grid{grid-template-columns:1fr;gap:35px;max-width:490px;margin:auto}.gallery-card:nth-child(2),.gallery-card:nth-child(3){margin-top:0}.gallery-card{padding:11px 11px 21px}.gallery-card__camera div{grid-template-columns:115px minmax(0,1fr)}}
+@media(max-width:660px){.gallery-lightbox,.gallery-lightbox[data-orientation="portrait"]{width:calc(100vw - 16px);max-height:calc(100dvh - 16px);padding:12px 12px 16px}.gallery-lightbox img{max-height:calc(100dvh - 175px)}.gallery-lightbox h2{font-size:1.15rem}}

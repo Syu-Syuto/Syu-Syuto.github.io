@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/works.css';
+---
+<BaseLayout title="作ったもの | しゅうの物置" description="しゅうの物置で作ったサイトやツールについて。">
+  <div class="works-page">
+    <section class="works-hero" aria-labelledby="works-title">
+      <div class="works-hero__inner">
+        <div class="works-hero__paper">
+          <span class="works-hero__eyebrow">MADE BY SHU / しゅうの物置</span>
+          <div class="works-hero__title-row">
+            <h1 id="works-title">作ったもの</h1>
+            <svg class="works-hero__wrench" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+              <path d="M31 4a10 10 0 0 0-11 12L6 30a4 4 0 0 0 6 6l14-14A10 10 0 0 0 36 9l-7 7-6-6z" />
+              <circle cx="9" cy="33" r="1.1" />
+              <path class="works-hero__wrench-sketch" d="M3 25 7 22M34 27l3 2M36 4l2-2" />
+            </svg>
+          </div>
+          <p>このサイトの作り方や、誰かが使える小さなツールを置いています。<br />気になる紙を、ひらいてみてください。</p>
+        </div>
+        <span class="works-hero__tape" aria-hidden="true"></span>
+        <div class="works-hero__note" aria-hidden="true">open<br />me! <span>↙</span></div>
+      </div>
+    </section>
+
+    <section class="works-list" aria-labelledby="works-list-title">
+      <div class="works-list__inner">
+        <div class="works-section-title"><span>INDEX</span><h2 id="works-list-title">分野から探す</h2></div>
+        <p class="works-list__lead">4つの分野に分けて置いています。作品のタイトルをタップすると、詳しい内容がひらきます。</p>
+
+        <section class="works-category" aria-labelledby="works-campus-title">
+          <div class="works-category__heading"><span>01</span><div><h3 id="works-campus-title">大学での制作</h3><p>大学生活の中で作ったものや、取り組んだこと。</p></div></div>
+          <details class="work-fold" id="tgu-open-classrooms-2026">
+            <summary>
+              <span class="work-fold__title"><small>UNOFFICIAL / CAMPUS TOOL</small><strong>東京学芸大学 空き教室検索 2026</strong></span>
+              <span class="work-fold__toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="work-fold__content">
+              <p class="work-fold__intro">東京学芸大学の2026年度シラバス・時間割データをもとに、開講期・曜日・時限から空き教室の候補を探せるツールです。棟ごとの一覧や、各教室の時限ごとの状態を確認できます。</p>
+              <div class="work-fold__tool-info">
+                <div>
+                  <h4>使ってみる・中身を見る</h4>
+                  <p><a class="work-fold__link" href="https://syu-syuto.github.io/tgu-open-classrooms-2026/" target="_blank" rel="noopener noreferrer">空き教室検索ツールを開く ↗</a></p>
+                  <p><a class="work-fold__link" href="https://github.com/Syu-Syuto/tgu-open-classrooms-2026" target="_blank" rel="noopener noreferrer">GitHubでコードを見る ↗</a></p>
+                  <p><a class="work-fold__link" href="/articles/tgu-open-classrooms-2026/">このツールについての記事を読む →</a></p>
+                </div>
+                <div>
+                  <h4>探し方</h4>
+                  <ol class="work-fold__steps">
+                    <li>開講期を選ぶ。</li>
+                    <li>曜日と時限を選び、棟ごとの候補を見る。</li>
+                    <li>教室名をタップすると、その日の時限ごとの状態も見られます。</li>
+                  </ol>
+                </div>
+              </div>
+              <p class="work-fold__note"><strong>非公式の個人制作ツールです。</strong>東京学芸大学の公式サービスではありません。表示される情報の正確性や、実際の空室・利用可否は保証しません。休講・補講・教室変更などは反映されないため、利用前に大学の案内や現地の状況を確認してください。</p>
+            </div>
+          </details>
+        </section>
+
+        <section class="works-category" aria-labelledby="works-education-title">
+          <div class="works-category__heading"><span>02</span><div><h3 id="works-education-title">教育・学習</h3><p>学びや授業に役立つツール。</p></div></div>
+
+        <details class="work-fold work-fold--tool" id="kanji-test-tool">
+          <summary>
+            <span class="work-fold__title"><small>PROGRAM / TOOL</small><strong>漢字の小テスト作成支援ツール</strong></span>
+            <span class="work-fold__toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="work-fold__content">
+            <p class="work-fold__intro">問題文と出題したい箇所を指定して、縦書き・A4横向きの漢字小テストを作れるブラウザ用ツールです。読み問題と書き問題に対応しています。</p>
+            <div class="work-fold__tool-info">
+              <div>
+                <h4>まず使ってみる</h4>
+                <p><a class="work-fold__link" href="https://syu-syuto.github.io/kanji-test/" target="_blank" rel="noopener noreferrer">漢字の小テスト作成支援ツールを開く ↗</a></p>
+                <p><a class="work-fold__link" href="https://github.com/Syu-Syuto/kanji-test" target="_blank" rel="noopener noreferrer">GitHubでファイルを見る・入手する ↗</a></p>
+                <p>ブラウザだけで動作します。問題データはJSON形式で保存・再読込できます。</p>
+              </div>
+              <div>
+                <h4>基本の使い方</h4>
+                <ol class="work-fold__steps">
+                  <li>問題にしたい短い文章を入力する。改行ごとに1問になります。</li>
+                  <li>各問題の出題箇所を指定し、「読み」か「書き」を選ぶ。</li>
+                  <li>必要に応じて正答や読みを入力し、プレビューを確認する。</li>
+                  <li>問題用紙・解答用紙を切り替えて印刷する。後で直すならJSONで保存する。</li>
+                </ol>
+              </div>
+            </div>
+            <div class="work-fold__tip">
+              <h4>生成AIと組み合わせるなら</h4>
+              <p>ツールのHTMLを生成AIに読み込ませ、出題したい漢字・熟語を15個ほど渡して短い例文を作ってもらい、このツールで読み込めるJSON形式に整えてもらう方法もおすすめです。読み込んだら、出題箇所と答えを自分で確認してください。</p>
+            </div>
+            <p class="work-fold__note">印刷時のレイアウトは環境によって変わることがあるため、印刷前にプレビューを確認してください。</p>
+          </div>
+        </details>
+        </section>
+
+        <section class="works-category" aria-labelledby="works-tech-title">
+          <div class="works-category__heading"><span>03</span><div><h3 id="works-tech-title">ウェブ・技術</h3><p>サイト制作やプログラムの記録。</p></div></div>
+
+        <details class="work-fold" id="site-building-guide">
+          <summary>
+            <span class="work-fold__title"><small>WEBSITE / GUIDE</small><strong>このサイトの作り方</strong></span>
+            <span class="work-fold__toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="work-fold__content">
+            <p class="work-fold__intro">同じようなサイトを作ってみたい人向けに、「しゅうの物置」の基本構造と作り方をまとめました。</p>
+            <div class="work-fold__columns">
+              <div>
+                <h4>基本の構造</h4>
+                <dl class="work-fold__structure">
+                  <div><dt>Astro</dt><dd>ページを組み立てるための仕組みです。</dd></div>
+                  <div><dt>pages</dt><dd>トップ・私について・作ったものなど、各ページの入口です。</dd></div>
+                  <div><dt>components</dt><dd>ヘッダーなど、ページをまたいで使う部品です。</dd></div>
+                  <div><dt>data / styles</dt><dd>文章や記事のデータと、紙・机・写真の見た目を分けて置いています。</dd></div>
+                  <div><dt>public/images</dt><dd>写真やイラストを置く場所です。</dd></div>
+                </dl>
+              </div>
+              <div>
+                <h4>作るときの流れ</h4>
+                <ol class="work-fold__steps">
+                  <li>載せたい内容とページの順番を決める。</li>
+                  <li>Astroで <code>src/pages</code> にページを、<code>src/components</code> に共通部品を作る。</li>
+                  <li>CSSでレイアウトを整え、写真を配置する。</li>
+                  <li><code>npm install</code> → <code>npm run dev</code> で手元に表示し、PCとスマホで見え方を確かめる。</li>
+                  <li>最後に <code>npm run build</code> で公開用のページを生成する。</li>
+                </ol>
+                <p class="work-fold__note">ソース一式や詳しい手順の公開先は、準備でき次第ここに追記します。</p>
+              </div>
+            </div>
+          </div>
+        </details>
+        </section>
+
+        <section class="works-category" aria-labelledby="works-other-title">
+          <div class="works-category__heading"><span>04</span><div><h3 id="works-other-title">そのほか</h3><p>分野にとらわれない試作や、ちょっとした便利なもの。</p></div></div>
+          <p class="works-category__empty">新しいものができたら、ここにも追加します。</p>
+        </section>
+
+        <a class="works-back" href="/">← トップページへ戻る</a>
+      </div>
+    </section>
+    <SiteFooter />
+  </div>
+  <script>
+    function openLinkedWork() {
+      const id = window.location.hash.slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (target instanceof HTMLDetailsElement) {
+        target.open = true;
+        requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+      }
+    }
+
+    openLinkedWork();
+    window.addEventListener('hashchange', openLinkedWork);
+  </script>
+</BaseLayout>

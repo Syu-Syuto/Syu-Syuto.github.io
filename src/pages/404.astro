@@ -1,0 +1,279 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/not-found.css';
+---
+<BaseLayout title="ページが見つかりません | しゅうの物置" description="お探しのページは、物置のどこかへ行ってしまったようです。" noindex={true}>
+  <div class="not-found-page">
+    <section class="not-found-hero" aria-labelledby="not-found-title">
+      <div class="not-found-paper">
+        <span class="not-found-paper__tape" aria-hidden="true"></span>
+        <span class="not-found-paper__label">LOST PAGE / ERROR 404</span>
+        <div class="not-found-heading">
+          <span class="not-found-heading__number" aria-hidden="true">404</span>
+          <div>
+            <h1 id="not-found-title">ページが見つかりません</h1>
+            <p>お探しの紙は、物置のどこかへ<br />行ってしまったようです。</p>
+          </div>
+        </div>
+        <a class="not-found-home" href="/">← トップページへ戻る</a>
+      </div>
+    </section>
+
+    <section class="runner-section" aria-labelledby="runner-title">
+      <div class="runner-sheet">
+        <span class="runner-sheet__clip" aria-hidden="true"></span>
+        <header class="runner-heading">
+          <div>
+            <span>MINI GAME / CAT RUN</span>
+            <h2 id="runner-title">猫と、ページを探しに行く。</h2>
+          </div>
+          <output id="runner-score" aria-label="現在のスコア">000</output>
+        </header>
+
+        <div class="runner-canvas-wrap">
+          <canvas id="runner-game" width="720" height="280" tabindex="0" role="img" aria-label="猫の魔法使いをジャンプさせて、机の上の道具を避けるゲーム"></canvas>
+          <noscript><p class="runner-noscript">ゲームを遊ぶにはJavaScriptを有効にしてください。トップページへは上のボタンから戻れます。</p></noscript>
+        </div>
+
+        <div class="runner-controls">
+          <button id="runner-start" type="button">走って探す</button>
+          <p id="runner-status" role="status" aria-live="polite">スペース・↑キー、またはゲーム画面のタップでジャンプ。</p>
+        </div>
+        <p class="runner-note">鉛筆や消しゴムを飛び越えて、404まで走れたらひと区切り。ゲームを遊ばず帰っても大丈夫です。</p>
+      </div>
+    </section>
+
+    <SiteFooter />
+  </div>
+
+  <script>
+    const canvasElement = document.querySelector<HTMLCanvasElement>('#runner-game');
+    const startButtonElement = document.querySelector<HTMLButtonElement>('#runner-start');
+    const statusElement = document.querySelector<HTMLElement>('#runner-status');
+    const scoreElement = document.querySelector<HTMLOutputElement>('#runner-score');
+
+    if (canvasElement && startButtonElement && statusElement && scoreElement) {
+      const canvas = canvasElement;
+      const startButton = startButtonElement;
+      const statusText = statusElement;
+      const scoreText = scoreElement;
+      const drawingContext = canvas.getContext('2d');
+      if (!drawingContext) throw new Error('ゲーム画面を準備できませんでした。');
+      const context: CanvasRenderingContext2D = drawingContext;
+
+      const width = canvas.width;
+      const height = canvas.height;
+      const ground = 226;
+      const navy = '#183552';
+      const ink = '#203752';
+      const paper = '#fffdf7';
+      const blue = '#8ab6cf';
+      const red = '#c96f58';
+      const yellow = '#e8bd58';
+      type GameState = 'idle' | 'running' | 'gameover' | 'complete';
+      type Obstacle = { type: 'eraser' | 'pencil' | 'tape'; width: number; height: number; x: number; y: number };
+      type Dust = { x: number; y: number; life: number };
+      let state: GameState = 'idle';
+      let lastTime = 0;
+      let distance = 0;
+      let speed = 270;
+      let spawnIn = 1.2;
+      let animationFrame = 0;
+      let obstacles: Obstacle[] = [];
+      let dust: Dust[] = [];
+      const player = { x: 92, y: ground - 54, width: 42, height: 54, velocityY: 0, grounded: true };
+
+      const setStatus = (message: string) => { statusText.textContent = message; };
+      const showScore = () => { scoreText.textContent = String(Math.min(404, Math.floor(distance))).padStart(3, '0'); };
+
+      function resetGame() {
+        state = 'running';
+        distance = 0;
+        speed = 270;
+        spawnIn = 1.05;
+        obstacles = [];
+        dust = [];
+        player.y = ground - player.height;
+        player.velocityY = 0;
+        player.grounded = true;
+        startButton.textContent = '最初から走る';
+        setStatus('ページを探しています。道具が来たらジャンプ！');
+        showScore();
+      }
+
+      function jump() {
+        if (state === 'idle' || state === 'gameover' || state === 'complete') resetGame();
+        if (state === 'running' && player.grounded) {
+          player.velocityY = -590;
+          player.grounded = false;
+          dust.push({ x: player.x + 10, y: ground - 4, life: .35 });
+        }
+      }
+
+      function addObstacle() {
+        const types: Array<Pick<Obstacle, 'type' | 'width' | 'height'>> = [
+          { type: 'eraser', width: 38, height: 25 },
+          { type: 'pencil', width: 24, height: 48 },
+          { type: 'tape', width: 43, height: 36 },
+        ];
+        const item = types[Math.floor(Math.random() * types.length)];
+        obstacles.push({ ...item, x: width + 30, y: ground - item.height });
+      }
+
+      function hitsObstacle(obstacle: Obstacle) {
+        const insetX = 8;
+        const insetTop = 5;
+        return player.x + insetX < obstacle.x + obstacle.width - 4 &&
+          player.x + player.width - insetX > obstacle.x + 4 &&
+          player.y + insetTop < obstacle.y + obstacle.height &&
+          player.y + player.height - 3 > obstacle.y + 4;
+      }
+
+      function update(delta: number) {
+        if (state !== 'running') return;
+        distance += delta * 10;
+        speed = Math.min(430, 270 + distance * .24);
+        player.velocityY += 1550 * delta;
+        player.y += player.velocityY * delta;
+        if (player.y >= ground - player.height) {
+          player.y = ground - player.height;
+          player.velocityY = 0;
+          player.grounded = true;
+        }
+
+        spawnIn -= delta;
+        if (spawnIn <= 0) {
+          addObstacle();
+          spawnIn = Math.max(.82, 1.55 - distance / 700) + Math.random() * .55;
+        }
+
+        obstacles.forEach((obstacle) => { obstacle.x -= speed * delta; });
+        obstacles = obstacles.filter((obstacle) => obstacle.x + obstacle.width > -20);
+        dust.forEach((particle) => { particle.x -= speed * .18 * delta; particle.life -= delta; });
+        dust = dust.filter((particle) => particle.life > 0);
+
+        if (obstacles.some(hitsObstacle)) {
+          state = 'gameover';
+          startButton.textContent = 'もう一度探す';
+          setStatus(`道具にぶつかりました。${Math.floor(distance)}まで進みました。`);
+        } else if (distance >= 404) {
+          distance = 404;
+          state = 'complete';
+          startButton.textContent = 'もう一度走る';
+          setStatus('404まで来たけれど、ページはやっぱりありませんでした。');
+        }
+        showScore();
+      }
+
+      function rect(x: number, y: number, w: number, h: number, color: string) {
+        context.fillStyle = color;
+        context.fillRect(Math.round(x), Math.round(y), w, h);
+      }
+
+      function drawBackground() {
+        context.fillStyle = paper;
+        context.fillRect(0, 0, width, height);
+        context.strokeStyle = 'rgba(111, 157, 181, .17)';
+        context.lineWidth = 1;
+        for (let x = 0; x <= width; x += 20) { context.beginPath(); context.moveTo(x, 0); context.lineTo(x, height); context.stroke(); }
+        for (let y = 0; y <= height; y += 20) { context.beginPath(); context.moveTo(0, y); context.lineTo(width, y); context.stroke(); }
+        context.strokeStyle = ink;
+        context.lineWidth = 3;
+        context.beginPath();
+        context.moveTo(0, ground + 1);
+        for (let x = 0; x <= width; x += 22) context.lineTo(x, ground + Math.sin(x * .08) * 1.5);
+        context.stroke();
+        context.fillStyle = 'rgba(32, 55, 82, .45)';
+        context.font = '700 12px monospace';
+        context.fillText('LOST PAGE ROUTE', 18, 26);
+      }
+
+      function drawCat() {
+        const x = Math.round(player.x);
+        const bounce = state === 'running' && player.grounded ? Math.round(Math.sin(distance * .7) * 2) : 0;
+        const y = Math.round(player.y + bounce);
+        const unit = 3;
+        const px = (gx: number, gy: number, gw: number, gh: number, color: string) => rect(x + gx * unit, y + gy * unit, gw * unit, gh * unit, color);
+
+        px(4, 0, 2, 5, navy); px(10, 0, 2, 5, navy);
+        px(3, 3, 10, 2, navy); px(2, 5, 12, 2, navy);
+        px(4, 7, 8, 5, navy);
+        px(5, 8, 2, 2, '#f2c34e'); px(9, 8, 2, 2, '#f2c34e');
+        px(7, 10, 2, 1, paper);
+        px(3, 12, 10, 2, red);
+        px(2, 14, 12, 2, navy); px(1, 16, 14, 1, navy);
+        px(2, 17, 5, 1, navy); px(9, 17, 5, 1, navy);
+        const step = Math.floor(distance * .9) % 2;
+        px(step ? 3 : 2, 18, 4, 1, navy); px(step ? 9 : 10, 18, 4, 1, navy);
+        px(6, 13, 1, 3, yellow); px(9, 13, 1, 3, yellow);
+      }
+
+      function drawObstacle(obstacle: Obstacle) {
+        const x = Math.round(obstacle.x);
+        const y = Math.round(obstacle.y);
+        if (obstacle.type === 'eraser') {
+          rect(x, y + 5, 38, 20, '#d98b86');
+          rect(x + 6, y, 32, 8, '#f0c7bf');
+          rect(x + 2, y + 21, 34, 4, navy);
+        } else if (obstacle.type === 'pencil') {
+          rect(x + 7, y + 9, 11, 39, yellow);
+          rect(x + 7, y + 9, 3, 39, '#cf795d');
+          rect(x + 7, y + 4, 11, 6, '#d5b08a');
+          rect(x + 10, y, 5, 5, navy);
+        } else {
+          rect(x + 3, y + 3, 37, 30, blue);
+          rect(x + 10, y + 9, 23, 18, paper);
+          rect(x + 15, y + 13, 13, 10, '#d7d1c4');
+          rect(x, y + 30, 43, 6, navy);
+        }
+      }
+
+      function drawOverlay() {
+        if (state === 'running') return;
+        context.fillStyle = 'rgba(255,253,247,.78)';
+        context.fillRect(0, 0, width, height);
+        context.textAlign = 'center';
+        context.fillStyle = navy;
+        context.font = '700 25px "Yu Gothic", sans-serif';
+        const headline = state === 'complete' ? '404まで到着！' : state === 'gameover' ? '道具にぶつかった！' : 'ページを探しに行こう';
+        context.fillText(headline, width / 2, 114);
+        context.font = '600 15px "Yu Gothic", sans-serif';
+        const sub = state === 'complete' ? 'ページはなかったけれど、ひと区切り。' : 'スペース・↑キー・タップでジャンプ';
+        context.fillText(sub, width / 2, 145);
+        context.textAlign = 'start';
+      }
+
+      function draw() {
+        context.imageSmoothingEnabled = false;
+        drawBackground();
+        dust.forEach((particle) => rect(particle.x, particle.y, 6, 4, 'rgba(32,55,82,.28)'));
+        obstacles.forEach(drawObstacle);
+        drawCat();
+        drawOverlay();
+      }
+
+      function frame(time: number) {
+        const delta = Math.min(.034, (time - lastTime) / 1000 || 0);
+        lastTime = time;
+        update(delta);
+        draw();
+        animationFrame = requestAnimationFrame(frame);
+      }
+
+      startButton.addEventListener('click', () => { resetGame(); canvas.focus(); });
+      canvas.addEventListener('pointerdown', jump);
+      window.addEventListener('keydown', (event) => {
+        if (event.code === 'Space' || event.code === 'ArrowUp') {
+          event.preventDefault();
+          jump();
+        }
+      });
+      document.addEventListener('visibilitychange', () => { lastTime = performance.now(); });
+      window.addEventListener('pagehide', () => cancelAnimationFrame(animationFrame), { once: true });
+
+      draw();
+      animationFrame = requestAnimationFrame(frame);
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { getRecentArticles, articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const entries = getRecentArticles(articles);
+const cardColors = ['#f7e9ef', '#e7f2ed', '#e8effa', '#fff0db', '#efeafb', '#f8efd9'];
+
+function getArticleColor(slug: string): string {
+  let hash = 0;
+  for (const character of slug) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+  return cardColors[hash % cardColors.length];
+}
+---
+<BaseLayout title="記事 | しゅうの物置" description="作ったこと、調べたこと、あとで見返したいことを置いています。">
+  <div class="journal-page">
+    <section class="journal-hero" aria-labelledby="journal-title">
+      <div class="journal-hero__paper">
+        <span class="journal-eyebrow">NOTES FROM SHU</span>
+        <div class="journal-hero__title">
+          <h1 id="journal-title">記事</h1>
+          <svg viewBox="0 0 55 55" fill="none" aria-hidden="true"><path d="M12 7 43 10 40 47 9 44zM17 16h20M16 24h20M15 32h17M14 40h11M7 12v31" /></svg>
+        </div>
+        <p>作ったことや、調べたこと。<br />あとから見返せるように、ここに書いておきます。</p>
+      </div>
+    </section>
+
+    <section class="journal-list" aria-labelledby="journal-list-title">
+      <div class="journal-list__inner">
+        <div class="journal-section-title"><span>01</span><h2 id="journal-list-title">新しい記事</h2></div>
+        {entries.map((article, index) => <article class="journal-card" style={`--journal-card-color: ${getArticleColor(article.slug)}`}>
+          <span class="journal-card__tape" aria-hidden="true"></span>
+          <a href={`/articles/${article.slug}/`}>
+            <div class="journal-card__meta"><span class="journal-card__number">{String(index + 1).padStart(2, '0')}</span><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>{article.draft && <span class="journal-card__draft">下書き</span>}</div>
+            <div class="journal-card__main">
+              <div class="journal-card__photo"><img src={article.image} alt={article.imageAlt} width="1312" height="900" loading="lazy" /></div>
+              <div class="journal-card__copy">
+                <h3>{article.title}</h3>
+                <p>{article.excerpt}</p>
+                <div class="journal-card__bottom"><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div><strong>続きを読む <span aria-hidden="true">→</span></strong></div>
+              </div>
+            </div>
+          </a>
+        </article>)}
+      </div>
+    </section>
+    <SiteFooter />
+  </div>
+</BaseLayout>

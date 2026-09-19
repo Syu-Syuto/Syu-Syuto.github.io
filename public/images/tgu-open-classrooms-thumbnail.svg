@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1312" height="900" viewBox="0 0 1312 900" role="img" aria-labelledby="title description">
+  <title id="title">東京学芸大学 空き教室検索の画面イメージ</title>
+  <desc id="description">実際のサイトを参考に、紺色の見出し、開講期・曜日・時限の選択欄、棟ごとの空き教室一覧を描いたもの。</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#18344a" flood-opacity=".12"/></filter>
+    <clipPath id="page"><rect width="1312" height="900" rx="17"/></clipPath>
+  </defs>
+  <g clip-path="url(#page)" font-family="Arial,'Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif">
+    <rect width="1312" height="900" fill="#f7fbff"/>
+    <rect width="1312" height="105" fill="#18364d"/>
+    <rect x="55" y="26" width="50" height="50" rx="13" fill="none" stroke="#86a0ae" stroke-width="2"/>
+    <g fill="#fff"><rect x="68" y="39" width="10" height="10" rx="2"/><rect x="83" y="39" width="10" height="10" rx="2"/><rect x="68" y="54" width="10" height="10" rx="2"/></g>
+    <rect x="83" y="54" width="10" height="10" rx="2" fill="#159c9c"/>
+    <text x="126" y="44" fill="#9ebfca" font-size="15" font-weight="700" letter-spacing="3">UNOFFICIAL CLASSROOM TOOL</text>
+    <text x="126" y="75" fill="#fff" font-size="25" font-weight="700">東京学芸大学 空き教室検索</text>
+    <text x="1170" y="66" fill="#bdd1dc" font-size="17" font-weight="700">2026年度</text>
+
+    <rect x="54" y="139" width="1204" height="375" rx="24" fill="#fff" filter="url(#shadow)"/>
+    <circle cx="1191" cy="154" r="96" fill="none" stroke="#d8f5f3" stroke-width="26" opacity=".8"/>
+    <text x="88" y="188" fill="#118e92" font-size="16" font-weight="700" letter-spacing="3">FIND A ROOM</text>
+    <text x="88" y="241" fill="#18364d" font-size="37" font-weight="700">いつ、どこが空いてる？</text>
+    <text x="88" y="282" fill="#6f7d88" font-size="18">東京学芸大学の2026年度シラバス・時間割データから探す、非公式ツール。</text>
+    <rect x="1061" y="180" width="161" height="59" rx="12" fill="#07969b"/>
+    <text x="1087" y="217" fill="#fff" font-size="18" font-weight="700">◎ 現在から探す</text>
+    <path d="M88 319H1223" stroke="#e1e8ed" stroke-width="2"/>
+    <g fill="#667887" font-size="17" font-weight="700"><text x="88" y="358">開講期</text><text x="450" y="358">曜日</text><text x="794" y="358">時限</text></g>
+    <rect x="88" y="374" width="328" height="53" rx="10" fill="#fff" stroke="#ccdbe2" stroke-width="2"/>
+    <text x="106" y="408" fill="#30485a" font-size="19">第3ターム（秋学期を含む）</text>
+    <path d="m390 395 7 7 7-7" fill="none" stroke="#30485a" stroke-width="2"/>
+    <g font-size="19" text-anchor="middle" font-weight="700">
+      <g fill="#fff" stroke="#d5e1e8" stroke-width="2"><rect x="450" y="374" width="48" height="53" rx="9"/><rect x="504" y="374" width="48" height="53" rx="9"/><rect x="612" y="374" width="48" height="53" rx="9"/><rect x="666" y="374" width="48" height="53" rx="9"/><rect x="720" y="374" width="48" height="53" rx="9"/></g>
+      <rect x="558" y="374" width="48" height="53" rx="9" fill="#18364d"/>
+      <g fill="#18364d"><text x="474" y="408">月</text><text x="528" y="408">火</text><text x="636" y="408">木</text><text x="690" y="408">金</text><text x="744" y="408">土</text></g>
+      <text x="582" y="408" fill="#fff">水</text>
+      <g fill="#fff" stroke="#d5e1e8" stroke-width="2"><rect x="794" y="374" width="51" height="53" rx="9"/><rect x="851" y="374" width="51" height="53" rx="9"/><rect x="965" y="374" width="51" height="53" rx="9"/><rect x="1022" y="374" width="51" height="53" rx="9"/><rect x="1079" y="374" width="51" height="53" rx="9"/><rect x="1136" y="374" width="51" height="53" rx="9"/></g>
+      <rect x="908" y="374" width="51" height="53" rx="9" fill="#18364d"/>
+      <g fill="#18364d"><text x="819" y="408">1</text><text x="876" y="408">2</text><text x="990" y="408">4</text><text x="1047" y="408">5</text><text x="1104" y="408">6</text><text x="1161" y="408">7</text></g>
+      <text x="934" y="408" fill="#fff">3</text>
+    </g>
+    <text x="88" y="467" fill="#71818e" font-size="15">授業期間外のため、次の第3タームを表示しています</text>
+
+    <text x="54" y="572" fill="#128f91" font-size="16" font-weight="700">第3ターム・水曜日・3限</text>
+    <text x="54" y="623" fill="#18364d" font-size="37" font-weight="700"><tspan fill="#0c9296">31</tspan>室が空いています</text>
+    <circle cx="1052" cy="601" r="6" fill="#0c9296"/>
+    <text x="1068" y="607" fill="#627782" font-size="16">選択した時限から利用可能</text>
+    <rect x="54" y="657" width="1204" height="211" rx="20" fill="#fff" stroke="#d8e4e9" stroke-width="2"/>
+    <path d="M55 676q0-19 20-19h1161q20 0 20 19v55H55Z" fill="#f0f8fb"/>
+    <text x="80" y="704" fill="#18364d" font-size="23" font-weight="700">C棟</text>
+    <text x="1183" y="704" fill="#637482" font-size="18">6室</text>
+    <path d="M54 730H1258M455 730V868M856 730V868" stroke="#dce7ec" stroke-width="2"/>
+    <g fill="#18364d" font-size="22" font-weight="700"><text x="80" y="786">C102</text><text x="480" y="786">C201</text><text x="880" y="786">C202</text></g>
+    <g fill="#0b898e" font-size="17" font-weight="700"><text x="80" y="834">3〜7限まで連続で空き</text><text x="480" y="834">3〜7限まで連続で空き</text><text x="880" y="834">3〜7限まで連続で空き</text></g>
+    <g fill="#dff6f4"><rect x="368" y="753" width="64" height="35" rx="18"/><rect x="769" y="753" width="64" height="35" rx="18"/><rect x="1170" y="753" width="64" height="35" rx="18"/></g>
+    <g fill="#0c8388" font-size="16" font-weight="700" text-anchor="middle"><text x="400" y="776">空き</text><text x="801" y="776">空き</text><text x="1202" y="776">空き</text></g>
+  </g>
+</svg>

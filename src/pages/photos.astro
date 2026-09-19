@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { galleryPhotos } from '../data/photos';
+import '../styles/photos.css';
+---
+<BaseLayout title="フォトギャラリー | しゅうの物置" description="しゅうが撮った写真を置いているフォトギャラリー。">
+  <div class="gallery-page" data-camera-visible="false">
+    <section class="gallery-hero" aria-labelledby="gallery-title">
+      <div class="gallery-hero__inner">
+        <div class="gallery-hero__paper">
+          <span class="gallery-hero__eyebrow">PHOTO GALLERY / しゅうの物置</span>
+          <h1 id="gallery-title">フォトギャラリー</h1>
+          <p>撮った写真を、少しずつここに貼っていきます。</p>
+          <svg class="gallery-hero__camera" viewBox="0 0 156 126" fill="none" aria-hidden="true">
+            <path d="M19 42h31l9-13h36l10 13h29c6 0 9 4 9 10v58c0 5-3 8-9 8H19c-5 0-9-4-9-9V51c0-5 4-9 9-9Z" />
+            <circle cx="77" cy="77" r="28" /><circle cx="77" cy="77" r="19" />
+            <path d="M118 53h13M24 32l-6-12M41 25l-2-15M134 25l9-10" />
+          </svg>
+        </div>
+        <span class="gallery-hero__tape" aria-hidden="true"></span>
+        <span class="gallery-hero__scribble" aria-hidden="true">click! ✳</span>
+      </div>
+    </section>
+
+    <section class="gallery-surface" aria-labelledby="gallery-list-title">
+      <div class="gallery-surface__inner">
+        <div class="gallery-toolbar">
+          <div class="gallery-toolbar__heading"><span>01</span><div><h2 id="gallery-list-title">写真の置き場</h2><p>{galleryPhotos.length}枚の写真</p></div></div>
+          <button class="gallery-toggle" type="button" id="camera-toggle" aria-pressed="false">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 11h6l3-4h6l3 4h5v16H5z"/><circle cx="16.5" cy="19" r="5"/></svg>
+            <span data-camera-label>カメラ情報を表示</span>
+            <span class="gallery-toggle__switch" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="gallery-grid">
+          {galleryPhotos.map((photo, index) => <article class="gallery-card">
+            <span class="gallery-card__tape" aria-hidden="true"></span>
+            <figure>
+              <button
+                class="gallery-card__photo-button"
+                type="button"
+                aria-label={`「${photo.title}」の写真を拡大表示`}
+                data-enlarge-photo
+                data-photo-src={photo.image}
+                data-photo-alt={photo.alt}
+                data-photo-title={photo.title}
+                data-photo-comment={photo.comment ?? ''}
+                data-photo-orientation={photo.width && photo.height && photo.width > photo.height ? 'landscape' : 'portrait'}
+              >
+                <img src={photo.image} alt={photo.alt} width={photo.width} height={photo.height} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+                <span class="gallery-card__zoom" aria-hidden="true">拡大 <span>↗</span></span>
+              </button>
+              <figcaption>
+                <span class="gallery-card__number">PHOTO / {String(index + 1).padStart(2, '0')}</span>
+                <h3>{photo.title}</h3>
+                {photo.comment && <p class="gallery-card__comment">{photo.comment}</p>}
+              </figcaption>
+            </figure>
+            <dl class="gallery-card__camera">
+              {photo.camera && <div><dt>カメラ</dt><dd>{photo.camera}</dd></div>}
+              {photo.lens && <div><dt>レンズ</dt><dd>{photo.lens}</dd></div>}
+              {photo.focalLength && <div><dt>焦点距離</dt><dd>{photo.focalLength}</dd></div>}
+              {photo.shutterSpeed && <div><dt>シャッタースピード</dt><dd>{photo.shutterSpeed}</dd></div>}
+              {photo.aperture && <div><dt>F値</dt><dd>{photo.aperture}</dd></div>}
+              {photo.iso && <div><dt>ISO感度</dt><dd>{photo.iso}</dd></div>}
+            </dl>
+          </article>)}
+        </div>
+        <p class="gallery-surface__note">写真が増えたら、この紙にも貼り足していきます。</p>
+      </div>
+    </section>
+    <dialog class="gallery-lightbox" id="gallery-lightbox" aria-labelledby="gallery-lightbox-title">
+      <button class="gallery-lightbox__close" type="button" data-lightbox-close aria-label="拡大表示を閉じる">閉じる <span aria-hidden="true">×</span></button>
+      <figure>
+        <img id="gallery-lightbox-image" alt="" />
+        <figcaption>
+          <h2 id="gallery-lightbox-title"></h2>
+          <p id="gallery-lightbox-comment" hidden></p>
+        </figcaption>
+      </figure>
+    </dialog>
+    <SiteFooter />
+  </div>
+  <script>
+    const gallery = document.querySelector<HTMLElement>('.gallery-page');
+    const toggle = document.querySelector<HTMLButtonElement>('#camera-toggle');
+    const label = toggle?.querySelector<HTMLElement>('[data-camera-label]');
+    toggle?.addEventListener('click', () => {
+      if (!gallery) return;
+      const visible = gallery.dataset.cameraVisible !== 'true';
+      gallery.dataset.cameraVisible = String(visible);
+      toggle.setAttribute('aria-pressed', String(visible));
+      if (label) label.textContent = visible ? 'カメラ情報を隠す' : 'カメラ情報を表示';
+    });
+
+    const lightbox = document.querySelector<HTMLDialogElement>('#gallery-lightbox');
+    const lightboxImage = document.querySelector<HTMLImageElement>('#gallery-lightbox-image');
+    const lightboxTitle = document.querySelector<HTMLElement>('#gallery-lightbox-title');
+    const lightboxComment = document.querySelector<HTMLElement>('#gallery-lightbox-comment');
+    let activePhotoButton: HTMLButtonElement | null = null;
+    let previousOverflow = '';
+
+    document.querySelectorAll<HTMLButtonElement>('[data-enlarge-photo]').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxComment) return;
+        activePhotoButton = button;
+        lightboxImage.src = button.dataset.photoSrc ?? '';
+        lightboxImage.alt = button.dataset.photoAlt ?? '';
+        lightboxTitle.textContent = button.dataset.photoTitle ?? '';
+        lightboxComment.textContent = button.dataset.photoComment ?? '';
+        lightboxComment.hidden = !lightboxComment.textContent;
+        lightbox.dataset.orientation = button.dataset.photoOrientation ?? 'portrait';
+        previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        lightbox.showModal();
+      });
+    });
+
+    lightbox?.querySelector<HTMLButtonElement>('[data-lightbox-close]')?.addEventListener('click', () => lightbox.close());
+    lightbox?.addEventListener('click', (event) => {
+      if (event.target !== lightbox) return;
+      const bounds = lightbox.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) lightbox.close();
+    });
+    lightbox?.addEventListener('close', () => {
+      document.body.style.overflow = previousOverflow;
+      activePhotoButton?.focus();
+    });
+  </script>
+</BaseLayout>

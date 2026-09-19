@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { newestWishlistItems } from '../data/wishlist';
+import '../styles/wishlist.css';
+
+const items = newestWishlistItems();
+const completedCount = items.filter((item) => item.completedAt).length;
+const formatDate = (value: string) => value.slice(0, 10).replaceAll('-', '.');
+---
+<BaseLayout title="やりたいことリスト | しゅうの物置" description="しゅうのやりたいことを、思いついた順に書き足していくノート。">
+  <div class="wishlist-page">
+    <section class="wishlist-hero" aria-labelledby="wishlist-title">
+      <div class="wishlist-hero__paper">
+        <span class="wishlist-hero__tape" aria-hidden="true"></span>
+        <span class="wishlist-hero__eyebrow">THINGS I WANT TO TRY</span>
+        <h1 id="wishlist-title" aria-label="やりたいことリスト">やりたいこと<span class="wishlist-hero__title-end">リスト<span class="wishlist-hero__dot" aria-hidden="true">。</span></span></h1>
+        <p>思いついたことを、ひとつずつ。<br />できたら、青いペンでチェックを入れます。</p>
+        <svg class="wishlist-hero__drawing" viewBox="0 0 240 150" fill="none" aria-hidden="true">
+          <path d="M25 31h27v27H25zM31 44l7 7 18-22M72 40c39-6 70-5 104-2M72 51c20-4 36-3 51-4M25 86h27v27H25zM72 94c28-3 63-4 102-2M72 105c20-3 42-4 59-3M188 100l35-55 8 6-36 54-15 8zM222 45l7-9 8 6-6 9" />
+        </svg>
+      </div>
+    </section>
+
+    <section class="wishlist-surface" aria-labelledby="wishlist-notebook-title">
+      <div class="wishlist-layout">
+        <div class="wishlist-notebook">
+          <span class="wishlist-notebook__tape" aria-hidden="true"></span>
+          <div class="wishlist-notebook__rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="wishlist-notebook__top"><span>WISH NOTE / しゅうの物置</span><span>{items.length}件のメモ ・ 達成 {completedCount}件</span></div>
+          <h2 id="wishlist-notebook-title">やってみたい、を置いておく。</h2>
+          {items.length > 0 ? (
+            <ol class="wishlist-list">
+              {items.map((item) => <li class:list={['wishlist-item', { 'wishlist-item--done': Boolean(item.completedAt) }]}>
+                <span class="wishlist-item__checkbox" role="img" aria-label={item.completedAt ? '達成済み' : 'まだこれから'}>
+                  {item.completedAt && <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m4 16 8 8L29 5" /></svg>}
+                </span>
+                <div class="wishlist-item__body">
+                  <span class="wishlist-item__text">{item.text}</span>
+                  {item.note && <p>{item.note}</p>}
+                  <div class="wishlist-item__dates"><time datetime={item.addedAt}>メモ {formatDate(item.addedAt)}</time>{item.completedAt && <time datetime={item.completedAt}>できた！ {formatDate(item.completedAt)}</time>}</div>
+                </div>
+              </li>)}
+            </ol>
+          ) : (
+            <div class="wishlist-empty">
+              <div class="wishlist-empty__sketch" aria-hidden="true"><span></span><span></span><span></span></div>
+              <strong>まだ、ここは白紙。</strong>
+              <p>やってみたいことを思いついたら、<br />このノートに一行ずつ書き足していきます。</p>
+            </div>
+          )}
+          <p class="wishlist-notebook__footnote">書いた日の新しい順。できたあとも、場所はそのまま。</p>
+        </div>
+        <aside class="wishlist-side-note" aria-label="このノートの使い方">
+          <span class="wishlist-side-note__tape" aria-hidden="true"></span>
+          <span class="wishlist-side-note__eyebrow">HOW THIS NOTE WORKS</span>
+          <h2>このノートの約束</h2>
+          <p>新しく思いついたものは、いちばん上へ。</p>
+          <p>できたものにはチェックと、ボールペンの一本線を。</p>
+          <p>古いメモも、順番を変えずに残しておきます。</p>
+          <span class="wishlist-side-note__scribble" aria-hidden="true">続きは、これから。 ↗</span>
+        </aside>
+      </div>
+    </section>
+    <SiteFooter />
+  </div>
+</BaseLayout>

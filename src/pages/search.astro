@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { articles, getRecentArticles } from '../data/articles';
+import { worksSearchEntries } from '../data/search';
+import '../styles/search.css';
+
+const searchItems = [
+  ...getRecentArticles(articles, articles.length).map((article) => ({
+    kind: 'article' as const,
+    title: article.title,
+    excerpt: article.excerpt ?? '',
+    tags: article.tags,
+    href: `/articles/${article.slug}/`,
+    image: article.image,
+    imageAlt: article.imageAlt,
+    date: article.publishedAt,
+    keywords: '',
+  })),
+  ...worksSearchEntries.map((work) => ({
+    kind: 'work' as const,
+    title: work.title,
+    excerpt: work.excerpt,
+    tags: [...work.tags],
+    href: work.href,
+    icon: work.icon,
+    keywords: work.keywords,
+  })),
+];
+
+const tagCounts = new Map<string, number>();
+for (const item of searchItems) {
+  for (const tag of new Set(item.tags)) tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+}
+const popularTags = [...tagCounts].sort(([a, aCount], [b, bCount]) => bCount - aCount || a.localeCompare(b, 'ja'));
+---
+<BaseLayout title="検索 | しゅうの物置" description="しゅうの物置の記事と作ったものを探せます。" noindex={true}>
+  <div class="search-page">
+    <section class="search-hero" aria-labelledby="search-title">
+      <div class="search-hero__paper">
+        <span class="search-hero__eyebrow">FIND A NOTE / しゅうの物置</span>
+        <div class="search-hero__title-row">
+          <h1 id="search-title">探す</h1>
+          <svg class="search-hero__lens" viewBox="0 0 110 110" fill="none" aria-hidden="true">
+            <path d="M63 12c-20-7-42 2-49 23-8 22 3 44 23 51 21 7 43-3 50-24 6-19-3-41-24-50Z" />
+            <path d="M58 16c-16-5-36 5-41 22-7 17 4 38 22 44 17 6 38-4 44-22 6-19-5-38-25-44ZM77 76l25 26M73 80l23 25M26 39c4-9 11-15 20-17" />
+          </svg>
+        </div>
+        <p>あの話、あの道具はどこだっけ。<br />記事と作ったものを、ここから探せます。</p>
+        <span class="search-hero__tape" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <section class="search-surface" aria-labelledby="search-form-title">
+      <div class="search-surface__inner">
+        <div class="search-panel">
+          <span class="search-panel__tape" aria-hidden="true"></span>
+          <span class="search-panel__eyebrow">SEARCH THE MONOOKI</span>
+          <h2 id="search-form-title">気になる言葉で探す</h2>
+          <form class="search-form" action="/search/" method="get" role="search" id="site-search-form">
+            <label for="site-search-input">キーワード</label>
+            <div class="search-form__row">
+              <input id="site-search-input" name="q" type="search" placeholder="例：漢字、サイト制作、ツール" autocomplete="off" />
+              <button type="submit"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.6" cy="10.6" r="6.4"/><path d="m15.5 15.5 5.6 5.6"/></svg>検索</button>
+            </div>
+          </form>
+          <p class="search-panel__hint">言葉を入れると、タイトル・紹介文・タグから探します。複数の言葉も使えます。</p>
+          <div class="search-genre-filter">
+            <span class="search-genre-filter__label">ジャンルから探す</span>
+            <div class="search-filters" role="group" aria-label="ジャンル">
+              <button type="button" class="search-filters__button" data-filter="all" aria-pressed="true">すべて <span>{searchItems.length}</span></button>
+              <button type="button" class="search-filters__button" data-filter="article" aria-pressed="false">記事 <span>{articles.length}</span></button>
+              <button type="button" class="search-filters__button" data-filter="work" aria-pressed="false">作ったもの <span>{worksSearchEntries.length}</span></button>
+            </div>
+          </div>
+          <div class="search-tag-filter">
+            <span class="search-tag-filter__label">タグで絞る <small>／ よく使うタグから順に</small></span>
+            <details class="search-tag-menu" id="search-tag-menu">
+              <summary class="search-tag-menu__summary">
+                <span class="search-tag-menu__selected"><span id="search-selected-tag">指定しない</span><small id="search-selected-tag-count" hidden></small></span>
+                <span class="search-tag-menu__chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="search-tag-menu__sheet">
+                <label for="search-tag-query">タグを探す</label>
+                <input id="search-tag-query" type="search" placeholder="タグ名を入力" autocomplete="off" />
+                <div class="search-tag-menu__options" role="group" aria-label="タグ一覧">
+                  <button type="button" data-tag="" aria-label="タグを指定しない" aria-pressed="true"><span>指定しない</span></button>
+                  {popularTags.map(([tag, tagCount]) => <button type="button" data-tag={tag} data-count={tagCount} aria-label={`${tag}、${tagCount}件`} aria-pressed="false"><span>{tag}</span><small>{tagCount}件</small></button>)}
+                </div>
+                <p class="search-tag-menu__no-match" id="search-tag-no-match" hidden>そのタグは、まだ机の上にないみたい。</p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <section class="search-results" aria-labelledby="search-results-title" id="search-results">
+          <div class="search-results__heading">
+            <div><span>FOUND ON THE DESK</span><h2 id="search-results-title">見つかったもの</h2></div>
+            <p id="search-result-count" role="status" aria-live="polite">{searchItems.length}件の紙が見つかりました</p>
+          </div>
+          <div class="search-results__list" id="search-result-list">
+            {searchItems.map((item) => <article class:list={['search-card', `search-card--${item.kind}`]} data-kind={item.kind} data-tags={JSON.stringify(item.tags)} data-search={[item.title, item.excerpt, ...item.tags, item.keywords].join(' ')}>
+              <span class="search-card__tape" aria-hidden="true"></span>
+              <a href={item.href}>
+                <div class="search-card__visual">
+                  {item.kind === 'article' ? <img src={item.image} alt={item.imageAlt} loading="lazy" /> : (
+                    <svg viewBox="0 0 160 120" fill="none" aria-hidden="true">
+                      {item.icon === 'pencil' ? <><path d="m35 84 11-36 54-34 18 19-55 35-28 16Z"/><path d="m46 48 17 20m37-54 18 19m-83 51 28-16M22 99c16-4 37-5 56 0m15-3h39"/></> : <><path d="M27 25h101v71H27zM27 43h101M44 63h30M44 78h43M99 58h14v22H99zM54 16l-4 9m58-9 4 9"/><circle cx="38" cy="34" r="3"/></>}
+                    </svg>
+                  )}
+                </div>
+                <div class="search-card__copy">
+                  <div class="search-card__meta"><span>{item.kind === 'article' ? '記事' : '作ったもの'}</span>{item.kind === 'article' && <time datetime={item.date}>{item.date.replaceAll('-', '.')}</time>}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.excerpt}</p>
+                  <div class="search-card__bottom"><div class="search-card__tags">{item.tags.map((tag) => <span>{tag}</span>)}</div><strong>見に行く <span aria-hidden="true">→</span></strong></div>
+                </div>
+              </a>
+            </article>)}
+          </div>
+          <div class="search-empty" id="search-empty" hidden>
+            <svg viewBox="0 0 86 86" fill="none" aria-hidden="true"><circle cx="36" cy="34" r="22"/><path d="m52 51 25 26M24 30c3-7 9-11 16-11M30 39l3 4 5-7"/></svg>
+            <div><strong>見つからなかったみたい。</strong><p>別の言葉やタグに変えるか、「すべて」に戻して探してみてね。</p></div>
+          </div>
+          <noscript><p class="search-results__noscript">検索にはJavaScriptが必要です。下の一覧から選んでください。</p></noscript>
+        </section>
+      </div>
+    </section>
+    <SiteFooter />
+  </div>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>('#site-search-form');
+    const input = document.querySelector<HTMLInputElement>('#site-search-input');
+    const results = document.querySelector<HTMLElement>('#search-results');
+    const count = document.querySelector<HTMLElement>('#search-result-count');
+    const empty = document.querySelector<HTMLElement>('#search-empty');
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.search-card'));
+    const cardTags = new Map(cards.map((card) => [card, new Set<string>(JSON.parse(card.dataset.tags ?? '[]'))]));
+    const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.search-filters__button'));
+    const tagMenu = document.querySelector<HTMLDetailsElement>('#search-tag-menu');
+    const tagSummary = tagMenu?.querySelector<HTMLElement>('summary');
+    const tagQuery = document.querySelector<HTMLInputElement>('#search-tag-query');
+    const tagOptions = Array.from(document.querySelectorAll<HTMLButtonElement>('.search-tag-menu__options button'));
+    const selectedTagLabel = document.querySelector<HTMLElement>('#search-selected-tag');
+    const selectedTagCount = document.querySelector<HTMLElement>('#search-selected-tag-count');
+    const tagNoMatch = document.querySelector<HTMLElement>('#search-tag-no-match');
+
+    if (form && input && results && count && empty) {
+      const normalize = (value: string) => value.normalize('NFKC').toLocaleLowerCase('ja').replace(/\s+/g, ' ').trim();
+      let category = 'all';
+      let selectedTag = '';
+
+      function updateTagMenu() {
+        const currentOption = tagOptions.find((option) => option.dataset.tag === selectedTag);
+        if (selectedTagLabel) selectedTagLabel.textContent = selectedTag || '指定しない';
+        if (selectedTagCount) {
+          selectedTagCount.hidden = !selectedTag;
+          selectedTagCount.textContent = selectedTag ? currentOption?.dataset.count ?? '' : '';
+        }
+        for (const option of tagOptions) option.setAttribute('aria-pressed', String(option.dataset.tag === selectedTag));
+      }
+
+      function filterTagOptions() {
+        if (!tagQuery) return;
+        const term = normalize(tagQuery.value);
+        let found = 0;
+        for (const option of tagOptions) {
+          option.hidden = Boolean(term) && !normalize(option.dataset.tag || '指定しない').includes(term);
+          if (!option.hidden) found++;
+        }
+        if (tagNoMatch) tagNoMatch.hidden = found !== 0;
+      }
+
+      function updateResults() {
+        if (!input || !count || !empty) return;
+        const terms = normalize(input.value).split(' ').filter(Boolean);
+        let visible = 0;
+
+        for (const card of cards) {
+          const matchesCategory = category === 'all' || card.dataset.kind === category;
+          const matchesTag = !selectedTag || cardTags.get(card)?.has(selectedTag);
+          const searchableText = normalize(card.dataset.search ?? '');
+          const matchesWords = terms.every((term) => searchableText.includes(term));
+          card.hidden = !(matchesCategory && matchesTag && matchesWords);
+          if (!card.hidden) visible++;
+        }
+
+        count.textContent = terms.length ? `「${input.value.trim()}」の検索結果：${visible}件` : `${visible}件の紙が見つかりました`;
+        empty.hidden = visible !== 0;
+        for (const button of filterButtons) button.setAttribute('aria-pressed', String(button.dataset.filter === category));
+        updateTagMenu();
+      }
+
+      function syncUrl() {
+        if (!input) return;
+        const url = new URL(window.location.href);
+        if (input.value.trim()) url.searchParams.set('q', input.value.trim());
+        else url.searchParams.delete('q');
+        if (category !== 'all') url.searchParams.set('type', category);
+        else url.searchParams.delete('type');
+        if (selectedTag) url.searchParams.set('tag', selectedTag);
+        else url.searchParams.delete('tag');
+        window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+      }
+
+      function readUrl() {
+        if (!input) return;
+        const params = new URLSearchParams(window.location.search);
+        input.value = params.get('q') ?? '';
+        const requestedCategory = params.get('type');
+        category = requestedCategory === 'article' || requestedCategory === 'work' ? requestedCategory : 'all';
+        const requestedTag = params.get('tag') ?? '';
+        selectedTag = tagOptions.some((option) => option.dataset.tag === requestedTag) ? requestedTag : '';
+        updateResults();
+      }
+
+      input.addEventListener('input', () => { updateResults(); syncUrl(); });
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        updateResults();
+        syncUrl();
+        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      for (const button of filterButtons) button.addEventListener('click', () => {
+        category = button.dataset.filter ?? 'all';
+        updateResults();
+        syncUrl();
+      });
+      for (const option of tagOptions) option.addEventListener('click', () => {
+        selectedTag = option.dataset.tag ?? '';
+        updateResults();
+        syncUrl();
+        if (tagMenu) tagMenu.open = false;
+        if (tagQuery) tagQuery.value = '';
+        filterTagOptions();
+        tagSummary?.focus();
+      });
+      tagQuery?.addEventListener('input', filterTagOptions);
+      document.addEventListener('click', (event) => {
+        if (tagMenu?.open && !tagMenu.contains(event.target as Node)) tagMenu.open = false;
+      });
+      tagMenu?.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          tagMenu.open = false;
+          tagSummary?.focus();
+        }
+      });
+      window.addEventListener('popstate', readUrl);
+      readUrl();
+    }
+  </script>
+</BaseLayout>

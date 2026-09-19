@@ -1,0 +1,32 @@
+---
+const nav = [
+  { label: 'ホーム', href: '/' },
+  { label: '記事', href: '/articles/' },
+  { label: '作ったもの', href: '/works/' },
+  { label: 'ギャラリー', href: '/photos/' },
+  { label: '私について', href: '/about/' },
+];
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="しゅうの物置 ホーム">
+      <span class="brand-title">しゅうの物置</span>
+      <span class="brand-subtitle">つくったり、調べたり、まとめたり。</span>
+    </a>
+    <nav class="desktop-nav" aria-label="メインナビゲーション">
+      {nav.map((item) => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
+    </nav>
+    <div class="header-actions">
+      <a class="icon-link" href="/search/" aria-label="検索" aria-current={currentPath === '/search/' ? 'page' : undefined}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.6"/><path d="m16 16 5 5"/></svg>
+      </a>
+      <details class="mobile-menu">
+        <summary aria-label="メニューを開く"><span></span><span></span><span></span></summary>
+        <nav aria-label="モバイルナビゲーション">
+          {nav.map((item) => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

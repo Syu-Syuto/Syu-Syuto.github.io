@@ -1,0 +1,65 @@
+.about-page{color:var(--ink)}
+.about-hero{height:412px;background:#b77842 url('/images/desk-background.webp') center 45%/cover no-repeat}
+.about-hero__inner{height:100%;max-width:1312px;margin:auto;position:relative}
+.about-hero__paper{position:absolute;left:16.5%;top:38px;width:70%;height:344px;background-color:#fffefa;background-image:linear-gradient(#b5c4d33b 1px,transparent 1px),linear-gradient(90deg,#b5c4d33b 1px,transparent 1px);background-size:16px 16px;border:1px solid #e8e6dc;box-shadow:0 14px 23px #37201155;transform:rotate(.5deg)}
+.about-hero__paper::before{content:"";position:absolute;inset:8px;border:1px solid #d9e1e6aa;pointer-events:none}
+.about-hero__text{position:absolute;z-index:2;left:16%;top:16%;width:53%;transform:rotate(-1.5deg)}
+.about-hero__eyebrow{font:700 .73rem Georgia,serif;letter-spacing:.18em;color:#596d80}
+.about-hero h1{font-family:"UD Digi Kyokasho NP-R","YuKyokasho","Yu Mincho",serif;font-size:3.4rem;letter-spacing:.15em;line-height:1.25;margin:13px 0 18px}
+.about-hero__text p{font-size:1rem;line-height:2;letter-spacing:.09em;font-weight:600;max-width:420px;margin:0 0 22px}
+.about-hero__note-label{display:inline-block;font-family:"UD Digi Kyokasho NP-B","UD Digi Kyokasho NP-R","Yu Gothic",sans-serif;font-size:1rem;font-weight:900;letter-spacing:.09em;color:#22577d;background:#dceef7;padding:7px 14px;border-radius:3px;box-shadow:2px 3px 0 #a9cbdc;transform:rotate(-2deg)}
+.about-hero__paper img{position:absolute;right:6%;bottom:1%;width:29%;height:72%;object-fit:contain;object-position:bottom}
+.about-hero__polaroid{position:absolute;z-index:4;left:2%;top:65px;width:220px;height:260px;background:#fff;padding:12px 12px 28px;box-shadow:0 8px 16px #36271e66;text-align:center;transform:rotate(-8deg)}
+.about-hero__polaroid .photo-tile{width:100%;height:181px}
+.about-hero__polaroid span{display:block;font:1.1rem "Segoe Print","Comic Sans MS",cursive;letter-spacing:.08em;margin-top:9px}
+.about-hero__tape{position:absolute;z-index:5;left:8%;top:44px;width:86px;height:25px;background:#f4e6cbd9;clip-path:polygon(2% 6%,99% 0,96% 100%,0 89%);transform:rotate(-10deg)}
+.about-hero__note{position:absolute;z-index:4;right:3%;bottom:17px;width:170px;height:140px;padding:24px 18px;background:#e6d3a7;box-shadow:0 7px 12px #3b2a2a55;transform:rotate(9deg);font:1.4rem/1.3 "Segoe Print","Comic Sans MS",cursive;color:#35445a}
+.about-hero__note span{display:block;text-align:right;margin-right:17px}
+.about-content{position:relative;background:#f5f2ec;background-image:repeating-linear-gradient(25deg,#a9a09808 0 1px,transparent 1px);padding:42px 24px 65px}
+.about-content::before{content:"";position:absolute;left:0;right:0;top:-9px;height:12px;background:#f5f2ec;clip-path:polygon(0 45%,4% 63%,8% 39%,13% 62%,19% 42%,24% 57%,31% 40%,37% 65%,45% 43%,52% 63%,59% 41%,65% 59%,72% 38%,80% 61%,87% 39%,94% 58%,100% 41%,100% 100%,0 100%)}
+.about-content__inner{max-width:1216px;margin:auto}
+.about-section-title{display:flex;align-items:baseline;gap:13px}
+.about-section-title>span{font:700 1.15rem Georgia,serif;color:#ad755a}
+.about-section-title h2{font-size:1.45rem;letter-spacing:.08em;margin:0}
+.about-likes{min-width:0}
+.about-likes__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:22px}
+.about-like-card{background:#fff;min-width:0;min-height:385px;padding:13px 13px 25px;box-shadow:0 5px 15px #47331e22;position:relative}
+.about-like-card:nth-child(1){transform:rotate(-.6deg)}
+.about-like-card:nth-child(2){transform:rotate(.7deg)}
+.about-like-card:nth-child(3){transform:rotate(-.4deg)}
+.about-like-card__image{height:190px;width:100%}
+@media(max-width:800px){.about-like-card__image.photo-tile--photo-user{height:auto;aspect-ratio:3/2}}
+.about-like-card__num{display:block;color:#a76d54;font:700 .78rem Georgia,serif;letter-spacing:.1em;margin:12px 6px 3px}
+.about-like-card h3{font-size:1.1rem;line-height:1.4;letter-spacing:.05em;margin:0 6px 8px}
+.about-like-card p{font-size:.92rem;line-height:1.7;color:#4f5d6c;margin:0 6px}
+.about-like-card p.about-like-card__detail{margin-top:12px;color:#2e648f;font-weight:700}
+.about-explore{margin-top:54px}
+.about-explore__links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin:26px 5px 32px}
+.about-explore__paper{position:relative;display:flex;align-items:center;gap:20px;min-height:125px;padding:24px 32px;background:#fffdfa;color:var(--ink);text-decoration:none;box-shadow:0 6px 15px #47331e26;transform:rotate(-1deg);transition:transform .2s,box-shadow .2s}
+.about-explore__paper:nth-child(2){background:#f8fbfc;transform:rotate(1deg)}
+.about-explore__paper::before{content:"";position:absolute;top:-11px;left:42%;width:86px;height:24px;background:#ead9abcc;transform:rotate(2deg);clip-path:polygon(2% 7%,99% 0,97% 100%,0 90%)}
+.about-explore__paper:nth-child(2)::before{background:#bdcfbfcc;transform:rotate(-4deg)}
+.about-explore__paper:hover,.about-explore__paper:focus-visible{transform:translateY(-4px);box-shadow:0 10px 20px #47331e33}
+.about-explore__paper>span:first-child{font:700 .72rem Georgia,serif;letter-spacing:.15em;color:#a47763}
+.about-explore__paper strong{font-family:"UD Digi Kyokasho NP-R","YuKyokasho","Yu Gothic",sans-serif;font-size:1.36rem;letter-spacing:.08em}
+.about-explore__arrow{margin-left:auto;color:#2e648f;font-size:1.8rem}
+.about-explore__social{padding:22px 25px 24px;background:#e8f0f4;clip-path:polygon(0 3%,100% 0,99% 100%,1% 98%)}
+.about-explore__social>p:first-child{font-size:.95rem;font-weight:700;margin:0 0 18px}
+.about-explore__stickers{display:flex;flex-wrap:wrap;gap:13px}
+.about-explore__sticker{display:flex;align-items:center;gap:10px;min-width:0;background:#fffdf8;color:var(--ink);text-decoration:none;padding:10px 14px;box-shadow:0 3px 7px #3c321e22;transform:rotate(-2deg);transition:transform .2s,box-shadow .2s}
+.about-explore__sticker:nth-child(2){transform:rotate(1deg);background:#fff9f3}
+.about-explore__sticker:nth-child(3){transform:rotate(-1deg);background:#f8fbf5}
+.about-explore__sticker:hover,.about-explore__sticker:focus-visible{transform:translateY(-3px);box-shadow:0 6px 11px #3c321e33}
+.about-explore__icon{display:block;flex:none;width:40px;height:40px;padding:7px;border:1px solid #9ab5c5;border-radius:50%;color:#23384d;background:#fff}
+.about-explore__sticker:nth-child(2) .about-explore__icon{border-color:#d9a4b7}
+.about-explore__sticker:nth-child(3) .about-explore__icon{border-color:#9ca9a6;color:#18232c}
+.about-explore__sticker>span:nth-child(2){display:flex;flex-direction:column;gap:2px}
+.about-explore__sticker strong{font-size:.95rem}
+.about-explore__sticker small{font-size:.75rem;color:#536475}
+.about-explore__external{color:#2e648f;align-self:flex-start;font-size:1.1rem}
+.about-explore__contact{margin:18px 0 0;font-size:.85rem;color:#485d70}
+.about-back{text-align:center;margin-top:39px}
+.about-back a{display:inline-block;color:#2e648f;text-decoration:none;font-weight:800;border-bottom:2px solid #95b9d0;padding:4px 8px}
+@media(max-width:1050px){.about-hero__paper{left:14%;width:77%}.about-hero__polaroid{width:175px;height:210px}.about-hero__polaroid .photo-tile{height:135px}.about-hero__note{right:0}.about-likes__grid{gap:14px}.about-explore__paper{padding:20px;gap:12px}.about-explore__paper strong{font-size:1.18rem}}
+@media(max-width:800px){.about-hero{height:440px}.about-hero__paper{left:10%;width:82%;top:39px;height:370px}.about-hero__polaroid{left:0;top:35px;width:140px;height:163px;padding:7px}.about-hero__polaroid .photo-tile{height:105px}.about-hero__polaroid span{font-size:.75rem}.about-hero__text{top:20%;left:13%;width:64%}.about-hero h1{font-size:2.9rem}.about-hero__text p{font-size:.9rem}.about-hero__note{width:117px;height:104px;font-size:.9rem;right:0;padding:17px}.about-likes__grid{grid-template-columns:1fr}.about-like-card{min-height:0}.about-like-card__image{height:220px}}
+@media(max-width:590px){.about-hero{height:520px}.about-hero__paper{top:55px;left:5%;width:90%;height:430px}.about-hero__polaroid{top:16px;left:0;width:113px;height:127px;padding:5px}.about-hero__polaroid .photo-tile{height:81px}.about-hero__polaroid span{font-size:.53rem;margin-top:3px}.about-hero__tape{left:5%;top:8px;width:59px;height:17px}.about-hero__text{left:7%;top:24%;width:86%}.about-hero h1{font-size:2.2rem;margin:9px 0 13px}.about-hero__text p{font-size:.82rem;line-height:1.7;max-width:270px}.about-hero__note-label{font-size:.91rem;max-width:240px}.about-hero__paper img{width:47%;height:38%;right:2%;bottom:1%}.about-hero__note{width:92px;height:90px;right:-5px;bottom:6px;font-size:.7rem;padding:11px}.about-content{padding:30px 17px 50px}.about-likes__grid{grid-template-columns:1fr}.about-like-card__image{height:170px}.about-explore{margin-top:39px}.about-explore__links{grid-template-columns:1fr;gap:18px;margin:23px 4px 28px}.about-explore__paper{min-height:105px}.about-explore__social{padding:24px 17px}.about-explore__stickers{gap:11px}.about-explore__sticker{width:100%}}

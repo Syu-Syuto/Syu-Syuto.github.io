@@ -1,0 +1,58 @@
+---
+import { getAdjacentArticles, getRelatedArticles, type Article } from '../data/articles';
+
+interface Props {
+  current: Article;
+  allArticles: Article[];
+}
+
+const { current, allArticles } = Astro.props;
+const related = getRelatedArticles(allArticles, current);
+const { previous, next } = getAdjacentArticles(allArticles, current);
+---
+<div class="journal-connections">
+  <section class="journal-connections__related" aria-labelledby="related-articles-title">
+    <div class="journal-connections__heading">
+      <span>MORE NOTES</span>
+      <h2 id="related-articles-title">関連記事</h2>
+    </div>
+    {related.length > 0 ? (
+      <div class="journal-connections__related-list">
+        {related.map((item) => <a class="journal-connections__related-card" href={`/articles/${item.slug}/`}>
+          <img src={item.image} alt={item.imageAlt} loading="lazy" />
+          <div>
+            <time datetime={item.publishedAt}>{item.publishedAt.replaceAll('-', '.')}</time>
+            <h3>{item.title}</h3>
+            <span>読んでみる →</span>
+          </div>
+        </a>)}
+      </div>
+    ) : (
+      <div class="journal-connections__empty journal-connections__empty--related">
+        <span class="journal-connections__doodle" aria-hidden="true">✳</span>
+        <div><strong>関連記事はまだありません。</strong><p>同じタグの記事が表示されます</p></div>
+      </div>
+    )}
+  </section>
+
+  <nav class="journal-connections__navigation" aria-label="前後の記事">
+    {previous ? (
+      <a class="journal-connections__page journal-connections__page--previous" href={`/articles/${previous.slug}/`}>
+        <span>← 前の記事</span><strong>{previous.title}</strong><time datetime={previous.publishedAt}>{previous.publishedAt.replaceAll('-', '.')}</time>
+      </a>
+    ) : (
+      <div class="journal-connections__page journal-connections__page--empty journal-connections__page--previous">
+        <span>← 前の記事</span><strong>ここが、はじまりの一枚。</strong><p>前のページはまだありません。</p>
+      </div>
+    )}
+    {next ? (
+      <a class="journal-connections__page journal-connections__page--next" href={`/articles/${next.slug}/`}>
+        <span>次の記事 →</span><strong>{next.title}</strong><time datetime={next.publishedAt}>{next.publishedAt.replaceAll('-', '.')}</time>
+      </a>
+    ) : (
+      <div class="journal-connections__page journal-connections__page--empty journal-connections__page--next">
+        <span>次の記事 →</span><strong>次の一枚は、ただいま準備中。</strong><p>もう少し待ってね。</p>
+      </div>
+    )}
+  </nav>
+</div>
