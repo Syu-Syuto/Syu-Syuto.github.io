@@ -7,7 +7,9 @@
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
-    "check": "astro check"
+    "check": "astro check",
+    "photos:check": "node scripts/import-photos.mjs --dry-run",
+    "photos:import": "node scripts/import-photos.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
+    "sharp": "0.34.0",
     "typescript": "^5.0.0"
   }
 }

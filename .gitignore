@@ -3,3 +3,4 @@ dist/
 .astro/
 *.log
 source-images/
+photo-import/
