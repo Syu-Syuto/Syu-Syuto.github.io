@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { galleryPhotos } from '../data/photos';
 import '../styles/photos.css';
+
+const formatCaptureDate = (date: string) => date.replaceAll('-', '.');
 ---
 <BaseLayout title="フォトギャラリー | しゅうの物置" description="しゅうが撮った写真を置いているフォトギャラリー。">
   <div class="gallery-page" data-camera-visible="false">
@@ -43,9 +45,10 @@ import '../styles/photos.css';
                 type="button"
                 aria-label={`「${photo.title}」の写真を拡大表示`}
                 data-enlarge-photo
-                data-photo-src={photo.image}
+                data-photo-src={photo.fullImage}
                 data-photo-alt={photo.alt}
                 data-photo-title={photo.title}
+                data-photo-date={photo.captureDate}
                 data-photo-comment={photo.comment ?? ''}
                 data-photo-orientation={photo.width && photo.height && photo.width > photo.height ? 'landscape' : 'portrait'}
               >
@@ -53,7 +56,10 @@ import '../styles/photos.css';
                 <span class="gallery-card__zoom" aria-hidden="true">拡大 <span>↗</span></span>
               </button>
               <figcaption>
-                <span class="gallery-card__number">PHOTO / {String(index + 1).padStart(2, '0')}</span>
+                <div class="gallery-card__meta">
+                  <span class="gallery-card__number">PHOTO / {String(index + 1).padStart(2, '0')}</span>
+                  <time datetime={photo.captureDate}>{formatCaptureDate(photo.captureDate)}</time>
+                </div>
                 <h3>{photo.title}</h3>
                 {photo.comment && <p class="gallery-card__comment">{photo.comment}</p>}
               </figcaption>
@@ -77,6 +83,7 @@ import '../styles/photos.css';
         <img id="gallery-lightbox-image" alt="" />
         <figcaption>
           <h2 id="gallery-lightbox-title"></h2>
+          <time id="gallery-lightbox-date"></time>
           <p id="gallery-lightbox-comment" hidden></p>
         </figcaption>
       </figure>
@@ -98,17 +105,20 @@ import '../styles/photos.css';
     const lightbox = document.querySelector<HTMLDialogElement>('#gallery-lightbox');
     const lightboxImage = document.querySelector<HTMLImageElement>('#gallery-lightbox-image');
     const lightboxTitle = document.querySelector<HTMLElement>('#gallery-lightbox-title');
+    const lightboxDate = document.querySelector<HTMLTimeElement>('#gallery-lightbox-date');
     const lightboxComment = document.querySelector<HTMLElement>('#gallery-lightbox-comment');
     let activePhotoButton: HTMLButtonElement | null = null;
     let previousOverflow = '';
 
     document.querySelectorAll<HTMLButtonElement>('[data-enlarge-photo]').forEach((button) => {
       button.addEventListener('click', () => {
-        if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxComment) return;
+        if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxDate || !lightboxComment) return;
         activePhotoButton = button;
         lightboxImage.src = button.dataset.photoSrc ?? '';
         lightboxImage.alt = button.dataset.photoAlt ?? '';
         lightboxTitle.textContent = button.dataset.photoTitle ?? '';
+        lightboxDate.dateTime = button.dataset.photoDate ?? '';
+        lightboxDate.textContent = (button.dataset.photoDate ?? '').replaceAll('-', '.');
         lightboxComment.textContent = button.dataset.photoComment ?? '';
         lightboxComment.hidden = !lightboxComment.textContent;
         lightbox.dataset.orientation = button.dataset.photoOrientation ?? 'portrait';
