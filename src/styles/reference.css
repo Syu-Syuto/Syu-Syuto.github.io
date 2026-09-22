@@ -48,6 +48,7 @@ body{color:var(--ink);background:#f3eee7;overflow-x:hidden}
 .door-card p{font-size:.86rem;line-height:1.5;letter-spacing:.05em;margin:10px 2px 8px;min-height:43px}
 .photo-tile{background:#ded3bd url('/images/photo-sheet.webp') no-repeat;background-size:300% auto}
 .photo-tile--campus{background-position:0 20%}
+.photo-tile--craft{background:#292724 url('/images/articles/diary-1/crt-open.webp') center 45%/cover no-repeat}
 .photo-tile--book{background-position:50% 20%}
 .photo-tile--notebook{background-position:100% 20%}
 .photo-tile--laptop{background-position:0 80%}
