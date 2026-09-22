@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'diary-1');
+if (!article) throw new Error('記事データが見つかりません。');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={article.image} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">WEEKLY NOTE / 01</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta">
+              <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
+              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+            </div>
+            <p class="journal-article__lead">一週間程度を区切りにして、日記的なものを書いていこうと思います。なお、内容がないような週は書きません。</p>
+          </header>
+
+          <figure class="journal-article__thumbnail">
+            <img src={article.image} alt={article.imageAlt} width="1600" height="1200" />
+            <figcaption>テレビヘッド候補、分解前。</figcaption>
+          </figure>
+
+          <div class="journal-article__body">
+            <section>
+              <h2><span class="journal-diary-date">9/14</span></h2>
+              <p>大学用の自転車を購入。ハンドルが横向き、ギアあり、ライト付きという条件で探したところ、小金井市リサイクルセンターにて14,000円で購入。オリンピックのところだと3万円ぐらいするので、大学に置いておく用と考えれば十分かな。</p>
+              <p>これでとくにオリンピックへの水の買い出しが楽になりました。部室にものが増えてゆく……。</p>
+              <div class="journal-photo-grid">
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-1/bike-registration.webp" alt="自転車の防犯登録票が洗濯ばさみで前かごに留められている" width="1200" height="1600" loading="lazy" />
+                  <figcaption>防犯登録も済ませました。</figcaption>
+                </figure>
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-1/campus-bike.webp" alt="大学用に購入した前かご付きの自転車" width="1600" height="1200" loading="lazy" />
+                  <figcaption>大学に置いておく用の自転車。</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section>
+              <h2><span class="journal-diary-date">9/15</span></h2>
+              <p>テレビヘッド作成を進めた。部室にあったよさげなブラウン管テレビを、分解するところまで進めました。これからが大変なんだけどね。</p>
+              <aside class="journal-safety-note">
+                <strong>※ブラウン管テレビの分解は非常に危険です！</strong>
+                <p>ろくに調べず、まねをしないようにしましょう。コンデンサ、めちゃ帯電してます。</p>
+              </aside>
+              <div class="journal-photo-grid">
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-1/crt-tv.webp" alt="作業机に置かれた古いブラウン管テレビ" width="1600" height="1200" loading="lazy" />
+                  <figcaption>部室にあった、よさげなブラウン管テレビ。</figcaption>
+                </figure>
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-1/crt-open.webp" alt="カバーを外して基板とブラウン管が見えるテレビ" width="1600" height="1200" loading="lazy" />
+                  <figcaption>カバーを外したところ。</figcaption>
+                </figure>
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-1/crt-board.webp" alt="取り外して袋に入れたテレビの基板" width="1600" height="1200" loading="lazy" />
+                  <figcaption>取り外した基板。</figcaption>
+                </figure>
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-1/crt-tube.webp" alt="ブラウン管と内部部品が残った分解途中のテレビ" width="1600" height="1200" loading="lazy" />
+                  <figcaption>分解途中。ここからが大変そう。</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section>
+              <h2><span class="journal-diary-date">9/22</span></h2>
+              <p>Twitterでつながった、類もコースも違う謎メンツ5人で飯を食いに行きました。ほぼ会ったことないのに注文しすぎて、ほぼ食べてた時間だった。まぁうまかったからよし。</p>
+              <p>偽名を使ってる人（←）はともかくとして、ハンドルネームしか知らないと外で呼ぶときちょっと困るなぁと。</p>
+              <div class="journal-photo-grid">
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-1/monjayaki.webp" alt="鉄板の上で焼いているもんじゃ焼き" width="1600" height="1200" loading="lazy" />
+                  <figcaption>注文しすぎたけど、うまかったのでよし。</figcaption>
+                </figure>
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-1/social-phones.webp" alt="テーブルに並べた複数のスマートフォン" width="1200" height="1600" loading="lazy" />
+                  <figcaption>ハンドルネームで集まった謎メンツ。</figcaption>
+                </figure>
+              </div>
+              <p>時間調整で近くのタイトーへ行ったのですが、かなり住み分け（区画分け）ができていて感心。太鼓の達人だけ2階なのもセンスあるね。</p>
+              <figure class="journal-inline-photo">
+                <img src="/images/articles/diary-1/taito-floor-guide.webp" alt="タイトーステーションのゲーム別フロア案内" width="1200" height="1600" loading="lazy" />
+                <figcaption>きれいに住み分けされているフロア。</figcaption>
+              </figure>
+              <p>あと、テレビヘッド用のモニターも買いました。1wぐらい粘ってたけど、あんまりいいの出なかったなぁ。理想は14インチの4:3モニターだったけど、そんな化石、ほぼ流通してないわけで。</p>
+              <p>それから、大学用自転車に松ぼっくりが入れられてました。偶然か、いたずらか。小生前にもつるされていました。</p>
+              <figure class="journal-inline-photo">
+                <img src="/images/articles/diary-1/pinecones.webp" alt="自転車に吊るされていた松ぼっくり" width="1200" height="1600" loading="lazy" />
+                <figcaption>なぜか吊るされていた松ぼっくり。</figcaption>
+              </figure>
+              <p>シルバーウィークのせいで（おかげで？）塾バイトが休みになったため、外出ほぼなく連休が終わりそうです。まぁあと3wぐらい休みなんだけどね。やっぱうちおかしいよ。</p>
+            </section>
+          </div>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

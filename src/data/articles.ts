@@ -49,6 +49,16 @@ export const articles: Article[] = [
     image: '/images/tgu-open-classrooms-thumbnail.svg',
     imageAlt: '東京学芸大学 空き教室検索の実画面をもとに、開講期・曜日・時限の選択と教室一覧を描いたサムネイル',
   },
+  {
+    slug: 'diary-1',
+    title: '日記#1',
+    excerpt: '大学用の自転車を買ったり、ブラウン管テレビを分解したり、謎メンツで飯を食べたりした一週間。',
+    publishedAt: '2026-09-22',
+    publicationOrder: 1,
+    tags: ['日記', '工作'],
+    image: '/images/articles/diary-1/crt-tv.webp',
+    imageAlt: '作業机に置かれた古いブラウン管テレビ',
+  },
 ];
 
 export function getRecentArticles(items: Article[], limit = 6): Article[] {

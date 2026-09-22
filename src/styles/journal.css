@@ -49,6 +49,15 @@
 .journal-article__body h2 { position: relative; margin: 0 0 19px; padding: 0 0 8px 17px; border-bottom: 1px dashed #cbd3d4; font-size: 1.32rem; letter-spacing: .075em; }
 .journal-article__body h2::before { content: ""; position: absolute; left: 0; top: .37em; width: 7px; height: 1em; background: #9bbad0; transform: rotate(-8deg); }
 .journal-article__body p { margin: 0 0 17px; font-size: 1rem; line-height: 2.1; letter-spacing: .03em; }
+.journal-diary-date { display: inline-block; margin-bottom: 23px; padding: 6px 17px 7px; background: #e7d7a8; box-shadow: 3px 4px 8px #47331e20; transform: rotate(-1deg); font: 800 1.15rem "Segoe Print","Comic Sans MS",cursive; letter-spacing: .08em; }
+.journal-photo-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; margin: 27px 0 32px; }
+.journal-inline-photo { align-self: start; margin: 0; padding: 8px 8px 17px; background: #fff; box-shadow: 0 6px 15px #47331e2c; transform: rotate(-1deg); }
+.journal-inline-photo:nth-child(even) { transform: rotate(1deg); }
+.journal-inline-photo img { width: 100%; height: auto; max-height: 540px; object-fit: cover; }
+.journal-inline-photo figcaption { margin-top: 8px; color: #526177; text-align: center; font: .82rem "Segoe Print","Comic Sans MS",cursive; line-height: 1.55; }
+.journal-safety-note { margin: 23px 0 28px; padding: 18px 22px; background: #f8e8df; border-left: 5px solid #c67856; box-shadow: 3px 4px 9px #47331e19; transform: rotate(-.2deg); }
+.journal-safety-note strong { display: block; margin-bottom: 7px; color: #883f2f; }
+.journal-safety-note p { margin: 0; font-size: .9rem; line-height: 1.85; }
 .journal-article__footer { margin-top: 9px; padding: 22px 26px; background: #f3efe6; border-left: 4px solid #c6ad80; }
 .journal-article__footer p { margin: 0 0 12px; color: #65707a; font-size: .9rem; line-height: 1.7; }
 .journal-article__footer a { color: #2e648f; font-weight: 800; text-underline-offset: 4px; }
@@ -102,6 +111,9 @@
   .journal-article__thumbnail { padding: 7px 7px 18px; margin-bottom: 37px; }
   .journal-article__body h2 { font-size: 1.15rem; }
   .journal-article__body p { font-size: .94rem; line-height: 2; }
+  .journal-photo-grid { grid-template-columns: 1fr; gap: 19px; }
+  .journal-inline-photo { max-width: 500px; margin-inline: auto; }
+  .journal-safety-note { padding: 16px 17px; }
   .journal-article__footer { padding: 18px; }
   .journal-connections { margin-top: 35px; }
   .journal-connections__heading h2 { font-size: 1.25rem; }
