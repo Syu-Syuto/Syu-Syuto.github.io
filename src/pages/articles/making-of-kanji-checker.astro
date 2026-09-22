@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'making-of-kanji-checker');
+if (!article) throw new Error('記事データが見つかりません。');
+const socialImage = article.image.replace(/\.svg$/, '.png');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={socialImage} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">CLASS PROJECT / 05</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div></div>
+            <p class="journal-article__lead">文章の中に、その学年ではまだ習っていない漢字がないかを調べるツールを作りました。</p>
+          </header>
+
+          <figure class="journal-article__thumbnail">
+            <img src={article.image} alt={article.imageAlt} width="1312" height="900" />
+            <figcaption>実際の未習漢字チェッカーをもとにした画面イメージ</figcaption>
+          </figure>
+
+          <div class="journal-article__body">
+            <section>
+              <h2>英コミュの発表のために</h2>
+              <p>このツールを作ったのは、約3か月前。英語コミュニケーションの授業で発表するものとして作りました。</p>
+              <p>文章を小学生や中学生向けに用意するとき、その学年ではまだ習っていない漢字が混ざっていないかを一文字ずつ確かめるのは、地味だけれど手間がかかります。そこで、対象学年と文章を入れれば未習漢字を見つけられるようにしました。</p>
+            </section>
+
+            <section>
+              <h2>AIが盛り上がっている時期に、あえて</h2>
+              <p>作ったころは、新しいAIモデルが次々に出て、生成AIの話題がとくに盛り上がっていた時期でした。便利だし、できることも多い。でも、手間はかかっても、やっていること自体がシンプルなら、必ずしもLLMを使わなくていい。</p>
+              <p>決められた漢字の一覧と入力された文章を比べる。見つかった文字を強調する。読みを調べて置き換える。そういう処理なら、昔ながらのプログラムでもきちんと形にできる。その実例を作ってみたかった、というのが出発点です。</p>
+            </section>
+
+            <section>
+              <h2>何ができるのか</h2>
+              <p>小学1年生から中学3年生までの対象学年を選び、文章を入力してチェックを実行すると、まだ習っていない漢字が強調されます。学校名や人名など、判定から除外したい言葉はホワイトリストへ登録できます。</p>
+              <p>見つかった漢字には前後の文脈と読みの候補が表示され、個別に直すことも、一覧を確認してまとめてひらがなへ変換することもできます。読みの提案には、形態素解析のKuromojiを使っています。</p>
+            </section>
+
+            <section>
+              <h2>漢字のデータをどうしたか</h2>
+              <p>小学校で習う漢字は、文部科学省の学習指導要領にある学年別漢字配当表をもとに反映しています。</p>
+              <p>一方で、中学校で学ぶ漢字は「中学1年生でこの漢字、中学2年生でこの漢字」という全国共通の学年別配当が明確に決められていません。そのため、中学1〜3年生については、手元にあった漢字のテキストをもとに学年ごとの目安を作りました。ここは国が定めた学年分けではなく、このツール独自の区分です。</p>
+            </section>
+
+            <section>
+              <h2>LLMを使わない、という選択肢</h2>
+              <p>生成AIを使うこと自体が悪いわけではありません。ただ、解きたい問題によっては、決められたデータと規則を使うほうが、処理の理由がわかりやすく、同じ入力に対して同じ結果も返しやすい。</p>
+              <p>派手なものではないけれど、「これは普通のプログラムでできる」と実際に動く形で示せたので、発表の題材としてもよい着地点になったと思います。</p>
+            </section>
+          </div>
+
+          <footer class="journal-article__footer">
+            <p>ブラウザからそのまま使えます。コードもGitHubで公開しています。</p>
+            <div class="journal-article__resource-links">
+              <a href="https://syu-syuto.github.io/kanji-checker/" target="_blank" rel="noopener noreferrer">ツールを使う <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/Syu-Syuto/kanji-checker" target="_blank" rel="noopener noreferrer">GitHubで見る <span aria-hidden="true">↗</span></a>
+              <a href="/works/#kanji-checker">作ったものを見る <span aria-hidden="true">→</span></a>
+            </div>
+          </footer>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

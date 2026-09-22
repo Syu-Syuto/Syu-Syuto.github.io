@@ -55,7 +55,7 @@ npm run dev
 
 「作ったもの」は「大学での制作」「教育・学習」「ウェブ・技術」「そのほか」の4分野に分けています。大学での制作には非公式の「東京学芸大学 空き教室検索 2026」、教育・学習には漢字の小テスト作成支援ツール、ウェブ・技術には同じようなサイトを作りたい人向けの構造・作成手順を折りたたみ式で掲載しました。そのほかは今後の追加に備えた空欄です。各ツールは利用ページとGitHubのコードページにリンクしています。このサイト自体のソースは `https://github.com/Syu-Syuto/Syu-Syuto.github.io` で公開しています。
 
-「記事」には「このホームページを作ってみた」「漢字テストを作る道具を作った」「東京学芸大の空き教室を探せるページを作った」の3本を掲載しています。いずれもサイト上の下書き表示はありません。記事の一覧用データは `src/data/articles.ts`、本文は `src/pages/articles/` で編集できます。記事を追加するときは、`image` と `imageAlt` にサムネイル画像と代替テキストを必ず指定し、同じ slug の本文ページも作成してください。同日公開の記事は `publicationOrder` の小さい順が古い記事です。`public/images/homepage-thumbnail.png` は実際のトップ画面を撮った画像で、`public/images/kanji-test-thumbnail.svg` と `public/images/tgu-open-classrooms-thumbnail.svg` は各ツールの実画面をもとに描いたイメージです。タグは付箋風に表示しています。一覧カードの淡い背景色は記事の slug ごとに固定されます。記事下の関連記事は同じタグを持つ新しい3件を表示し、「記録」タグは判定から除外します。前後の記事は日付と `publicationOrder` の順に選びます。公開サイトは `https://syu-syuto.github.io/` です。
+「記事」には、サイト制作・ツール制作・日記についての記事を掲載しています。記事の一覧用データは `src/data/articles.ts`、本文は `src/pages/articles/` で編集できます。記事を追加するときは、`image` と `imageAlt` にサムネイル画像と代替テキストを必ず指定し、同じ slug の本文ページも作成してください。同日公開の記事は `publicationOrder` の小さい順が古い記事です。`public/images/homepage-thumbnail.png` は実際のトップ画面を撮った画像で、`public/images/kanji-test-thumbnail.svg`、`public/images/kanji-checker-thumbnail.svg`、`public/images/tgu-open-classrooms-thumbnail.svg` は各ツールの実画面をもとに描いたイメージです。タグは付箋風に表示しています。一覧カードの淡い背景色は記事の slug ごとに固定されます。記事下の関連記事は同じタグを持つ新しい3件を表示し、「記録」タグは判定から除外します。前後の記事は日付と `publicationOrder` の順に選びます。公開サイトは `https://syu-syuto.github.io/` です。
 
 画面幅によって検索ボタンに重なっていた装飾を移動し、狭い幅ではヘッダーを早めに折りたたむようにしました。写真の背景は縦横比を保って切り抜く指定に統一しています。
 

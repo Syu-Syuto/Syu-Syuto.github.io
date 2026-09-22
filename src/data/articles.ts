@@ -59,6 +59,16 @@ export const articles: Article[] = [
     image: '/images/articles/diary-1/crt-tv.webp',
     imageAlt: '作業机に置かれた古いブラウン管テレビ',
   },
+  {
+    slug: 'making-of-kanji-checker',
+    title: '未習漢字チェッカーを作った',
+    excerpt: 'LLMを使わず、学年ごとの漢字データと昔ながらのプログラムで未習漢字を見つけるツールを作った話。',
+    publishedAt: '2026-09-23',
+    publicationOrder: 1,
+    tags: ['教育', '情報系', 'ツール制作'],
+    image: '/images/kanji-checker-thumbnail.svg',
+    imageAlt: '未習漢字チェッカーの学年選択、文章入力欄、チェック結果を表した画面イメージ',
+  },
 ];
 
 export function getRecentArticles(items: Article[], limit = 6): Article[] {

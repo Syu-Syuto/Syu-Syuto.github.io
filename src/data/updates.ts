@@ -15,6 +15,14 @@ export type HomeUpdate = {
 const manualUpdates: HomeUpdate[] = [
   {
     kind: 'work',
+    date: '2026-09-23',
+    order: 2,
+    href: '/works/#kanji-checker',
+    label: '作ったもの',
+    message: '「未習漢字チェッカー」を公開しました',
+  },
+  {
+    kind: 'work',
     date: '2026-09-18',
     order: 3,
     href: '/works/#tgu-open-classrooms-2026',

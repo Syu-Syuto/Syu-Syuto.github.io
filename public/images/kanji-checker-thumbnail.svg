@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1312" height="900" viewBox="0 0 1312 900" role="img" aria-labelledby="title desc">
+  <title id="title">未習漢字チェッカーの画面イメージ</title>
+  <desc id="desc">対象学年と文章を入力する左側のパネルと、未習漢字のチェック結果を表示する右側のパネル</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#5d6f7f" flood-opacity=".18"/></filter>
+    <pattern id="paper" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 18h18M18 0v18" stroke="#b9c9d7" stroke-opacity=".12"/></pattern>
+  </defs>
+  <rect width="1312" height="900" fill="#edf2f6"/>
+  <rect width="1312" height="900" fill="url(#paper)"/>
+  <g font-family="'Yu Gothic','Noto Sans JP',sans-serif" fill="#283b4b">
+    <text x="52" y="76" font-size="34" font-weight="700">未習漢字チェッカー</text>
+    <text x="382" y="76" font-size="23" font-weight="700" fill="#60778a">自動読み提案 ＋ 文脈表示</text>
+    <path d="M52 101h1208" stroke="#349bd3" stroke-width="4"/>
+    <g filter="url(#shadow)">
+      <rect x="52" y="133" width="576" height="699" rx="12" fill="#fff"/>
+      <rect x="653" y="133" width="607" height="699" rx="12" fill="#fff"/>
+    </g>
+    <g transform="translate(82 180)">
+      <text y="0" font-size="21" font-weight="700">対象学年</text>
+      <rect y="24" width="516" height="58" rx="5" fill="#fff" stroke="#bac5ce" stroke-width="2"/>
+      <text x="20" y="61" font-size="20">小学4年生</text>
+      <path d="m480 48 8 9 8-9" fill="none" stroke="#283b4b" stroke-width="3"/>
+      <rect y="98" width="516" height="56" rx="5" fill="#e7f4fb"/>
+      <rect x="16" y="116" width="19" height="19" rx="3" fill="#2499dc"/>
+      <path d="m20 125 5 5 8-11" fill="none" stroke="#fff" stroke-width="3"/>
+      <text x="48" y="134" font-size="18" font-weight="600">この学年で習う漢字も学習済みに含める</text>
+      <text y="197" font-size="21" font-weight="700">ホワイトリスト</text>
+      <rect y="220" width="516" height="116" rx="5" fill="#fff" stroke="#bac5ce" stroke-width="2"/>
+      <text x="17" y="254" font-size="17" fill="#8b969f">例：山田太郎、学校名など</text>
+      <text y="383" font-size="21" font-weight="700">チェックする文章</text>
+      <rect y="406" width="516" height="164" rx="5" fill="#fff" stroke="#bac5ce" stroke-width="2"/>
+      <text x="17" y="444" font-size="19" fill="#526879">校庭の桜が、春の風に揺れている。</text>
+      <rect y="594" width="516" height="64" rx="5" fill="#349bd3"/>
+      <text x="258" y="635" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">チェック実行</text>
+    </g>
+    <g transform="translate(687 180)">
+      <text y="0" font-size="21" font-weight="700">チェック結果</text>
+      <rect y="24" width="539" height="366" rx="5" fill="#fff" stroke="#bac5ce" stroke-width="2"/>
+      <text x="27" y="76" font-size="21">校庭の</text>
+      <rect x="112" y="48" width="50" height="40" rx="4" fill="#ffe1a6"/>
+      <text x="137" y="76" text-anchor="middle" font-size="22" font-weight="700" fill="#c04d2f">桜</text>
+      <text x="172" y="76" font-size="21">が、春の風に</text>
+      <rect x="337" y="48" width="50" height="40" rx="4" fill="#ffe1a6"/>
+      <text x="362" y="76" text-anchor="middle" font-size="22" font-weight="700" fill="#c04d2f">揺</text>
+      <text x="397" y="76" font-size="21">れている。</text>
+      <path d="M28 112h483" stroke="#d9e1e7"/>
+      <text x="28" y="155" font-size="18" font-weight="700" fill="#c04d2f">未習漢字　桜</text>
+      <text x="28" y="190" font-size="17" fill="#60778a">前後：校庭の［桜］が、春の風に</text>
+      <rect x="28" y="218" width="218" height="48" rx="5" fill="#eef5f8" stroke="#b9cbd6"/>
+      <text x="137" y="249" text-anchor="middle" font-size="18">さくら に置き換える</text>
+      <path d="M28 292h483" stroke="#d9e1e7"/>
+      <text x="28" y="335" font-size="18" font-weight="700" fill="#c04d2f">未習漢字　揺</text>
+      <rect y="418" width="539" height="64" rx="5" fill="#536f84"/>
+      <text x="270" y="459" text-anchor="middle" font-size="20" font-weight="700" fill="#fff">リストを確認して一括ひらがな変換</text>
+      <g transform="translate(22 535) rotate(-2)">
+        <rect width="365" height="92" fill="#fff1ad"/>
+        <path d="M16 0 31-18 47 0M317 0l15-18 16 18" fill="#dfd3aa" opacity=".75"/>
+        <text x="24" y="38" font-family="'Yu Mincho',serif" font-size="17" fill="#4d5660">AIに文章を渡さなくても、</text>
+        <text x="24" y="67" font-family="'Yu Mincho',serif" font-size="17" fill="#4d5660">規則とデータで見つけられる。</text>
+      </g>
+    </g>
+  </g>
+</svg>

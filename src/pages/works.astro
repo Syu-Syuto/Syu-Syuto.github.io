@@ -62,6 +62,38 @@ import '../styles/works.css';
         <section class="works-category" aria-labelledby="works-education-title">
           <div class="works-category__heading"><span>02</span><div><h3 id="works-education-title">教育・学習</h3><p>学びや授業に役立つツール。</p></div></div>
 
+        <details class="work-fold work-fold--tool" id="kanji-checker">
+          <summary>
+            <span class="work-fold__title"><small>EDUCATION / TOOL</small><strong>未習漢字チェッカー</strong></span>
+            <span class="work-fold__toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="work-fold__content">
+            <p class="work-fold__intro">文章に、対象学年ではまだ習っていない漢字が含まれていないかを調べるブラウザ用ツールです。未習漢字を強調し、読みの候補を見ながらひらがなへ置き換えられます。</p>
+            <div class="work-fold__tool-info">
+              <div>
+                <h4>使ってみる・中身を見る</h4>
+                <p><a class="work-fold__link" href="https://syu-syuto.github.io/kanji-checker/" target="_blank" rel="noopener noreferrer">未習漢字チェッカーを開く ↗</a></p>
+                <p><a class="work-fold__link" href="https://github.com/Syu-Syuto/kanji-checker" target="_blank" rel="noopener noreferrer">GitHubでコードを見る ↗</a></p>
+                <p><a class="work-fold__link" href="/articles/making-of-kanji-checker/">このツールについての記事を読む →</a></p>
+              </div>
+              <div>
+                <h4>基本の使い方</h4>
+                <ol class="work-fold__steps">
+                  <li>文章を読ませたい学年を選ぶ。</li>
+                  <li>固有名詞など、判定から除外したい言葉を必要に応じて登録する。</li>
+                  <li>文章を貼り付けて「チェック実行」を押す。</li>
+                  <li>強調された漢字と前後の文脈を確認し、個別または一括でひらがなへ置き換える。</li>
+                </ol>
+              </div>
+            </div>
+            <div class="work-fold__tip">
+              <h4>中の仕組み</h4>
+              <p>学年ごとの漢字一覧と文章を照合し、形態素解析で読みを提案します。文章そのものを生成AIに送る仕組みではなく、ルールとデータに基づいてブラウザ上で動きます。</p>
+            </div>
+            <p class="work-fold__note">中学校の漢字は、学習指導要領に学年別の配当が明記されていないため、手元の漢字教材をもとに1〜3年の目安へ分けています。</p>
+          </div>
+        </details>
+
         <details class="work-fold work-fold--tool" id="kanji-test-tool">
           <summary>
             <span class="work-fold__title"><small>PROGRAM / TOOL</small><strong>漢字の小テスト作成支援ツール</strong></span>
