@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'diary-2');
+if (!article) throw new Error('記事データが見つかりません。');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={article.image} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">WEEKLY NOTE / 02</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta">
+              <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
+              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+            </div>
+            <p class="journal-article__lead">前回の日記から少し間が空いたので、その間にあったことをまとめておきます。ゲームを買い、工具を買い、自転車で動物園まで行きました。</p>
+          </header>
+          <div class="journal-article__body">
+            <section>
+              <h2>Steamのセール</h2>
+              <p>Steamのセールでゲームを買いました。9/28にHades、10/2にLibrary of Ruina、Portal 2、Risk of Rain 2。計4本です。</p>
+              <figure class="journal-inline-photo">
+                <img src="/images/articles/diary-2/steam-games.webp" alt="Library of Ruina、Portal 2、Risk of Rain 2、Hadesが並んだSteamの画面" width="789" height="289" loading="lazy" />
+                <figcaption>今回買ったゲームたち。</figcaption>
+              </figure>
+              <p>まぁセールだったので。</p>
+            </section>
+            <section>
+              <h2>金曜日のカレー</h2>
+              <p>蒲田のあたりのインドカレー屋さんへ、2週間連続で金曜日の昼飯を食べに行きました。</p>
+              <p>1回目はバターの味がしっかりしていて、とても美味しかったです。それで翌週も行ったのですが、2回目は少し微妙でした。前回が美味しかっただけに、ちょっと残念。</p>
+              <div class="journal-photo-grid">
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-2/curry-first.webp" alt="大きなナンと2種類のカレー、飲み物が並ぶ昼食" width="1600" height="1200" loading="lazy" />
+                  <figcaption>1回目のカレー。</figcaption>
+                </figure>
+                <figure class="journal-inline-photo">
+                  <img src="/images/articles/diary-2/curry-second.webp" alt="翌週に食べたナンと2種類のカレーのセット" width="1600" height="2133" loading="lazy" />
+                  <figcaption>翌週も同じお店へ。</figcaption>
+                </figure>
+              </div>
+            </section>
+            <section>
+              <h2><span class="journal-diary-date">10/4（日）</span> 英検監督とランダムサンダー</h2>
+              <p>日曜日は英検の試験監督のバイトをしてきました。そのお金で、さっそくランダムサンダーを購入。展示作品の制作に使います。</p>
+              <p>働いて工具が増える。ちゃんと制作に使って、形にしていきたいところです。</p>
+              <figure class="journal-inline-photo">
+                <img src="/images/articles/diary-2/random-sander.webp" alt="3,900円の値札が付いた緑色のランダムサンダーGRS-400" width="1600" height="1200" loading="lazy" />
+                <figcaption>展示制作用に購入したランダムサンダー。</figcaption>
+              </figure>
+            </section>
+            <section>
+              <h2>展示制作の近況</h2>
+              <p>美術研究部の展示について、少し目処が立ちました。ただ、あと1ヶ月くらい余裕があると思っていたら、実際はもう20日ほどしかない。とてもまずいです。形になるかはまだわかりませんが、頑張ろうと思います。</p>
+              <p>テレビヘッドは、モバイルモニターを購入して仮組みするところまで進みました。前回の日記以降、新しく分解したりはしていません。</p>
+              <p>今考えているのは、普段はちょっとかわいらしいキャラクターが映っていて、演出が発動すると、こちらを覗き込んでくるような映像です。</p>
+              <p>方向性はあるものの、実際にどんな流れの映像にするか、そしてテレビヘッド自体をものとしてどう仕上げるかで行き詰まっています。仮組みから完成まで、まだ距離があるなぁと。</p>
+            </section>
+            <section>
+              <h2>全部、鳥</h2>
+              <p>鳥が大量にいました。写真の空にある細かい点、全部鳥です。多すぎる。</p>
+              <figure class="journal-inline-photo">
+                <img src="/images/articles/diary-2/birds.webp" alt="夕方の空を埋めるように飛ぶ大量の鳥" width="1016" height="641" loading="lazy" />
+                <figcaption>空の細かい点は、全部鳥。</figcaption>
+              </figure>
+            </section>
+            <section>
+              <h2><span class="journal-diary-date">10/10</span> 自転車で上野動物園へ</h2>
+              <p>家から上野動物園まで、2人で自転車に乗って行きました。片道で2時間ほど。それを往復したので、移動だけでもなかなかの運動になりました。</p>
+              <p>交通費は浮くものの、途中で食事もしていたので、あんまりコスパはよくないなと。動物園の中を歩き回る体力まで考えたら、次は電車で行ったほうがよさそうです。</p>
+              <p>道中はDJI Osmo Action 4で撮影していました。まだ映像を取り出していませんが、いつかまとめて上げようと思っています。</p>
+              <p>今回は初めて、動物園の中で昼飯を食べました。焼きそばです。まず器がとてもかわいい。動物の絵がいっぱい描かれています。</p>
+              <figure class="journal-inline-photo">
+                <img src="/images/articles/diary-2/yakisoba.webp" alt="動物のイラストが描かれた紙の器に入った焼きそばと、奥に並んだかき氷" width="1600" height="1200" loading="lazy" />
+                <figcaption>かわいい器の焼きそば。</figcaption>
+              </figure>
+              <p>焼きそば自体も美味しかったです。たぶん粉のソースの味がよかったのだと思います。移動は大変でしたが、昼飯はよかった。</p>
+              <p>動物園で撮った写真については、また別の記事にまとめるつもりです。</p>
+              <p>そろそろ大学が始まります。履修登録、なかなかうまくいきませんが、とりあえずは木曜1限の抽選に当たるよう祈っておきます。</p>
+            </section>
+          </div>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

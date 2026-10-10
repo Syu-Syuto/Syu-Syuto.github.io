@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'diary-2',
+    title: '日記#2',
+    excerpt: 'Steamのセールでゲームを買ったり、展示制作で行き詰まったり、自転車で上野動物園まで行ったり。',
+    publishedAt: '2026-10-10',
+    publicationOrder: 1,
+    tags: ['日記', '工作', 'ゲーム'],
+    image: '/images/articles/diary-2/yakisoba.webp',
+    imageAlt: '動物のイラストが描かれた紙の器に入った上野動物園の焼きそば',
+  },
+  {
     slug: 'making-of-shu-monooki',
     title: 'このホームページを作ってみた',
     excerpt: '先輩の個人サイトに触発されて、自分のツールや記録の置き場を作り始めた話。',
