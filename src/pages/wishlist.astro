@@ -38,7 +38,7 @@ const formatDate = (value: string) => value.slice(0, 10).replaceAll('-', '.');
                 <div class="wishlist-item__body">
                   <span class="wishlist-item__text">{item.text}</span>
                   {item.note && <p>{item.note}</p>}
-                  <div class="wishlist-item__dates"><time datetime={item.addedAt}>メモ {formatDate(item.addedAt)}</time>{item.completedAt && <time datetime={item.completedAt}>できた！ {formatDate(item.completedAt)}</time>}</div>
+                  <div class="wishlist-item__dates"><time datetime={item.addedAt}>メモ {formatDate(item.addedAt)}</time>{item.completedAt && <time datetime={item.completedAt}>達成！ {formatDate(item.completedAt)}</time>}</div>
                 </div>
               </li>)}
             </ol>
