@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'diary-3',
+    title: '日記#3',
+    excerpt: 'ついに長すぎる休みが終わり大学が始まってしまいました。',
+    publishedAt: '2026-10-19',
+    publicationOrder: 1,
+    tags: ['日記', '工作'],
+    image: '/images/articles/diary-3/dr-pepper.webp',
+    imageAlt: '制作中の机に置いたドクターペッパー',
+  },
+  {
     slug: 'diary-2',
     title: '日記#2',
     excerpt: 'Steamのセールでゲームを買ったり、展示制作で行き詰まったり、自転車で上野動物園まで行ったり。',

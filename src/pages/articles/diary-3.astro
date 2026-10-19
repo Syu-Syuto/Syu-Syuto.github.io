@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'diary-3');
+if (!article) throw new Error('記事データが見つかりません。');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={article.image} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">WEEKLY NOTE / 03</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta">
+              <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
+              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+            </div>
+            <p class="journal-article__lead">大学が始まってからそろそろ５日ですね。ついに長すぎる休みが終わり大学が始まってしまいました。なんでやすみって終わりがけになってからやりたいこと思い出すんでしょうね。</p>
+          </header>
+          <div class="journal-article__body">
+<section><h2><span class="journal-diary-date">10/10</span></h2>
+<p>前回の上野動物公園にいったときの帰り道です（書き忘れ）。多分誰かのいたずらだとは思うんですが、シンプルなものでかわいくできててとても魅かれました。こういうのできるようになりたいな。</p>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-3/street-squid.webp" alt="道沿いの植え込みに置かれた白いイカのような飾り" width="1200" height="1600" loading="lazy" /></figure>
+</section>
+<section><h2><span class="journal-diary-date">10/11</span></h2>
+<p>展示作品作業が煮詰まり、学内の八号館あたりを散歩していると若草研究室のあたりで室内に死にかけの蜂が。やっぱマクロレンズは常に持ち運んでおくべきですね（ちがうそうじゃない）。</p>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-3/bee.webp" alt="室内の木の板にとまった蜂" width="1200" height="1600" loading="lazy" /></figure>
+</section>
+<section><h2><span class="journal-diary-date">10/15</span></h2>
+<p>大学が始まってしまいました。木１に入れた学フロはとりあえず履修通ったのでヨシ！</p>
+<p>ついでに朝日新聞デジタルの有料会員ももらえました。先生の自腹だそうです。やったぜ。</p>
+<p>内容的にも興味ある内容だったし取ってよかったかな。まぁ苦手な声質の方の講演は正直あるだろうけども。</p>
+<p>人権教育の先生も思ってたよりなんか普通でした。感覚まひっただけかもしれないけれど。</p>
+<p>授業が3限でおわり、放課後(?)は作品作り。息抜きにオリンピックへ行ったところドクペの350缶が50円でうってました。寒くなってくると、物理的な“頭を冷やす”ができるので個人的には圧倒的に冬派です。夏の利点あんま感じない。</p>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-3/dr-pepper-snack.webp" alt="屋外のテーブルに置いたドクターペッパーと味ごのみ" width="1200" height="1600" loading="lazy" /></figure>
+</section>
+<section><h2><span class="journal-diary-date">10/16</span></h2>
+<p>今日も今日とて講義と作品制作。</p>
+<p>オリンピックでどくぺを箱買い(24本)しました。同学科の人二人もさらったので計72本。尚コーラ１ドクペ２なのでドクペのほうが人気です。３は十分に大きい数です、異論は認めません。</p>
+<p>1限で教育の情報化基礎(教育創生科目)をとったのですが、やっぱ情報系の内容って我らの世代でもかなり認知度に差があるなぁという。というか“教育創生”かつ“基礎”ってかいてあるのに履修者ほぼ理系の人だったし。なんだかなぁ。</p>
+<p>2のすぽふぃはめちゃ楽でした。(おさんぽ)来週からはぽけGOでもしてようかな。プラプラ使えば操作ほぼしないから許されるよね多分。</p>
+<p>作品はというと、とりあえず完成のめどは立ってきました。まぁただ完成形が見えてきたというだけでなかなか完成しそうではないんですが。特に映像部分は形がこれでちょうど自分の意図している形になっているのかがだんだんわからなくなってきているので、水曜日の部会とかでほかの人の意見もらおうとおもいます。</p>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-3/dr-pepper.webp" alt="制作中の机に置いたドクターペッパー" width="1200" height="1600" loading="lazy" /></figure>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-3/tv-head.webp" alt="古いテレビの筐体に入れたモニターに青い顔を表示したテレビヘッド" width="1600" height="1200" loading="lazy" /></figure>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-3/tv-bottom.webp" alt="テレビの筐体とモニターの下側の隙間" width="1600" height="1200" loading="lazy" /></figure>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-3/tv-side.webp" alt="テレビの筐体とモニターを横から見たところ" width="1200" height="1600" loading="lazy" /></figure>
+</section>
+<section><h2><span class="journal-diary-date">10/19</span></h2>
+<p>四限スタートのだいがくというのはなんだかとてもダメ人間になりそう。</p>
+<p>大学前に小金井公園へ金木犀を拾いにいったのですがすでに枯れてしぼんでしまっていました。メルカリとかでかうのもなんかあれだし、どうしようかなぁ。無水エタノールはもうすでに買ってしまった(1500円程度)のであきらめて多分そのうち買うと思います。バラに舵切るのもありかな。</p>
+<p>部室で三か月ぶりくらいにほかの人と会いました。ほんとに自分以外にも一年生いたんだ。</p>
+
+</section>
+<p>今週は代講うけまくって平日毎日塾講ありますが、なんとかのりこえて土日はがっつり作品制作に時間を割きたいと思います。そのためにとりあえずホームセンターに売ってないものだけでも必要なものが分かる程度までは進めなくては…。一限×4ってなんなんですかね。もうサークル棟にとまって朝まで作業しようかな。</p>
+</div>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>
