@@ -130,6 +130,8 @@ import '../styles/works.css';
         <section class="works-category" aria-labelledby="works-tech-title">
           <div class="works-category__heading"><span>03</span><div><h3 id="works-tech-title">ウェブ・技術</h3><p>サイト制作やプログラムの記録。</p></div></div>
 
+
+
         <details class="work-fold" id="site-building-guide">
           <summary>
             <span class="work-fold__title"><small>WEBSITE / GUIDE</small><strong>このサイトの作り方</strong></span>
@@ -166,7 +168,38 @@ import '../styles/works.css';
 
         <section class="works-category" aria-labelledby="works-other-title">
           <div class="works-category__heading"><span>04</span><div><h3 id="works-other-title">そのほか</h3><p>分野にとらわれない試作や、ちょっとした便利なもの。</p></div></div>
-          <p class="works-category__empty">新しいものができたら、ここにも追加します。</p>
+        <details class="work-fold work-fold--tool" id="exif-title-frame">
+          <summary>
+            <span class="work-fold__title"><small>PHOTO / TOOL</small><strong>EXIFフレーム生成ツール</strong></span>
+            <span class="work-fold__toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="work-fold__content">
+            <p class="work-fold__intro">写真にタイトル・撮影者名・撮影情報を添えた、白いフレーム付き画像を作れるブラウザ用ツールです。写真のEXIFからカメラやレンズ、焦点距離、ISO、F値、シャッタースピードを読み取り、表示する項目を選べます。</p>
+            <div class="work-fold__tool-info">
+              <div>
+                <h4>使ってみる・中身を見る</h4>
+                <p><a class="work-fold__link" href="https://syu-syuto.github.io/exif-title-frame/" target="_blank" rel="noopener noreferrer">EXIFフレーム生成ツールを開く ↗</a></p>
+                <p><a class="work-fold__link" href="https://github.com/Syu-Syuto/exif-title-frame" target="_blank" rel="noopener noreferrer">GitHubでコードを見る ↗</a></p>
+                <p>PNG・JPG形式で保存できます。</p>
+              </div>
+              <div>
+                <h4>基本の使い方</h4>
+                <ol class="work-fold__steps">
+                  <li>写真を選び、表示したい撮影情報にチェックを入れる。</li>
+                  <li>タイトルと撮影者名を入力する。</li>
+                  <li>サイズ・向き・解像度・保存形式を選び、「生成」を押す。</li>
+                  <li>プレビューを確認し、「保存」を押す。</li>
+                </ol>
+              </div>
+            </div>
+            <div class="work-fold__tip">
+              <h4>応用的な使い方</h4>
+              <p>サイズはA4・2L、向きは縦・横から選べます。解像度も600dpi・300dpiを切り替えられるので、印刷用や画面で見る用など、用途に合わせて設定してください。</p>
+              <p>タイトルや撮影者名を空欄にすると、その項目は表示されません。タイトルを空欄にした場合は「」も付かず、タイトルと撮影者名の間隔も、両方を入力したときだけ入ります。撮影者名だけを添える、といった使い方もできます。</p>
+              <p>EXIFの項目は個別に表示を切り替えられます。カメラとレンズだけを載せたり、撮影情報をすべてオフにしてタイトルだけを添えたりできます。写真に記録されていない撮影情報は、自動的に表示から省かれます。</p>
+            </div>
+          </div>
+        </details>
         </section>
 
         <a class="works-back" href="/">← トップページへ戻る</a>

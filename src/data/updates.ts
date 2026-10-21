@@ -15,6 +15,14 @@ export type HomeUpdate = {
 const manualUpdates: HomeUpdate[] = [
   {
     kind: 'work',
+    date: '2026-10-21',
+    order: 1,
+    href: '/works/#exif-title-frame',
+    label: '作ったもの',
+    message: '「EXIFフレーム生成ツール」を追加しました',
+  },
+  {
+    kind: 'work',
     date: '2026-09-23',
     order: 2,
     href: '/works/#kanji-checker',

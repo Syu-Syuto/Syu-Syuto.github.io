@@ -2,6 +2,14 @@
 // 作品を追加・改名したときは、この一覧も更新する。
 export const worksSearchEntries = [
   {
+    title: 'EXIFフレーム生成ツール',
+    excerpt: '写真にタイトル・撮影者名・EXIFの撮影情報を添えた白いフレーム付き画像を作り、PNG・JPGで保存できるブラウザ用ツール。',
+    tags: ['そのほか', '写真', 'ツール制作'],
+    keywords: 'EXIF フレーム タイトル 撮影者 カメラ レンズ 焦点距離 ISO F値 シャッタースピード PNG JPG A4 2L DPI 解像度 空欄',
+    href: '/works/#exif-title-frame',
+    icon: 'grid',
+  },
+  {
     title: '未習漢字チェッカー',
     excerpt: '文章に対象学年ではまだ習っていない漢字がないかを調べ、読みの提案やひらがなへの置換を手伝うブラウザ用ツール。',
     tags: ['教育・学習', '教育', '情報系', 'ツール制作'],
