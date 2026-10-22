@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'making-of-task-pocket');
+if (!article) throw new Error('記事データが見つかりません。');
+const socialImage = article.image.replace(/\.svg$/, '.png');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={socialImage} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">TOOL MAKING / TASK POCKET</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div></div>
+            <p class="journal-article__lead">課題をカテゴリーごとに整理できる、Task Pocketという課題管理ツールを作りました。</p>
+          </header>
+
+          <figure class="journal-article__thumbnail">
+            <img src={article.image} alt={article.imageAlt} width="1440" height="1000" />
+            <figcaption>Task Pocketの実際の画面。Googleでログインする前の状態です。</figcaption>
+          </figure>
+
+          <div class="journal-article__body">
+            <section>
+              <h2>自分に合ったものを使いたかった</h2>
+              <p>美研の人がスマホでメモアプリ使ってていいと思ったけど、もっとシンプルかつ自身に合ったもの、そしてデータが自分以外見られないようなものを使いたかった。</p>
+            </section>
+<section><h2>課題をまとめておく場所</h2><p>Task Pocketという課題管理ツールを作りました。課題名と締切、メモを登録して、カテゴリーごとに分けておけます。</p><p>状態は未着手・進行中・完了の３つ。終わったものにチェックを入れれば、未完了の一覧から外れます。完了した課題も、切り替えれば見返せます。</p></section>
+<section><h2>カテゴリーで分ける</h2><p>カテゴリーは自分で追加できて、名前と色を決められます。例えば「大学の授業関係」「作品制作」みたいに、用途に合わせて分ける使い方ができます。</p><p>名前や色の変更、並べ替えにも対応しています。カテゴリーを削除しても、中の課題は消えずに「未分類」に残ります。</p></section>
+<section><h2>締切と、まだ終わっていないもの</h2><p>画面の上には、未完了・今日が締切・期限切れの件数が出ます。課題は締切が近い順か、追加した順に並べられます。</p><p>カテゴリーで絞ったり、キーワードで検索したりもできます。課題ごとにメモも付けられるので、次にすることや補足を書いておくのにも使えます。</p></section>
+<section><h2>スマホとPCで使う</h2><p>Googleアカウントでログインすると、スマホとPCで同じ課題を見られます。同じアカウントで開けば、カテゴリーや課題の変更も同期されます。</p><p>私みたいにスマホ３台、パソコン３台とかいう人でも、同じGoogleアカウントでログインすれば、きちんとデータを同期して使えます。</p><p>Chromeなどで開いて、アプリとしてインストールすると使いやすいです。対応しているブラウザのメニューから「インストール」や「ホーム画面に追加」を選んでください。表示される名前は端末やブラウザによって違いますが、インストールするとアプリのように単独のウィンドウで開けます。</p></section>
+<section><h2>使い方</h2><p>まずGoogleでログインして、必要ならカテゴリーを作ります。「課題を追加」から課題名、カテゴリー、締切日、状態、メモを入れて保存。あとは進めたら状態を変え、終わったらチェックを入れる、という流れです。</p><p>「データを書き出す」から、課題とカテゴリーをJSON形式で保存することもできます。</p></section>
+            <section>
+              <h2>使う前に</h2>
+              <p>あくまで個人用として作ったものです。普段こちらからデータを見ることはまずありませんが、仕組み上は私の側からも閲覧できてしまいます。その点がOKな方のみ使ってください。</p>
+            </section>
+          </div>
+
+          <footer class="journal-article__footer">
+            <p>ブラウザからそのまま使えます。コードもGitHubで公開しています。</p>
+            <div class="journal-article__resource-links">
+              <a href="https://syu-syuto.github.io/task-pocket/" target="_blank" rel="noopener noreferrer">ツールを使う <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/Syu-Syuto/task-pocket" target="_blank" rel="noopener noreferrer">GitHubで見る <span aria-hidden="true">↗</span></a>
+              <a href="/works/#task-pocket">作ったものを見る <span aria-hidden="true">→</span></a>
+            </div>
+          </footer>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

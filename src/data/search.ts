@@ -2,6 +2,14 @@
 // 作品を追加・改名したときは、この一覧も更新する。
 export const worksSearchEntries = [
   {
+    title: 'Task Pocket',
+    excerpt: 'カテゴリーで課題を整理し、締切・状態・メモを管理する個人用課題帳。GoogleログインでスマホとPCを同期できます。',
+    tags: ['そのほか', '課題管理', '情報系', 'ツール制作'],
+    keywords: 'タスク ポケット 課題 締切 メモ カテゴリー ToDo Google 同期 PWA アプリ インストール',
+    href: '/works/#task-pocket',
+    icon: 'grid',
+  },
+  {
     title: 'EXIFフレーム生成ツール',
     excerpt: '写真にタイトル・撮影者名・EXIFの撮影情報を添えた白いフレーム付き画像を作り、PNG・JPGで保存できるブラウザ用ツール。',
     tags: ['そのほか', '写真', 'ツール制作'],

@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'making-of-task-pocket',
+    title: '課題管理ツール「Task Pocket」を作った',
+    excerpt: '課題をカテゴリーで整理し、締切や進み具合を管理するツールを作りました。スマホとPCで同期して使えます。',
+    publishedAt: '2026-10-22',
+    publicationOrder: 1,
+    tags: ['情報系', 'ツール制作', '課題管理'],
+    image: '/images/task-pocket-thumbnail.png',
+    imageAlt: 'Task Pocketのカテゴリー欄、課題の集計、検索と並び順を表示した画面',
+  },
+  {
     slug: 'diary-3',
     title: '日記#3',
     excerpt: 'ついに長すぎる休みが終わり大学が始まってしまいました。',

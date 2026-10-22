@@ -15,6 +15,14 @@ export type HomeUpdate = {
 const manualUpdates: HomeUpdate[] = [
   {
     kind: 'work',
+    date: '2026-10-22',
+    order: 2,
+    href: '/works/#task-pocket',
+    label: '作ったもの',
+    message: '「Task Pocket」を追加しました',
+  },
+  {
+    kind: 'work',
     date: '2026-10-21',
     order: 1,
     href: '/works/#exif-title-frame',
