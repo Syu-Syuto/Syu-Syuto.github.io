@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'diary-4');
+if (!article) throw new Error('記事データが見つかりません。');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={article.image} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">WEEKLY NOTE / 04</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta">
+              <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
+              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+            </div>
+            <p class="journal-article__lead">展示制作におわれた一週間</p>
+          </header>
+          <div class="journal-article__body">
+<section><h2><span class="journal-diary-date">10/20</span></h2>
+<p>工業数学Ⅰの試験結果が返ってきました。結果は97/100。まぁSだから良くはあるんだけどさ、間違えたのが1-1なのよ。中学あたりから全く成長してないですね。見直ししたはずなんだけどなぁ。</p>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-4/math-exam.webp" alt="97点・S評価の工業数学Ⅰの答案。氏名と学籍番号は赤く伏せてある" width="1600" height="1200" loading="lazy" /></figure>
+<p>あと大学の備蓄品配布のお知らせが来てました。学科でまとめて申し込んだのでいくつ貰えるかたのしみです。</p>
+</section>
+<section><h2><span class="journal-diary-date">10/21</span></h2>
+<p>PHPの脆弱性が話題になった日でしたね。</p>
+<p>夕方（夜かも）ニュースを見ていると、PHPを鍵と例えているやつがありましたがどうもしっくりこない。</p>
+<p>自分のイメージでは鍵はユーザーIDとパスワードであり、PHPは鍵ではなく壁とか柱みたいなものであえて家で例えるとすれば「PHPでできてる家はここをいい感じに斜め45°で叩くと壁壊れて不法侵入し放題！」とかの方が近いんですがどうなんでしょうか。まぁ私、別に情報分野に詳しい訳では無いのですが。他にいい例えあったら待ってます。イメージは財団真拳の共振動パンチ。</p>
+</section>
+<section><h2><span class="journal-diary-date">10/22</span></h2>
+<p>社会のO先生声が聞こえなすぎるから次回からZOOMで入ろうかな。普通にその方がいい。</p>
+<p>あとこの日はTaskPocketを作ってた日ですね。今のところ使い勝手はかなりいい（自分に合ってる）です。GitHubにオープンで置いてあるはずなので、生成AI系に課金してる人は自分用のやつ作るのオススメです。多分20分あればできるよ</p>
+<p>唯一の不満点は読み込みに3秒程度かかることですね。これだけはどうにかしたい。</p>
+<p>夜はマックの新しいチキンのハンバーガー（名前忘れた）を食べました。ハンバーガーのほうは美味しかったけど、これチキンだけなら多分コンビニでよくね？ってかんじ。シャカチキを返せ！</p>
+</section>
+<section><h2><span class="journal-diary-date">10/23</span></h2>
+<p>二限のスポフィで学内をおさんぽ。これで単位貰えるってマ？</p>
+<p>学内探索すると結構使用用途不明（というか使用中かすら不明）なとこが結構見つかった。乗っ取れるかな？金額次第だけど、でかい中古の車買って中を大改造するのがいいのかもしれない。基本走らないものとして</p>
+</section>
+<section><h2><span class="journal-diary-date">10/24</span></h2>
+<p>美研の展示制作を進めてました。展示作品に関しては小金井祭での展示が終わってからここにまとめる予定なので省略！</p>
+<p>夜は同学科の人のバ先のラーメン屋（？）へ。うまかったけどこれはラーメンではない。こういうたべものだ！（うまい）</p>
+<figure class="journal-inline-photo"><img src="/images/articles/diary-4/ramen.webp" alt="もやしと肉が盛られた赤いスープの一杯" width="1600" height="1200" loading="lazy" /></figure>
+</section>
+<section><h2><span class="journal-diary-date">10/25</span></h2>
+<p>息抜きがてら写真研究の部室を整理していると昔の人の連絡先を入手。無事連絡を取れたので小金井祭が終わったら写研の環境整備を進めたい。あっあと空気清浄機を買いました。メルカリで8900。痛い。</p>
+</section>
+<section><h2><span class="journal-diary-date">10/26</span></h2>
+<p>やはり2.5連休（月曜は4限から）というのはいいね。午前中作業する予定でしたが普通に家で寝てました。</p>
+<p>雨の中でしたが同学科の人に作品撮影のモデルやってもらいました。あと2人くらい頑張って捕まえたい。ただ雨の日にやるようなことではない。</p>
+</section>
+<section><h2><span class="journal-diary-date">10/27</span></h2>
+<p>Amazonで注文していたルービックキューブが届きました。とりあえず紙見ながら3分くらいにはなった。まずは手順覚えるところからですね。</p>
+<p>尚コリア語はまじでほぼ分かりませんでした。春学期Sだったんだけどな？？</p>
+</section>
+<p>ついに今週末は小金井祭です。火曜日休みならバイト入れとけばよかったな...。</p>
+<p>小金井祭では裏番組として暗室の大整備を行う予定です。久々に10hぐらいまとめて寝たい。疲れた。</p>
+</div>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

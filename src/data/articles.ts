@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'diary-4',
+    title: '日記#4',
+    excerpt: '試験結果が返ってきたり、課題管理ツールを作ったり、小金井祭に向けて展示制作を進めたり。',
+    publishedAt: '2026-10-28',
+    publicationOrder: 1,
+    tags: ['日記', '工作'],
+    image: '/images/articles/diary-4/ramen.webp',
+    imageAlt: 'もやしと肉が盛られた赤いスープの一杯',
+  },
+  {
     slug: 'making-of-task-pocket',
     title: '課題管理ツール「Task Pocket」を作った',
     excerpt: '課題をカテゴリーで整理し、締切や進み具合を管理するツールを作りました。スマホとPCで同期して使えます。',
