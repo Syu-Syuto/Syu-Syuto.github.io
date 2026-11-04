@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'making-of-tv-head',
+    title: 'TVヘッド「視聴者」を作った話',
+    excerpt: '「見る側」と「見られる側」をテーマに、ブラウン管テレビを被れる作品にした話。',
+    publishedAt: '2026-11-04',
+    publicationOrder: 1,
+    tags: ['美術', '工作', '情報系'],
+    image: '/images/art-viewer.jpg',
+    imageAlt: '青い画面に眠った表情が映るテレビヘッドを被った人物',
+  },
+  {
     slug: 'diary-4',
     title: '日記#4',
     excerpt: '試験結果が返ってきたり、課題管理ツールを作ったり、小金井祭に向けて展示制作を進めたり。',

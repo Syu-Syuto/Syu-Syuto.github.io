@@ -6,14 +6,14 @@ import '../styles/photos.css';
 
 const formatCaptureDate = (date: string) => date.replaceAll('-', '.');
 ---
-<BaseLayout title="フォトギャラリー | しゅうの物置" description="しゅうが撮った写真を置いているフォトギャラリー。">
+<BaseLayout title="フォト／アートギャラリー | しゅうの物置" description="しゅうの美術作品と写真の置き場。">
   <div class="gallery-page" data-camera-visible="false">
     <section class="gallery-hero" aria-labelledby="gallery-title">
       <div class="gallery-hero__inner">
         <div class="gallery-hero__paper">
-          <span class="gallery-hero__eyebrow">PHOTO GALLERY / しゅうの物置</span>
-          <h1 id="gallery-title">フォトギャラリー</h1>
-          <p>撮った写真を、少しずつここに貼っていきます。</p>
+          <span class="gallery-hero__eyebrow">PHOTO / ART GALLERY · しゅうの物置</span>
+          <h1 id="gallery-title">フォト／アートギャラリー</h1>
+          <p>作った作品や撮った写真を、少しずつここに貼っていきます。</p>
           <svg class="gallery-hero__camera" viewBox="0 0 156 126" fill="none" aria-hidden="true">
             <path d="M19 42h31l9-13h36l10 13h29c6 0 9 4 9 10v58c0 5-3 8-9 8H19c-5 0-9-4-9-9V51c0-5 4-9 9-9Z" />
             <circle cx="77" cy="77" r="28" /><circle cx="77" cy="77" r="19" />
@@ -25,10 +25,34 @@ const formatCaptureDate = (date: string) => date.replaceAll('-', '.');
       </div>
     </section>
 
+    <section class="gallery-surface" aria-labelledby="art-gallery-title">
+      <div class="gallery-surface__inner">
+        <div class="gallery-toolbar">
+          <div class="gallery-toolbar__heading"><span>01</span><div><h2 id="art-gallery-title">美術の置き場</h2></div></div>
+        </div>
+        <article id="viewer" class="gallery-card" style="max-width: 760px; margin-inline: auto;">
+          <span class="gallery-card__tape" aria-hidden="true"></span>
+          <figure>
+            <img src="/images/art-viewer.jpg" alt="青い画面に眠った表情が映るテレビヘッドを被った人物" width="1600" height="1066" />
+            <figcaption>
+              <h3>視聴者</h3>
+              <p>題材：見る側と見られる側。</p>
+              <p>1983年製のブラウン管テレビを使った。当時のテレビは、家族が集まって同じ画面を「見る」ものだった。今はSNSなどで自分自身を発信し、他人から見られる一方で、自分も他人を見る。「見る側」と「見られる側」は固定されず、その境界は曖昧になっている。</p>
+              <p>この作品では、その立場の反転を二つの方法で表現した。</p>
+              <p>一つ目は映像。普段は観客が画面を見る側だが、途中でこちらを見る両目が現れ、観客が「見られる側」に変わる。</p>
+              <p>二つ目は身体。普段はテレビと向かい合って見る側にいるが、テレビヘッドを被ることでテレビと同じ方向を向き、自分自身が「見られる側」になる。</p>
+              <p>昔の「みんなでテレビを見る」という関係と、今の「見る／見られる」が混ざり合う関係を、一つのテレビの中に重ねた。</p>
+              <p><a href="/articles/making-of-tv-head/">制作記事を読む →</a></p>
+            </figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
     <section class="gallery-surface" aria-labelledby="gallery-list-title">
       <div class="gallery-surface__inner">
         <div class="gallery-toolbar">
-          <div class="gallery-toolbar__heading"><span>01</span><div><h2 id="gallery-list-title">写真の置き場</h2><p>{galleryPhotos.length}枚の写真</p></div></div>
+          <div class="gallery-toolbar__heading"><span>02</span><div><h2 id="gallery-list-title">写真の置き場</h2><p>{galleryPhotos.length}枚の写真</p></div></div>
           <button class="gallery-toggle" type="button" id="camera-toggle" aria-pressed="false">
             <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 11h6l3-4h6l3 4h5v16H5z"/><circle cx="16.5" cy="19" r="5"/></svg>
             <span data-camera-label>カメラ情報を表示</span>
