@@ -20,7 +20,7 @@ if (!article) throw new Error('記事データが見つかりません。');
             <h1>{article.title}</h1>
             <div class="journal-article__meta">
               <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
-              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+              <div class="journal-tags">{article.tags.map((tag) => <a class="journal-tag" href={`/search/?type=article&tag=${encodeURIComponent(tag)}`} aria-label={`${tag}の記事をすべて見る`}>{tag}</a>)}</div>
             </div>
             <p class="journal-article__lead">展示制作におわれた一週間</p>
           </header>

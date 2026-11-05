@@ -20,7 +20,7 @@ if (!article) throw new Error('記事データが見つかりません。');
             <h1>{article.title}</h1>
             <div class="journal-article__meta">
               <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
-              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+              <div class="journal-tags">{article.tags.map((tag) => <a class="journal-tag" href={`/search/?type=article&tag=${encodeURIComponent(tag)}`} aria-label={`${tag}の記事をすべて見る`}>{tag}</a>)}</div>
             </div>
             <p class="journal-article__lead">一週間程度を区切りにして、日記的なものを書いていこうと思います。なお、内容がないような週は書きません。</p>
           </header>

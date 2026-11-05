@@ -29,6 +29,9 @@
 .journal-card__bottom strong { margin-left: auto; color: #2e648f; font-size: .94rem; white-space: nowrap; }
 .journal-card__bottom strong span { font-size: 1.25rem; margin-left: 8px; }
 .journal-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
+a.journal-tag { text-decoration: none; }
+a.journal-tag:hover { text-decoration: underline; text-underline-offset: 3px; }
+a.journal-tag:focus-visible { outline: 3px solid #34475a; outline-offset: -3px; }
 .journal-tag { position: relative; display: inline-block; padding: 6px 13px 7px; background: #e8d9ab; color: #34475a; box-shadow: 2px 3px 5px #47331e27; clip-path: polygon(0 0,100% 0,100% 83%,87% 100%,0 100%); transform: rotate(-3deg); font-size: .8rem; font-weight: 800; letter-spacing: .04em; white-space: nowrap; }
 .journal-tag:nth-child(2) { background: #cee0e0; transform: rotate(2deg); }
 .journal-tag:nth-child(3) { background: #eadad6; transform: rotate(-1deg); }

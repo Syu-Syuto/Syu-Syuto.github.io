@@ -19,7 +19,7 @@ const socialImage = article.image.replace(/\.svg$/, '.png');
           <header class="journal-article__header">
             <span class="journal-eyebrow">CLASS PROJECT / 05</span>
             <h1>{article.title}</h1>
-            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div></div>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <a class="journal-tag" href={`/search/?type=article&tag=${encodeURIComponent(tag)}`} aria-label={`${tag}の記事をすべて見る`}>{tag}</a>)}</div></div>
             <p class="journal-article__lead">文章の中に、その学年ではまだ習っていない漢字がないかを調べるツールを作りました。</p>
           </header>
 
