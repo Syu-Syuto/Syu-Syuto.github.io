@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'camera-basics');
+if (!article) throw new Error('記事データが見つかりません。');
+const socialImage = article.image.replace(/\.svg$/, '.png');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={socialImage} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">PHOTO NOTES / BASICS</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div></div>
+          </header>
+
+          <div class="journal-article__body">
+            <p>前にnoteで書いた写真講習の「構図」「ISO」「SS」「F値」の４回分をまとめました。カメラの３値は、明るさを調整するだけでなく、ざらつき、動き、ボケの見え方にも関わります。構図は一眼どころかスマホでも使える、写真の基礎中の基礎です。この機会にさっくり覚えてしまいましょう。</p>
+            <p>※人物が写る作例は、以前の写真の構図やポーズを参考に、別の人物としてAIで再現しています。「AIによる再現」と記載した画像は、記載の設定で撮影したものではありません。人物が写らない作例は、以前のnoteで使った写真を掲載しています。</p>
+            <nav aria-label="この記事の目次">
+              <ul><li><a href="#composition">構図と光</a></li><li><a href="#iso">ISO感度</a></li><li><a href="#shutter">シャッタースピード</a></li><li><a href="#aperture">絞り・F値</a></li><li><a href="#terms">基本用語と３値の決め方</a></li></ul>
+            </nav>
+            <section id="composition">
+              <h2>第一回　構図と光</h2>
+              <p>そもそも構図とは、画面の中に何をどう置くか、ということです。画面全体をまとまりよく見せるのが大事で、構図を意識しながら写真を撮ると、自分が伝えたい内容を伝えやすかったり、単純にすっきりとして見やすい写真になります。</p>
+              <div class="journal-photo-grid"><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-0-01.jpg"><img src="/images/articles/camera-basics/note-0-01.jpg" alt="二分割構図（元記事の撮影者：TM）" loading="lazy" /></a><figcaption>二分割構図（元記事の撮影者：TM）</figcaption></figure><figure class="journal-inline-photo"><span class="camera-photo-panel" style="aspect-ratio:724 / 543"><img src="/images/articles/camera-basics/composition-a.png" alt="三分割構図：ラケットを構える人物" style="left:-100%;top:0%" loading="lazy" /></span><figcaption>三分割構図：ラケットを構える人物（AIによる再現）</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-0-04.jpg"><img src="/images/articles/camera-basics/note-0-04.jpg" alt="日の丸構図：中央に置いたタンポポ" loading="lazy" /></a><figcaption>日の丸構図：中央に置いたタンポポ</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-0-05.jpg"><img src="/images/articles/camera-basics/note-0-05.jpg" alt="三角構図：下から見上げた東京タワー" loading="lazy" /></a><figcaption>三角構図：下から見上げた東京タワー</figcaption></figure></div>
+              <h3>二分割構図・三分割構図</h3>
+              <p>二分割構図は上下、または左右を二つに分割する構図です。水平線や垂直線がきれいに映るので、海や空などの風景の写真によく使われているように感じます。</p>
+              <p>三分割構図とは写真を3×3の9マスに分割して、その交点にメインとなる被写体を配置する構図です。被写体が写らない場所に抜け感が生まれ、すっきりとした印象を与えることができます。</p>
+              <h3>日の丸構図・三角構図</h3>
+              <p>日の丸構図は、日本の国旗の赤丸のようにメインとなる被写体が写真の中心となる構図。何がメインなのか見ている人に伝わりやすいです。しかしながら、単純な構図故にどのようにして個性を出していくかが難しい、居合抜刀気刃斬りを使う太刀のような構図です。ネタが伝わらなかった人はモンハンRISEやりましょう。</p>
+              <p>三角構図は画の中に三角形の線ができるようにする構図で、奥行きや安定感を表現します。正三角形ではなく、むしろ変形させたり逆三角形にしてみるのもアリです。東京タワーは三角構図の筆頭で、下から見上げると分かりやすいです。</p>
+              <div class="journal-photo-grid"><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-0-06.jpg"><img src="/images/articles/camera-basics/note-0-06.jpg" alt="放射線構図：奥へ続く線路" loading="lazy" /></a><figcaption>放射線構図：奥へ続く線路</figcaption></figure><figure class="journal-inline-photo"><span class="camera-photo-panel" style="aspect-ratio:3 / 2"><img src="/images/articles/camera-basics/composition-b.png" alt="対角線構図：斜めに並ぶ調理台" style="left:-100%;top:0%" loading="lazy" /></span><figcaption>対角線構図：斜めに並ぶ調理台（AIによる再現）</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-0-08.jpg"><img src="/images/articles/camera-basics/note-0-08.jpg" alt="C字構図：カーブする道（元記事の撮影者：TM）" loading="lazy" /></a><figcaption>C字構図：カーブする道（元記事の撮影者：TM）</figcaption></figure><figure class="journal-inline-photo"><span class="camera-photo-panel" style="aspect-ratio:3 / 2"><img src="/images/articles/camera-basics/composition-b.png" alt="パターン構図：弓を構える姿の繰り返し" style="left:-100%;top:-100%" loading="lazy" /></span><figcaption>パターン構図：弓を構える姿の繰り返し（AIによる再現）</figcaption></figure></div>
+              <h3>放射線構図・対角線構図</h3>
+              <p>放射線構図は、ある一点から線が放射状にのびていくような構図で、奥行きを表現するのに特化した構図です。対角線構図はインスタで死ぬほどみるやつです。対角線に沿って被写体をのせたり境界を作ることで、ダイナミックな印象を与えます。スマホでも傾けるだけでそれっぽく撮れます。</p>
+              <h3>C字構図・パターン構図</h3>
+              <p>C字構図は、画面の中にCの字を入れる構図。道をCにすることもあれば、丸いお皿が見切れるように撮影して料理に目線を誘導することもあります。パターン構図は、同じような形を一定の規則で連続させる構図です。そこで組み写真！みな組み写真をするのです…。</p>
+              <p>S字構図は曲がりくねる線で目線を奥へ導く、サンドイッチ構図は主役を両側から挟む、シンメトリー構図は左右や上下を対称にする、対比構図は色・大きさ・明暗などの違いを並べて見せる構図です。</p>
+              <h3>おまけ　光の話</h3>
+              <div class="journal-photo-grid"><figure class="journal-inline-photo"><span class="camera-photo-panel" style="aspect-ratio:3 / 2"><img src="/images/articles/camera-basics/light.png" alt="逆光：木々の間のシルエット" style="left:0%;top:0%" loading="lazy" /></span><figcaption>逆光：木々の間のシルエット（AIによる再現）</figcaption></figure><figure class="journal-inline-photo"><span class="camera-photo-panel" style="aspect-ratio:3 / 2"><img src="/images/articles/camera-basics/light.png" alt="逆光：夕日の前のシルエット" style="left:-100%;top:0%" loading="lazy" /></span><figcaption>逆光：夕日の前のシルエット（AIによる再現）</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-0-13.jpg"><img src="/images/articles/camera-basics/note-0-13.jpg" alt="サイド光：料理の照りと影" loading="lazy" /></a><figcaption>サイド光：料理の照りと影</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-0-14.jpg"><img src="/images/articles/camera-basics/note-0-14.jpg" alt="サイド光：暗い地面に伸びる芽" loading="lazy" /></a><figcaption>サイド光：暗い地面に伸びる芽</figcaption></figure></div>
+              <ul><li><strong>順光：</strong>カメラ側から当たる光。色や形をはっきりと写しやすい。</li><li><strong>逆光：</strong>被写体の後ろから当たる光。人のシルエットを作ったり、現像次第でやわらかい写真にしたりできる。</li><li><strong>サイド光：</strong>横から当たる光。影を作ることで立体的に見せる。</li></ul>
+              <p>横からあてれば立体感！というわけではなく、たとえば料理では、マヨネーズのように光を反射しやすい部分と、光の当たらない部分との差があると立体感が出て、あとマヨがおいしそうに見えます。なんかえらそうに語りましたが、一回目は右から光当ててました。トライアンドエラーです。いっぱい撮りましょう。</p>
+            </section>
+            <section id="iso">
+              <h2>第二回　ISO感度</h2>
+              <p>ども、構図編はかなり長めでしたが、ISO編は短めです。絞りとシャッタースピードを変えずにISOを上げると、仕上がりは明るくなります。暗い場所で光を十分に取り込めないときにISOを上げると、ざらつき（ノイズ）が目立ちやすくなります。</p>
+              <div class="journal-photo-grid"><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-1-01.jpg"><img src="/images/articles/camera-basics/note-1-01.jpg" alt="ISO 100（実写）" loading="lazy" /></a><figcaption>ISO 100（実写）</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-1-02.jpg"><img src="/images/articles/camera-basics/note-1-02.jpg" alt="ISO 800（実写）" loading="lazy" /></a><figcaption>ISO 800（実写）</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-1-03.jpg"><img src="/images/articles/camera-basics/note-1-03.jpg" alt="ISO 3200（実写）" loading="lazy" /></a><figcaption>ISO 3200（実写）</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-1-04.jpg"><img src="/images/articles/camera-basics/note-1-04.jpg" alt="ISO 6400（実写）" loading="lazy" /></a><figcaption>ISO 6400（実写）</figcaption></figure></div>
+              <p>上の４枚は、SSを調整して明るさを揃えながら、ISOを変えて撮影した写真です。ぱっと見では分かりにくくても、拡大してみるとざらつきが分かることがあります。L判や2L判では気にならなくても、A4やA3に伸ばすと違いが見えやすくなります。元の記事では800以下、上げても6400くらいを私の目安にしていましたが、機種や出力サイズによります。なんなら全部100がいいです。とはいえ、ブレたら困る場面ならISOを上げてでも必要なSSを確保する方がいいです。</p>
+            </section>
+            <section id="shutter">
+              <h2>第三回　SS（シャッタースピード）</h2>
+              <p>僕はスポーツをしている人の写真ばかり撮影しているので、３値の中でSSが一番好きです。SSは、センサーに光を当てて記録する時間。長くすると多くの光が入るので明るくなり、短いと暗くなります。記録中に被写体が動くと、その軌跡が重なってブレになります。</p>
+              <div class="journal-photo-grid"><figure class="journal-inline-photo"><span class="camera-photo-panel" style="aspect-ratio:3 / 2"><img src="/images/articles/camera-basics/shutter.png" alt="テニス：速いボールを止める" style="left:0%;top:0%" loading="lazy" /></span><figcaption>テニス：速いボールを止める（AIによる再現）</figcaption></figure><figure class="journal-inline-photo"><span class="camera-photo-panel" style="aspect-ratio:3 / 2"><img src="/images/articles/camera-basics/shutter.png" alt="バスケ：暗い体育館で動きを捉える" style="left:-100%;top:0%" loading="lazy" /></span><figcaption>バスケ：暗い体育館で動きを捉える（AIによる再現）</figcaption></figure><figure class="journal-inline-photo"><span class="camera-photo-panel" style="aspect-ratio:3 / 2"><img src="/images/articles/camera-basics/shutter.png" alt="武道：少しブレを残す" style="left:0%;top:-100%" loading="lazy" /></span><figcaption>武道：少しブレを残す（AIによる再現）</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-2-09.jpg"><img src="/images/articles/camera-basics/note-2-09.jpg" alt="水の粒を止める：1/4000秒で撮影" loading="lazy" /></a><figcaption>水の粒を止める：1/4000秒で撮影</figcaption></figure></div>
+              <ul><li><strong>超はやく動く被写体：</strong>晴天で速いボールを止めたいときは1/4000秒など。短い時間で撮るので暗くなりやすく、光量やISOとの相談です。</li><li><strong>そこそこ動くやつ：</strong>バスケのこんなかんじの動きなら、私は1/600秒前後を目安にします。体育館って割と暗いしね。</li><li><strong>躍動感：</strong>1/200秒くらいまで遅くして、動く手足を少しブレさせるのもアリ。</li><li><strong>野外でのてきとー撮影：</strong>何枚か撮ってSSを決めたら、雲の動きで明るさが変わるときはISOオートに任せる手もあります。</li><li><strong>暗い室内や長時間露光：</strong>ゆっくりした被写体なら1/4秒などで光を稼げます。星や光跡なら15秒、30秒といった長さも。手持ちでブレない値は焦点距離や手ブレ補正にもよるので、固定できるなら三脚などを使います。</li></ul>
+              <div class="journal-photo-grid"><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-2-06.jpg"><img src="/images/articles/camera-basics/note-2-06.jpg" alt="暗い水族館のクラゲ：1/4秒で撮影" loading="lazy" /></a><figcaption>暗い水族館のクラゲ：1/4秒で撮影</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-2-08.jpg"><img src="/images/articles/camera-basics/note-2-08.jpg" alt="スマホで撮った星空：30秒の長時間露光" loading="lazy" /></a><figcaption>スマホで撮った星空：30秒の長時間露光</figcaption></figure></div>
+              <h3>静止体に注目を。</h3>
+              <p>ロベール・ドアノーの<a href="https://museumcollection.tokyo/works/88523/">《パリ市庁舎前のキス》（1950年）</a>では、周りの通行人に動きがあるぶん、キスをする二人に視線がいきます。止まっているように見えるところに目がいく。いいね。</p>
+              <p>普段私たちの目には見えない世界を捉えることができるので、ぜひSSで遊んでみてください！</p>
+            </section>
+            <section id="aperture">
+              <h2>第四回　F値（絞り）</h2>
+              <p>F値は、レンズの絞りの開き具合を示す数値です。数字が小さいと穴が大きく、光が多く入ります。数字が大きいと穴が小さく、光が少なくなります。あえて付け足すならば、Fを上げると、同じ焦点距離や撮影距離なら、ピントが合って見える奥行きが広がります。正直見た方が早いので実例を見ていきましょう。</p>
+              <figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-3-02.jpg"><img src="/images/articles/camera-basics/note-3-02.jpg" alt="手前のペンギンにピントを合わせたまま、F値とSSを変えて撮った比較（実写）" loading="lazy" /></a><figcaption>手前のペンギンにピントを合わせたまま、F値とSSを変えて撮った比較（実写）</figcaption></figure>
+              <p>手前のペンギンにピントを置いたまま、背景の見え方がどんなふうに変わるかを比べてみてください。</p>
+              <div class="journal-photo-grid"><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-3-03.jpg"><img src="/images/articles/camera-basics/note-3-03.jpg" alt="風景：手前の道から遠くの送電塔まで" loading="lazy" /></a><figcaption>風景：手前の道から遠くの送電塔まで</figcaption></figure><figure class="journal-inline-photo"><a href="/images/articles/camera-basics/note-3-04.jpg"><img src="/images/articles/camera-basics/note-3-04.jpg" alt="物撮り：F11で撮影" loading="lazy" /></a><figcaption>物撮り：F11で撮影</figcaption></figure></div>
+              <p>風景では手前の道から遠くまで写したいならF値を上げます。物撮りも被写体全体をはっきり写したいので、例えばF11。ただし、どこまでも絞ればいいわけではなく、背景をどれくらい見せたいかで決めます。</p>
+              <p>行事写真は、情報量を増やすためにF値を高めにすることがあります。後ろに知っている人が映ってたら楽しいしね。すみません一瞬で逆のこと言います。花形の場合はFを下げてその人たちだけに視線が集まるようにしましょう。ポートレートでも、例えばF2.8から試すと背景と分けやすいです。</p>
+            </section>
+            <section id="terms">
+              <h2>基本用語と３値の決め方</h2>
+              <dl>
+                <dt><strong>露出</strong></dt><dd>センサーに届く光の量のこと。絞りとSSで光の量が変わり、ISOは同じ光の量でも仕上がりの明るさに影響します。</dd>
+                <dt><strong>焦点距離</strong></dt><dd>レンズに「35mm」「85mm」などと書いてある数字。同じセンサーサイズなら短いほど広く、長いほど狭く写ります。</dd>
+                <dt><strong>ピント・被写界深度</strong></dt><dd>ピントは焦点を合わせた位置。被写界深度は、その前後でピントが合って見える範囲です。</dd>
+                <dt><strong>被写体ブレ・手ブレ</strong></dt><dd>被写体ブレは撮られるものの動き、手ブレは撮る側のカメラの動きが原因です。</dd>
+                <dt><strong>白飛び・黒つぶれ</strong></dt><dd>明るい部分が真っ白に、暗い部分が真っ黒になって、模様や階調が見えなくなることです。</dd>
+              </dl>
+              <p>まずは何を見せたいか。動きを止めたいならSSから、背景をぼかしたいならF値から決めて、明るさが足りなければ残りの値で調整します。例えばF値を固定して1/250秒から1/500秒に速くしたとき、ISO400から800に上げると、仕上がりの明るさはおおむね同じになります。以上、３値と構図を使いこなしてより良い写真を！</p>
+              <p>補足資料：<a href="https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/a-basic-look-at-the-basics-of-exposure">Nikonの露出の基礎</a>、<a href="https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-maximum-aperture">絞りと被写界深度の解説</a>。</p>
+            </section>
+          </div>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>
+
+<style>
+  .camera-photo-panel { position: relative; display: block; overflow: hidden; }
+  .camera-photo-panel img { position: absolute; width: 200%; max-width: none; height: 200%; object-fit: fill; }
+</style>

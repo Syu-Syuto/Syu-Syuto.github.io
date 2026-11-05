@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'camera-basics',
+    title: 'カメラの３値と基本用語',
+    excerpt: '構図・光・ISO感度・シャッタースピード・F値。以前の写真講習４回分を、作例と一緒にまとめました。',
+    publishedAt: '2026-11-05',
+    publicationOrder: 3,
+    tags: ['写真'],
+    image: '/images/articles/camera-basics/note-0-01.jpg',
+    imageAlt: '水平線の上に鳥居が立つ二分割構図の作例',
+  },
+  {
     slug: 'diary-5',
     title: '日記#5',
     excerpt: '小金井祭の展示準備、カメラ二台での撮影、美研の撤収。10/29〜11/4の日記です。',
