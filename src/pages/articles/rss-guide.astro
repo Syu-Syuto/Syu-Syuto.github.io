@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import { Content } from '../../content/rss-guide.md';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'rss-guide');
+if (!article) throw new Error('記事データが見つかりません。');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={article.image} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">SITE GUIDE</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta">
+              <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
+              <div class="journal-tags">{article.tags.map((tag) => <a class="journal-tag" href={`/search/?type=article&tag=${encodeURIComponent(tag)}`} aria-label={`${tag}の記事をすべて見る`}>{tag}</a>)}</div>
+            </div>
+          </header>
+          <figure class="journal-article__thumbnail">
+            <img src={article.image} alt={article.imageAlt} width="1200" height="630" />
+            <figcaption>RSSで新しい記事をチェック。</figcaption>
+          </figure>
+          <div class="journal-article__body">
+            <Content />
+
+          </div>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

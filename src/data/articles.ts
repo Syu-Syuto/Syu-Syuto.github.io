@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'rss-guide',
+    title: 'このサイトの更新をRSSで受け取れます',
+    excerpt: 'RSSとは何か、Feedlyでの登録方法、このサイトで受け取れる更新について。',
+    publishedAt: '2026-11-05',
+    publicationOrder: 10,
+    tags: ['サイト案内'],
+    image: '/images/rss-guide.svg',
+    imageAlt: 'RSSのマークと「記事の更新を受け取る」という文字',
+  },
+  {
     slug: 'camera-basics',
     title: 'カメラの３値と基本用語',
     excerpt: '構図・光・ISO感度・シャッタースピード・F値。以前の写真講習４回分を、作例と一緒にまとめました。',

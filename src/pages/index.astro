@@ -37,7 +37,10 @@ const notices = getHomeUpdates(articles, 3);
           <p class="desk-hero__aside">「ないなら、作ろう。」</p>
           <img class="desk-hero__drawing" src="/images/hero-cat-mage-painted.webp" alt="右を指差す、長い耳と赤と金で装飾された衣装の黒猫" />
         </div>
-        <div class="desk-hero__note" aria-hidden="true">Make<br />Explore<br />Share<br />Enjoy! <span>☺</span></div>
+        <a class="desk-hero__note desk-hero__rss" href="/articles/rss-guide/" aria-label="RSSの登録方法を読む">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="5" cy="19" r="2" fill="currentColor"/><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          <strong>RSS</strong>
+        </a>
         <div class="desk-hero__topnote" aria-hidden="true">“ 好きなことで<br />日常をちょっと便利に ”</div>
       </div>
     </section>
@@ -75,3 +78,11 @@ const notices = getHomeUpdates(articles, 3);
     <SiteFooter />
   </div>
 </BaseLayout>
+<style>
+  .desk-hero__rss { display: flex; flex-direction: column; justify-content: center; gap: .6em; text-decoration: none; }
+  .desk-hero__rss { align-items: center; padding-inline: 8px; gap: .2em; }
+  .desk-hero__rss svg { width: 3.6em; height: 3.6em; max-width: 100%; color: #9c603a; flex-shrink: 1; min-height: 0; }
+  .desk-hero__rss strong { font-size: 3em; line-height: 1; white-space: nowrap; letter-spacing: 0; }
+  .desk-hero__rss:hover { filter: brightness(1.04); }
+  .desk-hero__rss:focus-visible { outline: 3px solid #34475a; outline-offset: 4px; }
+</style>
