@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'how-i-use-open-classrooms',
+    title: '空き教室検索ツールの私の使い方',
+    excerpt: '何限まで空いているか、自分の時間割、次の授業の通知。東京学芸大学の空き教室検索ツールを普段どう使っているかまとめました。',
+    publishedAt: '2026-11-05',
+    publicationOrder: 1,
+    tags: ['東京学芸大学', '空き教室検索', 'ツール制作'],
+    image: '/images/articles/how-i-use-open-classrooms/next-class.jpg',
+    imageAlt: '東京学芸大学の空き教室検索ツールに表示された、次の授業と教室の案内',
+  },
+  {
     slug: 'making-of-tv-head',
     title: 'TVヘッド「視聴者」を作った話',
     excerpt: '「見る側」と「見られる側」をテーマに、ブラウン管テレビを被れる作品にした話。',

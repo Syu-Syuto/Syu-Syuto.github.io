@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'how-i-use-open-classrooms');
+if (!article) throw new Error('記事データが見つかりません。');
+const socialImage = article.image.replace(/\.svg$/, '.png');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={socialImage} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">CAMPUS TOOL / GUIDE</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div></div>
+          </header>
+
+          <div class="journal-article__body">
+            <p>二か月ほど前に作成した空き教室検索ツール。元々私用に作成したものをどうせなら公開するか、というくらいの気持ちで公開していたので使い方の解説をそこまで詳しく作らなかったのですが、先日の学祭などで意外と使ってくれている人がいたため、よい活用の方法や、当初はなかった新しい機能についての解説記事を書いていこうと思います。</p>
+            <section>
+              <h2>東京学芸大の空き教室検索、どこが空いてるかだけ見てない？</h2>
+              <p>２限が終わって、４限までに課題を進めたい。そんなとき、空いている教室が分かっても、次のコマに授業が入るなら途中で移動することになります。</p>
+              <p>東京学芸大学の「空き教室検索」では、<strong>何限まで続けて空いているか</strong>と、<strong>その教室で次にいつ授業が始まるか</strong>まで見られます。自分の時間割も登録しておくと、次の授業の教室を見ながら、空きコマを過ごす場所を選べます。</p>
+            </section>
+            <section>
+              <h2>いま探すなら「現在から探す」、先の予定なら曜日と時限を選ぶ</h2>
+              <p>授業が終わってすぐ探したいときは、画面上部の「現在から探す」をタップ。結果の見出しに開講期・曜日・時限が出るので、使いたいコマになっているか確認します。たとえば「来週の火曜３限に友だちと作業したい」なら、開講期・曜日・時限を手動で選びます。</p>
+              <figure class="journal-inline-photo" style="max-width: 360px; margin-inline: auto;"><img src="/images/articles/how-i-use-open-classrooms/search.jpg" alt="「現在から探す」と、開講期・曜日・時限を指定する画面" width="1080" height="2295" loading="lazy" /><figcaption>「現在から探す」と、開講期・曜日・時限を指定する画面</figcaption></figure>
+              <p>結果はC棟、N棟、S棟、W棟と建物ごとにまとまっています。短い空きコマなら、次の授業がある棟から見ていくと、移動時間を抑えられます。</p>
+            </section>
+            <section>
+              <h2>「空き」の下にある、何限まで空いているかを見る</h2>
+              <p>教室カードには「１限のみ空き」「３〜７限まで連続で空き」といった表示があり、次に授業が入っていれば、その時限と授業名も分かります。教室名をタップすると、選んだ曜日の１〜７限の状況をまとめて確認できます。</p>
+              <figure class="journal-inline-photo" style="max-width: 360px; margin-inline: auto;"><img src="/images/articles/how-i-use-open-classrooms/room.jpg" alt="教室名をタップすると、１〜７限の状況をまとめて見られる" width="1080" height="2271" loading="lazy" /><figcaption>教室名をタップすると、１〜７限の状況をまとめて見られる</figcaption></figure>
+              <p>３限だけ課題を進めるなら、４限の授業に移動しやすい教室で十分。３限から４限にかけて発表練習をするなら、<strong>４限まで連続で空いている教室</strong>を選ぶと、途中で場所を変えずに済みます。</p>
+            </section>
+            <section>
+              <h2>「自分の時間割」に登録して、次の授業の近くで探す</h2>
+              <p>「自分の時間割」の「登録・編集」を開くと、授業名・教室・科目コードで授業データを検索できます。見つからない授業は手入力できます。登録すると次の授業と教室が表示されるので、<strong>次に行く教室を確認 → 同じ棟の空き教室を見る → 何限まで空いているか確認</strong>、という流れで探せます。</p>
+              <div class="journal-photo-grid" style="align-items: start;">
+                <figure class="journal-inline-photo" style="max-width: 360px; margin-inline: auto;"><img src="/images/articles/how-i-use-open-classrooms/timetable.jpg" alt="「自分の時間割」に表示される現在の授業と、これから１週間の授業" width="1080" height="2276" loading="lazy" /><figcaption>「自分の時間割」に表示される現在の授業と、これから１週間の授業</figcaption></figure>
+                <figure class="journal-inline-photo" style="max-width: 360px; margin-inline: auto;"><img src="/images/articles/how-i-use-open-classrooms/next-class.jpg" alt="画面上部に表示される次の授業と教室" width="1080" height="786" loading="lazy" /><figcaption>画面上部に表示される次の授業と教室</figcaption></figure>
+              </div>
+              <p>時間割は使っている端末のブラウザに保存されます。登録した時間割はこちら（制作者側）からは見えません。普段キャンパスで使うスマホのブラウザで登録しておくと、その場で確認しやすくなります。</p>
+              <p>あと時間割を登録しておけば通知欄に次の講義の情報（授業名、場所、開始時刻）が表示されます（今のところAndroid限定、iPhoneは手元になく検証ができないため未実装）。明日秋葉原にiPadを買いに行く予定なので、もしよさげなやつ見つけて買えたら実装するかも。それかだれか古いiPhoneください。</p>
+              <figure class="journal-inline-photo" style="max-width: 360px; margin-inline: auto;"><img src="/images/articles/how-i-use-open-classrooms/notification.jpg" alt="Androidの通知欄に表示された次の授業の開始時刻・教室・授業名" width="1080" height="2400" loading="lazy" /><figcaption>Androidの通知欄に表示された次の授業の開始時刻・教室・授業名</figcaption></figure>
+              <p>というか私は最近サークル棟に引きこもっているため空き教室検索のほうではなくこっちの通知機能を主に使っています。学芸ポータルの時間割開くの地味にめんどくさいんだよね。</p>
+            </section>
+            <section>
+              <p>そんなかんじで、私の空き教室検索ツールの使い方でした。GitHubにてオープンソースで公開しているので、もし興味のある人は自分用にカスタマイズした空き教室検索ツールをつくってみるのも面白いかもですね。</p>
+              <p>なにかバグ報告や追加機能の要望があれば、<a href="https://x.com/TKG_takazi">TwitterのDM</a>まで。送れない場合はメンション飛ばしてくれれば対応します。尚、ゼミやサークルなどの影響で空き教室ではないのに空き教室と表示されてしまうことが確認されていますがこれに関してはどうしようもないのであきらめています。なるべく上の階の空き教室を使う、というのが現状の解決策になっています。</p>
+              <p>※シラバスのデータ取得には、めがね901さんがGitHubにて公開してくださっている<a href="https://github.com/mgn901/fetch-tgusyl"><strong>fetch-tgusyl</strong></a>を活用させていただきました。この場を借りてお礼をさせていただきます。</p>
+              <p><a href="https://github.com/mgn901/fetch-tgusyl/blob/master/package.json">fetch-tgusyl の package.json</a> には、ライセンスとして MIT と記載されています。</p>
+            </section>
+          </div>
+
+          <footer class="journal-article__footer">
+            <p>東京学芸大学の公式サービスではありません。表示内容を鵜呑みにせず、利用前に確認してください。</p>
+            <div class="journal-article__resource-links">
+              <a href="https://syu-syuto.github.io/tgu-open-classrooms-2026/" target="_blank" rel="noopener noreferrer">ツールを使う <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/Syu-Syuto/tgu-open-classrooms-2026" target="_blank" rel="noopener noreferrer">GitHubで見る <span aria-hidden="true">↗</span></a>
+              <a href="/works/#tgu-open-classrooms-2026">作ったものを見る <span aria-hidden="true">→</span></a>
+            </div>
+          </footer>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>
