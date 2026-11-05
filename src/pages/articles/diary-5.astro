@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'diary-5');
+if (!article) throw new Error('記事データが見つかりません。');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={article.image} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">WEEKLY NOTE / 05</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta">
+              <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
+              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+            </div>
+            <p class="journal-article__lead">小金井祭に振り回された一週間</p>
+          </header>
+          <div class="journal-article__body">
+            <section>
+              <h2><span class="journal-diary-date">10/29</span></h2>
+              <p>諸事情でスペアキーをつくりにいきました。てっきり連絡先とか身分証とか取られると思ってたのにまさかのなにも伝えずに3分程度で完成してしまいました。これ悪用されたらどうするんだ？</p>
+            </section>
+            <section>
+              <h2><span class="journal-diary-date">10/30</span></h2>
+              <p>学内を散歩してたら放置された荷台が。修理するからくれないかなぁ|дﾟ)</p>
+              <figure class="journal-inline-photo"><img src="/images/articles/diary-5/cart.jpg" alt="草の中に置かれた古い荷台" width="2364" height="1773" loading="lazy" /></figure>
+              <p>学祭がはじまるので、自転車の移動を行いました。滲みすぎてて見えないのでこれをよんでいるGIの方、来年度は上にガムテープとかでどうにかしていただけると幸いです。</p>
+            </section>
+            <section>
+              <h2><span class="journal-diary-date">10/31</span></h2>
+              <p>学祭準備日(一日目)。朝から美研の展示準備を行いました。壁の移動がぱずるみたいでたのしかったです。あと久々に脚立乗ってたのしかった。脚立乗って高いところで足ぶらぶらしてたら先輩に「ガキだなぁ」って目で見られました。あなたが男子小学生の心をうしなってしまっただけです。私は道路の横の高いところにのぼるタイプです。</p>
+              <figure class="journal-inline-photo"><img src="/images/articles/diary-5/exhibition-mosaic.png" alt="美術棟の前に置かれた美術研究部の展示看板" width="1086" height="1448" loading="lazy" /></figure>
+              <p>夜は高校の時の人と会い日高屋へ。はしはちゃんともてたほうがいいとおもいました。</p>
+            </section>
+            <section>
+              <h2><span class="journal-diary-date">11/1</span></h2>
+              <p>夕方チア部の公演の撮影を行いました。二人で行う予定だったのですが、一人病気で欠なので一人で撮影してました。久々にカメラ二台同時に持ったよね。</p>
+              <p>高校時代にえた謎能力で、私右目でファインダー覗くと普通の視界の中にカメラのファインダーの枠がひょうじされているようにみえるんですよね(30mm~100mm程度まで)。この能力結構便利なのでカメラ持ってる人は練習するといいと思います。ミラーレスだとファインダーのぞかない人多いですけどね。まぁのぞいたほうが楽しいので私は覗く派です。</p>
+              <p>あとは昼頃美研のシフトがありました。美研、入っているのほぼA/B美術の人なのになぜか1年B技と3年A数とかいう外れ値すぎる組み合わせになってしまったせいで美術科の入試に関する質問答えられませんでした。ごめんなさい。ほかには近所のおばさまが高級な筆と羽を差し入れ(?)してくださいました。すこしさわるとわかる。高いやつでした。（今なら美研はいれば使えるよ！みんなも入ろう！）いろいろな方が差し入れを持ってきてくださり昼飯代がうきました。とくにあげぱんおいしかった。ありがとう、Rさんのおばあさん。</p>
+              <figure class="journal-inline-photo"><img src="/images/articles/diary-5/fried-bread.jpg" alt="差し入れの袋に入った揚げパン" width="1108" height="1477" loading="lazy" /></figure>
+              <p>フリーマーケットでは同じく美研に入っているB美の人のアクキーをかいました。来年何か出展したいとは思うけど、一緒にやりそうな人いないんだよな…。興味ある方いたら連絡待ってます。今のところ考えてるのは3Dプリンター/レーザー彫刻/藍染あたり。</p>
+              <p>フリマで大金出すとあれなので崩そうと思い自販機でミルクコーヒーをかったところ、まさかのアイスでした。ホットみたいなつらしやがって。</p>
+              <figure class="journal-inline-photo"><img src="/images/articles/diary-5/coffee.jpg" alt="自販機で買ったミルクコーヒー" width="1773" height="2364" loading="lazy" /></figure>
+            </section>
+            <section>
+              <h2><span class="journal-diary-date">11/2</span></h2>
+              <p>この日も撮影をしました。省略。</p>
+              <p>美研の撤収作業にいくとめがね901さんが。かぶせられたので大満足です。</p>
+              <figure class="journal-inline-photo"><img src="/images/articles/diary-5/tv-head.jpg" alt="青い画面のテレビヘッドを被った人" width="1600" height="1066" loading="lazy" /></figure>
+              <p>晩飯はＢ技の人と国分寺の淡々へ。肉あんかけチャーハンおいしかった。</p>
+              <figure class="journal-inline-photo"><img src="/images/articles/diary-5/fried-rice.jpg" alt="淡々の肉あんかけチャーハンとスープ" width="1935" height="1078" loading="lazy" /></figure>
+              <p>飯田橋の駅でみかけたレンタルボックス。室外機が力技すぎてとても好きでした。</p>
+              <figure class="journal-inline-photo"><img src="/images/articles/diary-5/rental-box.jpg" alt="飯田橋駅で見かけた室外機付きのレンタルボックス" width="1773" height="2364" loading="lazy" /></figure>
+            </section>
+            <section>
+              <h2><span class="journal-diary-date">11/3</span></h2>
+              <p>美研のアンケートの集計ツールをつくりはじめました。ただ、OCRが全くうまくいかないor処理にありえないくらい時間がかかるので方向性を検討中。来年の小金井祭までを目標にして実用レベルまでもっていこうと思います。</p>
+              <p>午前中は美研の撤収作業。いがいとはやくおわりました。やったぜ。打ち上げもあるらしいので行けるといいな(日程的に)。</p>
+            </section>
+            <section>
+              <h2><span class="journal-diary-date">11/4</span></h2>
+              <p>授業案の発表がありました。が、前半グループのトップバッター。これ私不利すぎないですかね？許せない。</p>
+            </section>
+            <p>小金井祭で駆け回ってた一週間でした。まぁ後輩来て一周ざっと見れたからよかったかな。</p>
+            <p>来年の小金井祭は何かしら出店しようと思います。多分工作系の教室か物販か。一緒に参加したい方が居たらぜひ連絡ください。</p>
+          </div>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>

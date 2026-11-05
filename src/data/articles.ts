@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'diary-5',
+    title: '日記#5',
+    excerpt: '小金井祭の展示準備、カメラ二台での撮影、美研の撤収。10/29〜11/4の日記です。',
+    publishedAt: '2026-11-05',
+    publicationOrder: 2,
+    tags: ['日記', '美術', '写真'],
+    image: '/images/articles/diary-5/fried-rice.jpg',
+    imageAlt: '淡々の肉あんかけチャーハンとスープ',
+  },
+  {
     slug: 'how-i-use-open-classrooms',
     title: '空き教室検索ツールの私の使い方',
     excerpt: '何限まで空いているか、自分の時間割、次の授業の通知。東京学芸大学の空き教室検索ツールを普段どう使っているかまとめました。',
