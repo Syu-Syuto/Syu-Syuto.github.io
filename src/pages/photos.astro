@@ -14,14 +14,15 @@ const formatCaptureDate = (date: string) => date.replaceAll('-', '.');
           <span class="gallery-hero__eyebrow">PHOTO / ART GALLERY · しゅうの物置</span>
           <h1 id="gallery-title">フォト／アートギャラリー</h1>
           <p>作った作品や撮った写真を、少しずつここに貼っていきます。</p>
-          <svg class="gallery-hero__camera" viewBox="0 0 156 126" fill="none" aria-hidden="true">
+          <a class="gallery-hero__camera" href="/articles/photo-recipes/" aria-label="よく使っているレシピを読む" data-recipe-entry>
+          <svg viewBox="0 0 156 126" fill="none" aria-hidden="true">
             <path d="M19 42h31l9-13h36l10 13h29c6 0 9 4 9 10v58c0 5-3 8-9 8H19c-5 0-9-4-9-9V51c0-5 4-9 9-9Z" />
             <circle cx="77" cy="77" r="28" /><circle cx="77" cy="77" r="19" />
             <path d="M118 53h13M24 32l-6-12M41 25l-2-15M134 25l9-10" />
           </svg>
+          </a>
         </div>
         <span class="gallery-hero__tape" aria-hidden="true"></span>
-        <span class="gallery-hero__scribble" aria-hidden="true">click! ✳</span>
       </div>
     </section>
 
@@ -164,3 +165,9 @@ const formatCaptureDate = (date: string) => date.replaceAll('-', '.');
     });
   </script>
 </BaseLayout>
+
+<script>
+  document.querySelector<HTMLAnchorElement>('[data-recipe-entry]')?.addEventListener('click', () => {
+    sessionStorage.setItem('photo-recipes-entry', 'camera');
+  });
+</script>

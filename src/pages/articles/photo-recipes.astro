@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import recipes from '../../data/recipes.json';
+import { Content } from '../../content/photo-recipes.md';
+import '../../styles/journal.css';
+
+const article = {
+  title: 'よく使っているレシピ',
+  excerpt: 'しゅうがよく使っているレシピ。',
+  publishedAt: '2026-11-06',
+  tags: [],
+  image: recipes[0].image,
+  imageAlt: '☆栄養士のれしぴ☆さんのオムライス',
+};
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={article.image} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt} noindex>
+  <div class="journal-page journal-page--article" id="photo-recipes-content" hidden>
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/photos/">← ギャラリーへ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">RECIPE NOTES</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta">
+              <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
+              <div class="journal-tags">{article.tags.map((tag) => <a class="journal-tag" href={`/search/?type=article&tag=${encodeURIComponent(tag)}`} aria-label={`${tag}の記事をすべて見る`}>{tag}</a>)}</div>
+            </div>
+          </header>
+          <div class="journal-article__body">
+            <Content />
+
+            <p class="recipe-note">金額はご飯・調味料込み、仮の食材単価で計算した１人前の目安です。10円単位で切り上げています。材料欄は元レシピの分量です。</p>
+            <div class="recipe-grid">
+              {recipes.map((recipe) => {
+                const total = recipe.estimate.items.reduce((sum, item) => sum + item.yen, 0);
+                const price = Math.ceil(total / recipe.estimate.servings / 10) * 10;
+                return (
+                  <section class="recipe-card" aria-labelledby={'recipe-' + recipe.id}>
+                    <a class="recipe-card__image-link" href={recipe.url} target="_blank" rel="noopener" aria-label={recipe.name + 'の元レシピを開く（新しいタブ）'}>
+                      <img src={recipe.image} alt={recipe.name + 'の完成写真（' + recipe.author.name + 'さん／Cookpad）'} loading="lazy" referrerpolicy="no-referrer" />
+                    </a>
+                    <div class="recipe-card__content">
+                      <h2 id={'recipe-' + recipe.id}>{recipe.name}</h2>
+                      <p class="recipe-card__price"><span>１人前の目安</span> 約{price.toLocaleString('ja-JP')}円</p>
+                      <h3>材料<span>（{recipe.recipeYield || '人数の記載なし'}）</span></h3>
+                      <ul class="recipe-card__ingredients">
+                        {recipe.recipeIngredient.map((ingredient) => <li>{ingredient}</li>)}
+                      </ul>
+                      <details class="recipe-card__estimate">
+                        <summary>金額の計算メモ</summary>
+                        <p>{recipe.estimate.note}</p>
+                        <dl>{recipe.estimate.items.map((item) => <div><dt>{item.name}</dt><dd>{item.yen}円</dd></div>)}</dl>
+                        <p>全体で{total}円 ÷ {recipe.estimate.servings}人分。</p>
+                      </details>
+                      <p class="recipe-card__credit">画像・材料の出典<br />{recipe.author.name}さん／Cookpad</p>
+                      <a class="recipe-card__source" href={recipe.url} target="_blank" rel="noopener">元レシピをCookpadで見る ↗<span>{recipe.url}</span></a>
+                    </div>
+                  </section>
+                );
+              })}
+            </div>
+            <details class="recipe-price-basis">
+              <summary>概算に使った主な仮単価</summary>
+              <p>炊いたご飯150g＝60円、卵１個＝30円、鶏もも肉100g＝130円、ひき肉・豚薄切り肉100g＝160円、牛薄切り肉100g＝250円、玉ねぎ１個＝80円、ピーマン１個＝35円、牛乳１L＝250円、バター200g＝600円、チーズ100g＝200円を想定しています。</p>
+              <p>購入店・季節・選ぶ食材によって金額は変わります。肉１枚は300gとし、人数に幅のあるレシピは少ない方の人数で割りました。その他の食材や調味料は各カードの計算メモにまとめています。光熱費は含みません。</p>
+            </details>
+
+
+          </div>
+        </article>
+        <a class="journal-article__back journal-article__back--bottom" href="/photos/">← ギャラリーへ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>
+
+<style>
+
+  .recipe-note { color: #65706b; font-size: .87rem; }
+  .recipe-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; margin: 30px 0; align-items: start; }
+  .recipe-card { overflow: hidden; border: 1px solid #d9d3c6; border-radius: 5px; background: #fffefa; box-shadow: 0 4px 10px #4337210a; }
+  .recipe-card__image-link { display: block; background: #eee8dc; }
+  .recipe-card__image-link img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; margin: 0; }
+  .recipe-card__content { padding: 20px; }
+  .journal-article__body .recipe-card h2 { font-size: 1.2rem; line-height: 1.5; margin: 0 0 12px; padding: 0; border: 0; }
+  .journal-article__body .recipe-card h3 { font-size: .95rem; margin: 20px 0 8px; }
+  .recipe-card h3 span { font-size: .8rem; font-weight: normal; color: #65706b; }
+  .journal-article__body .recipe-card__price { font-size: 1.35rem; font-weight: bold; color: #52644d; margin: 0; }
+  .recipe-card__price span { display: block; font-size: .75rem; font-weight: normal; letter-spacing: .06em; }
+  .journal-article__body .recipe-card__ingredients { padding-left: 1.2em; margin: 0; font-size: .85rem; line-height: 1.8; }
+  .recipe-card__ingredients li { margin: 4px 0; overflow-wrap: anywhere; }
+  .recipe-card__estimate, .recipe-price-basis { margin-top: 20px; border-top: 1px dashed #d9d3c6; padding-top: 12px; font-size: .8rem; }
+  .recipe-card__estimate summary, .recipe-price-basis summary { cursor: pointer; }
+  .recipe-card__estimate dl div { display: flex; justify-content: space-between; gap: 12px; }
+  .recipe-card__estimate dd { margin: 0; white-space: nowrap; }
+  .journal-article__body .recipe-card__credit { font-size: .73rem; color: #65706b; line-height: 1.6; margin: 20px 0 8px; }
+  .recipe-card__source { display: block; font-weight: bold; font-size: .86rem; }
+  .recipe-card__source span { display: block; font-weight: normal; font-size: .7rem; overflow-wrap: anywhere; }
+  @media (max-width: 660px) { .recipe-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+  #photo-recipes-content[hidden] { display: none !important; }
+</style>
+<script is:inline>
+  try {
+    const enteredFromCamera = sessionStorage.getItem('photo-recipes-entry') === 'camera';
+    sessionStorage.removeItem('photo-recipes-entry');
+    if (enteredFromCamera) {
+      document.getElementById('photo-recipes-content').hidden = false;
+    } else {
+      location.replace('/photos/');
+    }
+  } catch {
+    location.replace('/photos/');
+  }
+</script>
