@@ -37,8 +37,12 @@
           "name": "ケチャップライス200g",
           "yen": 180
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "18981848",
@@ -83,8 +87,12 @@
           "name": "ご飯450g",
           "yen": 180
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "17861252",
@@ -138,8 +146,12 @@
           "name": "ご飯300g",
           "yen": 120
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "18648080",
@@ -205,8 +217,12 @@
           "name": "とろけるチーズ60g・パセリ",
           "yen": 125
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "20488604",
@@ -255,8 +271,12 @@
           "name": "調味料・油",
           "yen": 35
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "17887418",
@@ -329,8 +349,12 @@
           "name": "ご飯600g",
           "yen": 240
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "19125031",
@@ -379,8 +403,12 @@
           "name": "ごま・小ネギ",
           "yen": 20
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "21428066",
@@ -439,8 +467,12 @@
           "name": "ご飯300g",
           "yen": 120
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "19134559",
@@ -484,8 +516,12 @@
           "name": "ご飯600g",
           "yen": 240
         }
-      ]
-    }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
   },
   {
     "id": "18442207",
@@ -532,6 +568,809 @@
         {
           "name": "ご飯150g",
           "yen": 60
+        }
+      ],
+      "portionLabel": "１人前の目安"
+    },
+    "sourceName": "Cookpad",
+    "imageNote": "",
+    "category": "rice"
+  },
+  {
+    "id": "cotta-00017021",
+    "url": "https://www.cotta.jp/recipe/recipe.php?recipeid=00017021",
+    "sourceName": "cotta",
+    "name": "お鍋で作るなめらかプリン",
+    "image": "/images/recipes/pudding.svg",
+    "imageNote": "当サイト制作のイメージイラスト",
+    "author": {
+      "name": "みのすけ",
+      "url": "https://www.cotta.jp/recipe/"
+    },
+    "recipeYield": "90mlのプリンカップ６個",
+    "recipeIngredient": [
+      "牛乳 400ml",
+      "全卵 ２個",
+      "グラニュー糖（プリン液用）40g",
+      "バニラオイル 適量",
+      "グラニュー糖（ソース用）60g",
+      "水（ソース用）70g",
+      "片栗粉 2g"
+    ],
+    "estimate": {
+      "servings": 6,
+      "portionLabel": "１人前（１個）",
+      "note": "プリン１個で計算。牛乳400ml、卵２個、グラニュー糖は合計100gを想定。容器代は別。",
+      "items": [
+        {
+          "name": "牛乳400ml",
+          "yen": 100
+        },
+        {
+          "name": "卵２個",
+          "yen": 60
+        },
+        {
+          "name": "グラニュー糖100g",
+          "yen": 30
+        },
+        {
+          "name": "片栗粉・バニラオイル",
+          "yen": 11
+        }
+      ]
+    },
+    "category": "sweets"
+  },
+  {
+    "id": "19783572",
+    "url": "https://cookpad.com/jp/recipes/19783572",
+    "sourceName": "Cookpad",
+    "name": "基本のスノーボールクッキー！簡単サク²",
+    "image": "https://img-global-jp.cpcdn.com/recipes/4741303/480x680cq50/%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%AB%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E7%B0%A1%E5%8D%98%E3%82%B5%E3%82%AF-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "白いエプロンのクマ",
+      "url": "https://cookpad.com/jp/users/40135812"
+    },
+    "recipeYield": "30個分",
+    "recipeIngredient": [
+      "薄力粉 100g",
+      "アーモンドプードル（薄力粉40gで代用可） 40g",
+      "粉砂糖（上白糖40gで代用可） 40g",
+      "バター（サラダ油60gで代用可） 65g",
+      "粉砂糖 大さじ2〜4くらい"
+    ],
+    "estimate": {
+      "servings": 10,
+      "portionLabel": "１人前（３個）",
+      "note": "全体30個を10人分、１人３個で計算。アーモンドプードルとバターを使い、粉砂糖は仕上げ用20gを含む合計60gを想定。",
+      "items": [
+        {
+          "name": "薄力粉100g",
+          "yen": 30
+        },
+        {
+          "name": "アーモンドプードル40g",
+          "yen": 120
+        },
+        {
+          "name": "粉砂糖60g",
+          "yen": 48
+        },
+        {
+          "name": "バター65g",
+          "yen": 195
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "sweets"
+  },
+  {
+    "id": "delish-155559262184014316",
+    "url": "https://delishkitchen.tv/recipes/155559262184014316",
+    "sourceName": "デリッシュキッチン",
+    "name": "基本のシフォンケーキ",
+    "image": "https://image.delishkitchen.tv/recipe/155559262184014316/1.jpg?version=1788141221",
+    "author": {
+      "name": "ふじわらじゅんこ",
+      "url": "https://delishkitchen.tv/recipes/155559262184014316"
+    },
+    "recipeYield": "直径17cmのシフォン型１台",
+    "recipeIngredient": [
+      "卵 ４個",
+      "砂糖 70g",
+      "サラダ油 大さじ２",
+      "牛乳 50ml",
+      "薄力粉 70g",
+      "粉砂糖 適量"
+    ],
+    "estimate": {
+      "servings": 8,
+      "portionLabel": "１人前（1/8台）",
+      "note": "１台を８人分で計算。粉砂糖は10gを想定。元サイトの費用表示とは別に、当サイトの仮単価で計算。",
+      "items": [
+        {
+          "name": "卵４個",
+          "yen": 120
+        },
+        {
+          "name": "砂糖70g",
+          "yen": 21
+        },
+        {
+          "name": "サラダ油30ml",
+          "yen": 12
+        },
+        {
+          "name": "牛乳50ml",
+          "yen": 13
+        },
+        {
+          "name": "薄力粉70g",
+          "yen": 21
+        },
+        {
+          "name": "粉砂糖10g",
+          "yen": 8
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "sweets"
+  },
+  {
+    "id": "18256184",
+    "url": "https://cookpad.com/jp/recipes/18256184",
+    "sourceName": "Cookpad",
+    "name": "☆ほうれん草のごま和え☆",
+    "image": "https://img-global-jp.cpcdn.com/recipes/1670015/480x552cq50/%E3%81%BB%E3%81%86%E3%82%8C%E3%82%93%E8%8D%89%E3%81%AE%E3%81%94%E3%81%BE%E5%92%8C%E3%81%88-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "☆栄養士のれしぴ☆",
+      "url": "https://cookpad.com/jp/users/40044274"
+    },
+    "recipeYield": null,
+    "recipeIngredient": [
+      "ほうれん草 １束",
+      "塩 ひとつまみ",
+      "すりごま 大さじ5",
+      "みりん 大さじ1",
+      "しょうゆ 小さじ2",
+      "砂糖 小さじ1",
+      "顆粒和風だし 小さじ1/2"
+    ],
+    "estimate": {
+      "servings": 3,
+      "portionLabel": "１人前",
+      "note": "元ページに人数の記載がないため、副菜３人分で計算。ほうれん草１束200円、すりごま45gを想定。",
+      "items": [
+        {
+          "name": "ほうれん草１束",
+          "yen": 200
+        },
+        {
+          "name": "すりごま45g",
+          "yen": 90
+        },
+        {
+          "name": "調味料",
+          "yen": 15
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "side"
+  },
+  {
+    "id": "18940899",
+    "url": "https://cookpad.com/jp/recipes/18940899",
+    "sourceName": "Cookpad",
+    "name": "☆絶品餃子☆",
+    "image": "https://img-global-jp.cpcdn.com/recipes/1361242/480x552cq50/%E7%B5%B6%E5%93%81%E9%A4%83%E5%AD%90-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "☆栄養士のれしぴ☆",
+      "url": "https://cookpad.com/jp/users/40044274"
+    },
+    "recipeYield": "４０個分（大判２０個分）",
+    "recipeIngredient": [
+      "豚ひき肉 220g",
+      "きゃべつ 140g",
+      "にら 1/3束",
+      "長ねぎ 1/2本",
+      "にんにくすりおろし 1かけ",
+      "しょうがすりおろし にんにくと同量",
+      "酒 （紹興酒） 大さじ2",
+      "ごま油 大さじ1",
+      "醤油 小さじ1",
+      "鶏がらスープのもと 小さじ1",
+      "ねぎ油（無くても大丈夫）  ID:19976129   小さじ1",
+      "砂糖 小さじ1/2",
+      "塩こしょう 少々",
+      "餃子の皮  ４０枚"
+    ],
+    "estimate": {
+      "servings": 4,
+      "portionLabel": "１人前（10個）",
+      "note": "通常サイズ40個を４人分で計算。豚ひき肉220g、餃子の皮40枚を想定。ご飯・つけだれは別。",
+      "items": [
+        {
+          "name": "豚ひき肉220g",
+          "yen": 352
+        },
+        {
+          "name": "キャベツ140g",
+          "yen": 35
+        },
+        {
+          "name": "にら・長ねぎ",
+          "yen": 83
+        },
+        {
+          "name": "にんにく・生姜",
+          "yen": 20
+        },
+        {
+          "name": "餃子の皮40枚",
+          "yen": 240
+        },
+        {
+          "name": "調味料・油",
+          "yen": 50
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "main"
+  },
+  {
+    "id": "18897890",
+    "url": "https://cookpad.com/jp/recipes/18897890",
+    "sourceName": "Cookpad",
+    "name": "さつまいもとHMでスイートポテトケーキ",
+    "image": "https://img-global-jp.cpcdn.com/recipes/1352179/480x680cq50/%E3%81%95%E3%81%A4%E3%81%BE%E3%81%84%E3%82%82%E3%81%A8hm%E3%81%A7%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%88%E3%83%9D%E3%83%86%E3%83%88%E3%82%B1%E3%83%BC%E3%82%AD-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "ｋｅｉｋａｎａ　",
+      "url": "https://cookpad.com/jp/users/40072105"
+    },
+    "recipeYield": "１８ｃｍ丸型",
+    "recipeIngredient": [
+      "牛乳 ３００ｍｌ",
+      "さつまいも（加熱済み）150g",
+      "砂糖 ８０ｇ",
+      "ホットケーキミックス ５０ｇ",
+      "マーガリン ５０ｇ",
+      "卵 ２個"
+    ],
+    "estimate": {
+      "servings": 6,
+      "portionLabel": "１人前（1/6台）",
+      "note": "18cmのケーキ１台を６人分で計算。さつまいも150g、マーガリン50gを想定。",
+      "items": [
+        {
+          "name": "牛乳300ml",
+          "yen": 75
+        },
+        {
+          "name": "さつまいも150g",
+          "yen": 90
+        },
+        {
+          "name": "砂糖80g",
+          "yen": 24
+        },
+        {
+          "name": "ホットケーキミックス50g",
+          "yen": 30
+        },
+        {
+          "name": "マーガリン50g",
+          "yen": 45
+        },
+        {
+          "name": "卵２個",
+          "yen": 60
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "sweets"
+  },
+  {
+    "id": "20029085",
+    "url": "https://cookpad.com/jp/recipes/20029085",
+    "sourceName": "Cookpad",
+    "name": "☆韓国風ピリ辛肉じゃが☆",
+    "image": "https://img-global-jp.cpcdn.com/recipes/5841482/480x680cq50/%E9%9F%93%E5%9B%BD%E9%A2%A8%E3%83%94%E3%83%AA%E8%BE%9B%E8%82%89%E3%81%98%E3%82%83%E3%81%8C-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "☆栄養士のれしぴ☆",
+      "url": "https://cookpad.com/jp/users/40044274"
+    },
+    "recipeYield": null,
+    "recipeIngredient": [
+      "じゃがいも 中４個（皮を剥いて400g)",
+      "にんじん 中１本",
+      "玉ねぎ 中１個",
+      "牛肉薄切り 300g",
+      "サラダ油(炒め用) 大さじ１",
+      "豆板醤 小さじ1",
+      "水 350ml",
+      "みりん 大さじ２",
+      "酒 大さじ2",
+      "砂糖 大さじ1と2/3",
+      "ダシダ 大さじ1",
+      "にんにくすりおろし（チューブでも） 少々",
+      "しょうがすりおろし（チューブでも） 少々",
+      "コチュジャン 小さじ2",
+      "しょうゆ 小さじ2",
+      "ごま油（仕上げ用） 小さじ１"
+    ],
+    "estimate": {
+      "servings": 4,
+      "portionLabel": "１人前",
+      "note": "元ページに人数の記載がないため、おかず４人分で計算。牛薄切り肉300g、じゃがいも400gを想定。ご飯は別。",
+      "items": [
+        {
+          "name": "牛薄切り肉300g",
+          "yen": 750
+        },
+        {
+          "name": "じゃがいも400g",
+          "yen": 160
+        },
+        {
+          "name": "人参１本・玉ねぎ１個",
+          "yen": 160
+        },
+        {
+          "name": "にんにく・生姜",
+          "yen": 10
+        },
+        {
+          "name": "調味料・油",
+          "yen": 75
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "main"
+  },
+  {
+    "id": "18045296",
+    "url": "https://cookpad.com/jp/recipes/18045296",
+    "sourceName": "Cookpad",
+    "name": "坦々肉味噌",
+    "image": "https://img-global-jp.cpcdn.com/recipes/3144066/480x680cq50/%E5%9D%A6%E3%80%85%E8%82%89%E5%91%B3%E5%99%8C-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "∞エポ∞",
+      "url": "https://cookpad.com/jp/users/40081294"
+    },
+    "recipeYield": "４人分",
+    "recipeIngredient": [
+      "豚挽肉 200g",
+      "にんにくチューブ 2cm",
+      "生姜チューブ 2cm",
+      "砂糖 大さじ１",
+      "味噌 大さじ２",
+      "醤油 大さじ１",
+      "豆板醤 大さじ１",
+      "甜面醤 （orＸＯ醤） 小さじ１",
+      "酒 大さじ１",
+      "米酢 小さじ１",
+      "胡麻油（炒め用） 大さじ１"
+    ],
+    "estimate": {
+      "servings": 4,
+      "portionLabel": "１人前",
+      "note": "肉味噌４人分で計算。豚ひき肉200gを想定。ご飯・麺などは別。",
+      "items": [
+        {
+          "name": "豚ひき肉200g",
+          "yen": 320
+        },
+        {
+          "name": "にんにく・生姜",
+          "yen": 10
+        },
+        {
+          "name": "みそ・その他の調味料・油",
+          "yen": 86
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "other"
+  },
+  {
+    "id": "20198445",
+    "url": "https://cookpad.com/jp/recipes/20198445",
+    "sourceName": "Cookpad",
+    "name": "☆ポトフ☆",
+    "image": "https://img-global-jp.cpcdn.com/recipes/3980774/480x552cq50/%E3%83%9D%E3%83%88%E3%83%95-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "☆栄養士のれしぴ☆",
+      "url": "https://cookpad.com/jp/users/40044274"
+    },
+    "recipeYield": "４〜５人分",
+    "recipeIngredient": [
+      "にんじん １本",
+      "玉ねぎ １個",
+      "じゃがいも(中) ２個",
+      "きゃべつ 1/2〜1/3個",
+      "ブロッコリー 1/2株",
+      "ベーコン 200g",
+      "オリーブオイル 大さじ１",
+      "にんにく（つぶす） １個",
+      "水 １２００ml",
+      "コンソメ ３個",
+      "ローリエ １枚",
+      "塩こしょう 少々",
+      "ウインナー（お好みで） ６本"
+    ],
+    "estimate": {
+      "servings": 4,
+      "portionLabel": "１人前",
+      "note": "４人分で計算。キャベツ1/2個、ベーコン200g、好みで加えるウインナー６本も含む。",
+      "items": [
+        {
+          "name": "人参１本・玉ねぎ１個",
+          "yen": 160
+        },
+        {
+          "name": "じゃがいも２個",
+          "yen": 100
+        },
+        {
+          "name": "キャベツ1/2個",
+          "yen": 150
+        },
+        {
+          "name": "ブロッコリー1/2株",
+          "yen": 100
+        },
+        {
+          "name": "ベーコン200g",
+          "yen": 400
+        },
+        {
+          "name": "ウインナー６本",
+          "yen": 180
+        },
+        {
+          "name": "にんにく",
+          "yen": 10
+        },
+        {
+          "name": "コンソメ・ローリエ・油など",
+          "yen": 55
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "soup"
+  },
+  {
+    "id": "17686684",
+    "url": "https://cookpad.com/jp/recipes/17686684",
+    "sourceName": "Cookpad",
+    "name": "* 炊飯器DEチーズケーキ *",
+    "image": "https://img-global-jp.cpcdn.com/recipes/417507/480x552cq50/%E7%82%8A%E9%A3%AF%E5%99%A8de%E3%83%81%E3%83%BC%E3%82%BA%E3%82%B1%E3%83%BC%E3%82%AD-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "sachi**",
+      "url": "https://cookpad.com/jp/users/40038553"
+    },
+    "recipeYield": "５合炊き炊飯器",
+    "recipeIngredient": [
+      "クリームチーズ 250g（ﾌｨﾗﾃﾞﾙﾌｨｱ1箱）",
+      "砂糖 80g",
+      "生クリーム 200ml（1パック）",
+      "たまご 3～4個",
+      "小麦粉 大2",
+      "レモン汁 大1"
+    ],
+    "estimate": {
+      "servings": 8,
+      "portionLabel": "１人前（1/8台）",
+      "note": "ケーキ１台を８人分で計算。卵は４個、生クリーム200ml、クリームチーズ250gを想定。",
+      "items": [
+        {
+          "name": "クリームチーズ250g",
+          "yen": 600
+        },
+        {
+          "name": "生クリーム200ml",
+          "yen": 400
+        },
+        {
+          "name": "卵４個",
+          "yen": 120
+        },
+        {
+          "name": "砂糖80g",
+          "yen": 24
+        },
+        {
+          "name": "小麦粉・レモン汁",
+          "yen": 14
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "sweets"
+  },
+  {
+    "id": "19196492",
+    "url": "https://cookpad.com/jp/recipes/19196492",
+    "sourceName": "Cookpad",
+    "name": "♔鶏手羽元の甘辛さっぱり煮♔５で簡単♪人気レシピ",
+    "image": "https://img-global-jp.cpcdn.com/recipes/1879782/480x552cq50/%E9%B6%8F%E6%89%8B%E7%BE%BD%E5%85%83%E3%81%AE%E7%94%98%E8%BE%9B%E3%81%95%E3%81%A3%E3%81%B1%E3%82%8A%E7%85%AE%E3%81%A7%E7%B0%A1%E5%8D%98%E4%BA%BA%E6%B0%97%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "rie-tin",
+      "url": "https://cookpad.com/jp/users/40046822"
+    },
+    "recipeYield": "8～10本くらい",
+    "recipeIngredient": [
+      "鶏の手羽元 500ｇ",
+      "醤油 50㏄",
+      "料理酒 50㏄",
+      "お酢 50㏄",
+      "砂糖 50ｇ",
+      "みりん 50㏄"
+    ],
+    "estimate": {
+      "servings": 4,
+      "portionLabel": "１人前",
+      "note": "手羽元500gを４人分、１人２〜３本程度で計算。手羽元は100gあたり80円を想定。ご飯は別。",
+      "items": [
+        {
+          "name": "手羽元500g",
+          "yen": 400
+        },
+        {
+          "name": "醤油・酒・酢・砂糖・みりん",
+          "yen": 80
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "main"
+  },
+  {
+    "id": "18975684",
+    "url": "https://cookpad.com/jp/recipes/18975684",
+    "sourceName": "Cookpad",
+    "name": "☆ポテトサラダ☆",
+    "image": "https://img-global-jp.cpcdn.com/recipes/1371463/480x552cq50/%E3%83%9D%E3%83%86%E3%83%88%E3%82%B5%E3%83%A9%E3%83%80-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "☆栄養士のれしぴ☆",
+      "url": "https://cookpad.com/jp/users/40044274"
+    },
+    "recipeYield": "4〜5人分",
+    "recipeIngredient": [
+      "じゃがいも 中3〜4個",
+      "きゅうり 1/2本",
+      "卵 1個",
+      "ハム 2〜3枚",
+      "たまねぎ 1/4個",
+      "マヨネーズ 大さじ4〜5",
+      "すし酢 小さじ2",
+      "砂糖 小さじ1/2",
+      "塩こしょう 少々"
+    ],
+    "estimate": {
+      "servings": 4,
+      "portionLabel": "１人前",
+      "note": "副菜４人分で計算。じゃがいも４個、ハム３枚、マヨネーズ大さじ５を想定。",
+      "items": [
+        {
+          "name": "じゃがいも４個",
+          "yen": 200
+        },
+        {
+          "name": "きゅうり1/2本",
+          "yen": 25
+        },
+        {
+          "name": "卵１個",
+          "yen": 30
+        },
+        {
+          "name": "ハム３枚",
+          "yen": 45
+        },
+        {
+          "name": "玉ねぎ1/4個",
+          "yen": 20
+        },
+        {
+          "name": "マヨネーズ・その他の調味料",
+          "yen": 53
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "side"
+  },
+  {
+    "id": "21965291",
+    "url": "https://cookpad.com/jp/recipes/21965291",
+    "sourceName": "Cookpad",
+    "name": "☆チャプチェ☆",
+    "image": "https://img-global-jp.cpcdn.com/recipes/6897178/480x680cq50/%E3%83%81%E3%83%A3%E3%83%97%E3%83%81%E3%82%A7-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "☆栄養士のれしぴ☆",
+      "url": "https://cookpad.com/jp/users/40044274"
+    },
+    "recipeYield": "4~5人分",
+    "recipeIngredient": [
+      "春雨 80g",
+      "牛肉薄切り 250g",
+      "人参 1/2本",
+      "ピーマン ２個",
+      "玉ねぎ 1/2個",
+      "サラダ油（炒め用） 大さじ１",
+      "醤油 大さじ２と1/2",
+      "酒 大さじ２",
+      "水 大さじ２",
+      "砂糖 大さじ１",
+      "みりん 大さじ１",
+      "ごま油 大さじ１",
+      "コチュジャン 大さじ1/2",
+      "ダシダ（または鶏ガラスープのもと） 小さじ１",
+      "にんにくすりおろし（チューブでも） 少々",
+      "生姜すりおろし（チューブでも） 少々",
+      "塩こしょう 少々"
+    ],
+    "estimate": {
+      "servings": 4,
+      "portionLabel": "１人前",
+      "note": "おかず４人分で計算。牛薄切り肉250g、春雨80gを想定。ご飯は別。",
+      "items": [
+        {
+          "name": "牛薄切り肉250g",
+          "yen": 625
+        },
+        {
+          "name": "春雨80g",
+          "yen": 80
+        },
+        {
+          "name": "人参1/2本",
+          "yen": 40
+        },
+        {
+          "name": "ピーマン２個",
+          "yen": 70
+        },
+        {
+          "name": "玉ねぎ1/2個",
+          "yen": 40
+        },
+        {
+          "name": "にんにく・生姜",
+          "yen": 10
+        },
+        {
+          "name": "調味料・油",
+          "yen": 68
+        }
+      ]
+    },
+    "imageNote": "",
+    "category": "main"
+  },
+  {
+    "id": "20173596",
+    "url": "https://cookpad.com/jp/recipes/20173596",
+    "sourceName": "Cookpad",
+    "category": "rice",
+    "imageNote": "",
+    "name": "卵と玉ねぎだけ‼簡単☆節約☆たまご丼☆",
+    "image": "https://img-global-jp.cpcdn.com/recipes/2801685/480x552cq50/%E5%8D%B5%E3%81%A8%E7%8E%89%E3%81%AD%E3%81%8E%E3%81%A0%E3%81%91%E2%80%BC%E7%B0%A1%E5%8D%98%E7%AF%80%E7%B4%84%E3%81%9F%E3%81%BE%E3%81%94%E4%B8%BC-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.webp",
+    "author": {
+      "@type": "Person",
+      "name": "しばちさ",
+      "url": "https://cookpad.com/jp/users/40281883"
+    },
+    "recipeYield": "２、３人分",
+    "recipeIngredient": [
+      "たまご ３個",
+      "玉ねぎ 大１／２個",
+      "水 １５０cc",
+      "ほんだし 小さじ１／２",
+      "砂糖 大さじ１",
+      "酒 大さじ１",
+      "みりん 大さじ１",
+      "醤油 大さじ１",
+      "刻み海苔 お好きなだけ"
+    ],
+    "estimate": {
+      "servings": 2,
+      "portionLabel": "１人前の目安",
+      "note": "２人分で計算。卵３個、玉ねぎ1/2個、ご飯は１人150g、刻み海苔２人分を想定。",
+      "items": [
+        {
+          "name": "卵３個",
+          "yen": 90
+        },
+        {
+          "name": "玉ねぎ1/2個",
+          "yen": 40
+        },
+        {
+          "name": "調味料",
+          "yen": 21
+        },
+        {
+          "name": "刻み海苔",
+          "yen": 10
+        },
+        {
+          "name": "ご飯300g",
+          "yen": 120
+        }
+      ]
+    }
+  },
+  {
+    "id": "delish-234022755266200696",
+    "url": "https://delishkitchen.tv/recipes/234022755266200696",
+    "sourceName": "デリッシュキッチン",
+    "category": "rice",
+    "imageNote": "",
+    "name": "唐揚げの卵とじ丼",
+    "image": "https://image.delishkitchen.tv/recipe/234022755266200696/1.jpg?version=1701914942",
+    "author": {
+      "name": "三須さき",
+      "url": "https://delishkitchen.tv/recipes/234022755266200696"
+    },
+    "recipeYield": "２人分",
+    "recipeIngredient": [
+      "ごはん 400g（どんぶり２杯）",
+      "唐揚げ 180g（６個）",
+      "溶き卵 ２個分",
+      "玉ねぎ 1/2個",
+      "三つ葉 少々",
+      "砂糖 小さじ１",
+      "みりん 大さじ１と1/2",
+      "しょうゆ 大さじ１と1/2",
+      "和風顆粒だし 小さじ1/3",
+      "水 60ml"
+    ],
+    "estimate": {
+      "servings": 2,
+      "portionLabel": "１人前の目安",
+      "note": "２人分で計算。総菜の唐揚げは100gあたり200円、ご飯は元レシピの400gを想定。元サイトの費用表示とは別に仮単価で計算。",
+      "items": [
+        {
+          "name": "唐揚げ180g",
+          "yen": 360
+        },
+        {
+          "name": "卵２個",
+          "yen": 60
+        },
+        {
+          "name": "玉ねぎ1/2個",
+          "yen": 40
+        },
+        {
+          "name": "ご飯400g",
+          "yen": 160
+        },
+        {
+          "name": "三つ葉・調味料",
+          "yen": 32
         }
       ]
     }

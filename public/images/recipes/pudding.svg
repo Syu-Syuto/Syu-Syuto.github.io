@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img" aria-labelledby="title">
+<title id="title">カラメルソースをのせたプリンのイメージイラスト</title>
+<rect width="640" height="480" fill="#f5eedf"/>
+<ellipse cx="320" cy="356" rx="217" ry="62" fill="#e6dccb"/>
+<ellipse cx="320" cy="343" rx="217" ry="62" fill="#fffdf6" stroke="#cfc3af" stroke-width="3"/>
+<ellipse cx="320" cy="341" rx="151" ry="36" fill="#a96b3c" opacity=".25"/>
+<path d="M222 193 Q320 164 418 193 L452 326 Q320 382 188 326Z" fill="#f2d182" stroke="#aa7e49" stroke-width="3" stroke-linejoin="round"/>
+<path d="M384 192L418 193 452 326Q424 340 394 348Z" fill="#d9ad61" opacity=".6"/>
+<ellipse cx="320" cy="194" rx="99" ry="28" fill="#a55e33" stroke="#874826" stroke-width="3"/>
+<path d="M247 192Q307 172 368 185" fill="none" stroke="#d6a56b" stroke-width="6" stroke-linecap="round"/>
+<path d="M226 256L214 310" fill="none" stroke="#fff0c4" stroke-width="12" stroke-linecap="round" opacity=".7"/>
+<path d="M475 302L551 373" stroke="#9a9b95" stroke-width="13" stroke-linecap="round"/>
+<ellipse cx="463" cy="290" rx="20" ry="33" fill="#c6c9c4" stroke="#8e948e" stroke-width="3" transform="rotate(-44 463 290)"/>
+</svg>
