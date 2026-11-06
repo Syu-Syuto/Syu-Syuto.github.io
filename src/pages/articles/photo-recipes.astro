@@ -80,6 +80,8 @@ const article = {
 
 <style>
 
+  .journal-article__paper { transform: none; }
+
   .recipe-note { color: #65706b; font-size: .87rem; }
   .recipe-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; margin: 30px 0; align-items: start; }
   .recipe-card { overflow: hidden; border: 1px solid #d9d3c6; border-radius: 5px; background: #fffefa; box-shadow: 0 4px 10px #4337210a; }
@@ -87,6 +89,7 @@ const article = {
   .recipe-card__image-link img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; margin: 0; }
   .recipe-card__content { padding: 20px; }
   .journal-article__body .recipe-card h2 { font-size: 1.2rem; line-height: 1.5; margin: 0 0 12px; padding: 0; border: 0; }
+  .journal-article__body .recipe-card h2::before { display: none; }
   .journal-article__body .recipe-card h3 { font-size: .95rem; margin: 20px 0 8px; }
   .recipe-card h3 span { font-size: .8rem; font-weight: normal; color: #65706b; }
   .journal-article__body .recipe-card__price { font-size: 1.35rem; font-weight: bold; color: #52644d; margin: 0; }
