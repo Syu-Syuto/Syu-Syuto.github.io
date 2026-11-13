@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'diary-6',
+    title: '日記#6',
+    excerpt: 'ばらばらすぎる一週間。iPad探し、からたま丼、LINEスタンプ制作、ガチャと野菜たっぷりの鍋。11/5〜11/13の日記です。',
+    publishedAt: '2026-11-13',
+    publicationOrder: 1,
+    tags: ['日記'],
+    image: '/images/articles/diary-6/200755.webp',
+    imageAlt: '卵と玉ねぎでとじた唐揚げをのせた丼',
+  },
+  {
     slug: 'rss-guide',
     title: 'このサイトの更新をRSSで受け取れます',
     excerpt: 'RSSとは何か、Feedlyでの登録方法、このサイトで受け取れる更新について。',
