@@ -1,0 +1,7 @@
+---
+interface Props { tags: readonly string[]; }
+const { tags } = Astro.props;
+---
+<div class="journal-tags" aria-label="記事のタグ" data-tag-count={tags.length}>
+  {tags.map((tag) => <a class="journal-tag" href={`/search/?type=article&tag=${encodeURIComponent(tag)}`} aria-label={`${tag}の記事をすべて見る`}>{tag}</a>)}
+</div>

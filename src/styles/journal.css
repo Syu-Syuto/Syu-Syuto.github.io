@@ -46,7 +46,10 @@ a.journal-tag:focus-visible { outline: 3px solid #34475a; outline-offset: -3px; 
 .journal-article__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; color: #67788a; font-size: .84rem; }
 .journal-article__lead { margin: 30px 0 0; font-size: 1.07rem; font-weight: 700; line-height: 2; letter-spacing: .035em; }
 .journal-article__thumbnail { width: min(100%,670px); margin: 0 auto 45px; padding: 10px 10px 24px; background: #fff; box-shadow: 0 7px 16px #47331e33; transform: rotate(-1.2deg); }
-.journal-article__thumbnail img { width: 100%; aspect-ratio: 1312/900; object-fit: cover; object-position: top center; }
+.journal-article__thumbnail img { width: 100%; height: auto; object-fit: contain; }
+/* 縦長や主題が端にある日記写真も、一覧・関連記事では全体を見せる。 */
+.journal-card__photo img[src*="/diary-2/"], .journal-card__photo img[src*="/diary-3/"], .journal-card__photo img[src*="/diary-6/"],
+.journal-connections__related-card img[src*="/diary-2/"], .journal-connections__related-card img[src*="/diary-3/"], .journal-connections__related-card img[src*="/diary-6/"] { object-fit: contain; object-position: center; background: #fffdf6; }
 .journal-article__thumbnail figcaption { margin-top: 8px; color: #526177; text-align: center; font: .9rem "Segoe Print","Comic Sans MS",cursive; }
 .journal-article__body section { margin: 0 0 43px; }
 .journal-article__body h2 { position: relative; margin: 0 0 19px; padding: 0 0 8px 17px; border-bottom: 1px dashed #cbd3d4; font-size: 1.32rem; letter-spacing: .075em; }

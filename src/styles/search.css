@@ -78,6 +78,7 @@
 .search-card__visual { min-width: 0; padding: 7px 7px 13px; background: #fff; box-shadow: 0 3px 10px #32271f2b; transform: rotate(-2deg); }
 .search-card--work .search-card__visual { display: grid; place-items: center; background-color: #fffefa; background-image: linear-gradient(#b5c4d326 1px,transparent 1px),linear-gradient(90deg,#b5c4d326 1px,transparent 1px); background-size: 16px 16px; transform: rotate(2deg); }
 .search-card__visual img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top center; }
+.search-card__visual img[src*="/diary-2/"], .search-card__visual img[src*="/diary-3/"], .search-card__visual img[src*="/diary-6/"] { object-fit: contain; object-position: center; background: #fffdf6; }
 .search-card__visual svg { width: min(75%,140px); height: auto; aspect-ratio: 4/3; stroke: #3d5671; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
 .search-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; color: #647385; font-size: .8rem; }
 .search-card__meta>span { padding: 3px 10px; background: #e0cfa4; color: #604a35; font-weight: 800; transform: rotate(-3deg); }

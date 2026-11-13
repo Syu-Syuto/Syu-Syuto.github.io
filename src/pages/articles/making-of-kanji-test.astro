@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleTags from '../../components/ArticleTags.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import ArticleConnections from '../../components/ArticleConnections.astro';
 import { articles } from '../../data/articles';
@@ -19,7 +20,7 @@ const socialImage = article.image.replace(/\.svg$/, '.png');
           <header class="journal-article__header">
             <span class="journal-eyebrow">TOOL NOTE / 02</span>
             <h1>{article.title}</h1>
-            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><div class="journal-tags">{article.tags.map((tag) => <a class="journal-tag" href={`/search/?type=article&tag=${encodeURIComponent(tag)}`} aria-label={`${tag}の記事をすべて見る`}>{tag}</a>)}</div>{article.draft && <span class="journal-card__draft">下書き</span>}</div>
+            <div class="journal-article__meta"><time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time><ArticleTags tags={article.tags} />{article.draft && <span class="journal-card__draft">下書き</span>}</div>
             <p class="journal-article__lead">塾のアルバイトで漢字の総テストを作るのが面倒だったので、自分用の道具を作りました。</p>
           </header>
 

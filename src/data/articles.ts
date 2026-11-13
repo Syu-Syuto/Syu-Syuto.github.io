@@ -156,8 +156,8 @@ export const articles: Article[] = [
     publishedAt: '2026-09-22',
     publicationOrder: 1,
     tags: ['日記', '工作'],
-    image: '/images/articles/diary-1/crt-tv.webp',
-    imageAlt: '作業机に置かれた古いブラウン管テレビ',
+    image: '/images/articles/diary-1/monjayaki.webp',
+    imageAlt: '鉄板の上で焼いているもんじゃ焼き',
   },
   {
     slug: 'making-of-kanji-checker',

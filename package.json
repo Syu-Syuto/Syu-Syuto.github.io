@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "build": "astro build",
+    "build": "node scripts/check-article-tags.mjs && astro build && node scripts/check-article-tags.mjs --built",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
     "photos:check": "node scripts/import-photos.mjs --dry-run",
