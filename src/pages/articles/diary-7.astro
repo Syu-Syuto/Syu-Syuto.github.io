@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleTags from '../../components/ArticleTags.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import ArticleConnections from '../../components/ArticleConnections.astro';
 import { articles } from '../../data/articles';
@@ -20,7 +21,7 @@ if (!article) throw new Error('記事データが見つかりません。');
             <h1>{article.title}</h1>
             <div class="journal-article__meta">
               <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
-              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+              <ArticleTags tags={article.tags} />
             </div>
             <p class="journal-article__lead">双生卵を二つ引き当てました。</p>
           </header>
