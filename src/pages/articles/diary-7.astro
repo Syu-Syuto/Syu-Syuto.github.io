@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ArticleConnections from '../../components/ArticleConnections.astro';
+import { articles } from '../../data/articles';
+import '../../styles/journal.css';
+
+const article = articles.find(({ slug }) => slug === 'diary-7');
+if (!article) throw new Error('記事データが見つかりません。');
+---
+<BaseLayout title={`${article.title} | しゅうの物置`} description={article.excerpt} ogImage={article.image} ogImageAlt={article.imageAlt} type="article" publishedTime={article.publishedAt}>
+  <div class="journal-page journal-page--article">
+    <div class="journal-article__desk">
+      <div class="journal-article__inner">
+        <a class="journal-article__back" href="/articles/">← 記事一覧へ</a>
+        <article class="journal-article__paper">
+          <span class="journal-article__tape" aria-hidden="true"></span>
+          <header class="journal-article__header">
+            <span class="journal-eyebrow">WEEKLY NOTE / 07</span>
+            <h1>{article.title}</h1>
+            <div class="journal-article__meta">
+              <time datetime={article.publishedAt}>{article.publishedAt.replaceAll('-', '.')}</time>
+              <div class="journal-tags">{article.tags.map((tag) => <span class="journal-tag">{tag}</span>)}</div>
+            </div>
+            <p class="journal-article__lead">双生卵を二つ引き当てました。</p>
+          </header>
+          <div class="journal-article__body">
+            <section><h2><span class="journal-diary-date">11/14</span></h2>
+            <p>にくまんはからしをおいしく食べるためだけに存在している。</p>
+            </section>
+            <section><h2><span class="journal-diary-date">11/15</span></h2>
+            <p>年賀状をかきはじめました。案３つくらいだしたけど結局ポップなかんじにおちつきました。新年になったら上げます</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/new-year.jpg" alt="年賀状のために描いた模様の案" width="2048" height="1423" loading="lazy" /><figcaption>かきかけ</figcaption></figure>
+            </section>
+            <section><h2><span class="journal-diary-date">11/16</span></h2>
+            <p>にくじゃがは意外と作るの簡単(皮をむかない場合に限る)</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/nikujaga.jpg" alt="皮つきのじゃがいもで作った肉じゃが" width="4000" height="3000" loading="lazy" /></figure>
+            <p>イーサンにつられてアークナイツをはじめてしまいました。ソシャゲかかえすぎててはげそう。さいきんにゃんこがおろそかになってきているのでどうにかしたいな</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/arknights.jpg" alt="アークナイツのプロフィール画面" width="2048" height="965" loading="lazy" /></figure>
+            </section>
+            <section><h2><span class="journal-diary-date">11/17</span></h2>
+            <p>昼＋三限空きをつかって一人暮らしのやつの家でわくわく弾丸クッキングをしました。</p>
+            <p>二人とも普通にやれば作れるはずなのに時間に押されて200°18分とかいうわけわかんないことしたせいで、外カリッ中生ぁな謎物質が出来上がりました。レンチンして食べたそうです。ごめん</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/quick-cake.jpg" alt="弾丸クッキングで焼いたケーキ" width="3000" height="4000" loading="lazy" /></figure>
+            </section>
+            <section><h2><span class="journal-diary-date">11/18</span></h2>
+            <p>起きるとChatGPTに6.2が来ていました！ただ、6.1のときとくらべてそこまで変化を感じられない…。トークン効率は多少良くなったかな？程度。Youtube Premiumと5TBにひかれてGeminiを割と本気で検討中です。ネックはGeminiの使用量。無料版の４倍程度ってどんなもんなんですかね。もし契約してる人いたら教えてください&lt;(_ _)&gt;</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/models.png" alt="ChatGPTのモデル選択画面" width="358" height="412" loading="lazy" /></figure>
+            <p>晩飯にTKG食べようとしたらまさかの双生卵を引きました。久々に見た</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/tkg.jpg" alt="ごはんの上にのせた双生卵" width="3000" height="4000" loading="lazy" /></figure>
+            </section>
+            <section><h2><span class="journal-diary-date">11/19</span></h2>
+            <p>普段朝からのバイトがめずらしく昼過ぎからだったので、午前中にシフォンケーキをやいて事務所へもっていきました。私シフォンケーキ外で食べたことないんですが、あれって本来生クリームとかつけて食べるものなんですね。母に一つあげたら味がしないといわれました。卵ボーロ好んで食べるタイプなのでそれのせいかもしれない。</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/cooling-cake.jpg" alt="逆さまにして冷ましているシフォンケーキ" width="3000" height="4000" loading="lazy" /></figure>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/cake.jpg" alt="型から外したシフォンケーキ" width="4000" height="3000" loading="lazy" /></figure>
+            <p>仕事の待ち時間が1hほどあったので公園で野外プロセカをしていました。尚落葉による妨害二敗。室内でやりましょう。</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/park.jpg" alt="公園の木々と空" width="2048" height="1536" loading="lazy" /></figure>
+            <p>下校中の小学生が大声で歌いながら帰っていてよかったです。ガキはうるさければうるさいほどいいですからね。</p>
+            </section>
+            <section><h2><span class="journal-diary-date">11/20</span></h2>
+            <p>19日、Twitter不具合でなんもツイートできなかったんですが一度ログアウトしたら治りました。体感三日くらいだったので自分が思っているよりもTwitterに依存していたのかもしれない。</p>
+            <p>夜はタンメンたべに日高屋へ。金夜にいった自分が悪いけど、周り皆酒飲んでて気まずかったです。しかもとなりのグループ帰ったら席くっつけられて4人テーブルにされたし。金夜に日高屋は控えよう。タンメンのおいしさの七割は胡椒です異論は認めます</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/tanmen.jpg" alt="日高屋のタンメン" width="3000" height="4000" loading="lazy" /></figure>
+            <p>家に帰るとなぜか部活の後輩（高３）とスプラを1h程度しました。二人とも下手すぎておもろかった。</p>
+            <p>なんか部活めちゃくちゃになり始めてるらしいです。そういえば広報インスタの写真もなぜか今年のものじゃなくて去年俺がとったやつばっかだったし。大丈夫かな…。</p>
+            </section>
+            <section><h2><span class="journal-diary-date">11/21</span></h2>
+            <p>自分用にシフォンケーキをつくっているとまさかのまた双生卵が！これのせいで分量バグりましたゆるさない。</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/ingredients.jpg" alt="シフォンケーキ作りの材料" width="4000" height="3000" loading="lazy" /></figure>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/double-yolk.jpg" alt="殻の中に二つの黄身が入った双生卵" width="3000" height="4000" loading="lazy" /></figure>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/chiffon.jpg" alt="紙の型で焼いたシフォンケーキ" width="3000" height="4000" loading="lazy" /></figure>
+            </section>
+            <section><h2><span class="journal-diary-date">11/23</span></h2>
+            <p>技術書典/店へ行きました。普段見ているYoutubeの人や、最近購入を検討している３Dプリンターやスマートグラスに関する内容も多くとても面白かったです。今週は平日毎日予定あるので、今週末に購入した本はまとめて読もうかな。</p>
+            <figure class="journal-inline-photo"><img src="/images/articles/diary-7/books.jpg" alt="技術書典で購入した本を並べた戦利品の展示" width="4000" height="3000" loading="lazy" /></figure>
+            <p>ただ、生成AIに関する内容については？が浮かぶことがかなり多かったです。「文章からAIらしさを消す方法！」などと書いてある本は（ぱらぱらとしかみていませんが）かなり文章がAIくさかったり、表紙もあきらかにAI生成のもので正直抵抗をかなりかんじるものが多かったです。（生成AIを用いることは別に悪いとは思いませんが、上手に使えていないものが多いという意図です。拙くてすみません）</p>
+            <p>正直こういうイベントであれば、表紙に生成AIもちいるよりもシンプルなもののほうがかっこいいと思うんですが…。まぁそこは個人の趣味嗜好の領域なので、この話はここでおわりに。本の感想などはおそらく次の日記（もしくは別途記事）でまとめます。</p>
+            <p>帰りにＪＩＮＳへ。四年ぶりにメガネを買いました。レンズがかなりぼろぼろだったらしく、前回と調整は同じはずなのに世界の解像度が上がったように感じます。メガネのレンズは定期的に交換するようにしましょう。とくに雑に扱う男子ども。</p>
+            <p>夜、明日一限テストなのではやく寝ようとしたところdiscordの通知が。京大のしゅうゆ謎解きの解説記事を見ながらといていきました。が、序盤10%程度の所でギブアップ。やばいよあれ。気になる人は「京大　謎解き　跳梁跋扈　解説　note」とかでしらべると出てくると思います。</p>
+            </section>
+            <p>やはりいままでの日記と違ってものをつくってる時間がないですね。</p>
+            <p>来週からは美術部の絵を描かなきゃいけないので、もうすこし制作系の内容が増えると思います。今のところ紫色のハシビロコウを描く予定。</p>
+          </div>
+        </article>
+        <ArticleConnections current={article} allArticles={articles} />
+        <a class="journal-article__back journal-article__back--bottom" href="/articles/">← 記事一覧へ戻る</a>
+      </div>
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>
+<style>
+  .journal-inline-photo { width: min(100%, 620px); margin: 24px auto; box-sizing: border-box; }
+  .journal-inline-photo img { display: block; width: auto; height: auto; max-width: 100%; max-height: 540px; margin-inline: auto; object-fit: contain; }
+</style>

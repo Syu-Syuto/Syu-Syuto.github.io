@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'diary-7',
+    title: '日記#7',
+    excerpt: '年賀状を描いたり、シフォンケーキを焼いたり、技術書典で本を買ったり。11/14〜11/23の日記です。',
+    publishedAt: '2026-11-25',
+    publicationOrder: 1,
+    tags: ['日記', '料理', 'ゲーム'],
+    image: '/images/articles/diary-7/cake.jpg',
+    imageAlt: '型から外した焼きたてのシフォンケーキ',
+  },
+  {
     slug: 'diary-6',
     title: '日記#6',
     excerpt: 'ばらばらすぎる一週間。iPad探し、からたま丼、LINEスタンプ制作、ガチャと野菜たっぷりの鍋。11/5〜11/13の日記です。',
