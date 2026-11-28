@@ -20,6 +20,16 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'gakugei-freshman-guide',
+    title: '新入生向け　学芸大の情報まとめ（とくに一年四月に必要な情報！）',
+    excerpt: '東京学芸大学の新入生へ。B技での経験をもとに、先輩の探し方、履修登録、空きコマ、サークルやバイトの話をまとめました。',
+    publishedAt: '2026-11-28',
+    publicationOrder: 1,
+    tags: ['大学生活'],
+    image: '/images/articles/diary-1/campus-bike.webp',
+    imageAlt: '東京学芸大学のキャンパスに停めた自転車',
+  },
+  {
     slug: 'diary-7',
     title: '日記#7',
     excerpt: '年賀状を描いたり、シフォンケーキを焼いたり、技術書典で本を買ったり。11/14〜11/23の日記です。',
