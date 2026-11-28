@@ -26,8 +26,8 @@ export const articles: Article[] = [
     publishedAt: '2026-11-28',
     publicationOrder: 1,
     tags: ['大学生活'],
-    image: '/images/articles/diary-1/campus-bike.webp',
-    imageAlt: '東京学芸大学のキャンパスに停めた自転車',
+    image: '/images/art-viewer.jpg',
+    imageAlt: '青い画面に眠った表情が映るテレビヘッドを被った人物',
   },
   {
     slug: 'diary-7',
